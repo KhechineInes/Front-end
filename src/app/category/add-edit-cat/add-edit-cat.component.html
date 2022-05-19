@@ -1,0 +1,44 @@
+<form class="mb-5" method="post" id="contactForm" name="contactForm">
+                  
+     
+    <div class="row">
+      <div class="col-md-12 form-group mb-3">
+        <label for="budget" class="col-form-label">Category </label>
+        <input type="text" class="form-control" name="subject" id="subject" [(ngModel)]="CatName"placeholder="Your subject">
+      </div>
+    </div>
+
+    <div class="row mb-5">
+      <div class="col-md-12 form-group mb-3">
+        <label for="message" class="col-form-label">Frameworks</label>
+        <textarea class="form-control" name="pub" id="message" cols="30" rows="4"  [(ngModel)]="CatFramework" placeholder=" Write your  message ">
+          </textarea>
+      
+       
+      </div>
+      </div>
+      <div class="row mb-5">
+        <div class="col-md-12 form-group mb-3">
+          <label for="message" class="col-form-label">Languages</label>
+          <textarea class="form-control" name="pub" id="message" cols="30" rows="4"  [(ngModel)]="CatLanguage" placeholder=" Write your  message ">
+            </textarea>
+        
+         
+        </div>
+        </div>
+      
+        <div class="ml-3 bd-highlight" style="width: 40%;">
+          <img [src]=ImagePath height="250px;" width="200px;">
+          <input type="file" (change)="uploadPhoto($event)" class="mt-2"/>
+          </div>
+
+    
+    <div class="row justify-content-center">
+      <div class="col-md-5 form-group text-center">
+        <input type="submit" value="Add Post " (click)="addCat()" class="btn btn-block btn-primary ">
+        <span class="submitting"></span>
+      </div>
+    </div>
+  </form>
+
+ 

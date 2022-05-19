@@ -1,0 +1,70 @@
+<section id="addform" class="addform">
+
+    <!doctype html>
+    <html lang="en">
+      <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap" rel="stylesheet">
+    
+        
+    
+        <title>Give Up Solution   </title>
+      </head>
+      <body>
+      
+   
+      
+        
+        <div class="container">
+          <div class="row align-items-stretch justify-content-center no-gutters">
+            <div class="col-md-7">
+              <div class="form h-100 contact-wrap p-5">
+                <h3 class="text-center">
+                    Give a solution
+                </h3>
+                <form class="mb-5" method="post" id="contactForm" name="contactForm">
+    
+                  <div class="row mb-5">
+                    <div class="col-md-12 form-group mb-3">
+                      <label for="message" class="col-form-label">Answer</label>
+                      <textarea class="form-control" name="pub" id="message" cols="30" rows="4" [(ngModel)]="Ans"  placeholder=" Write your  message ">
+                        </textarea>
+                    
+                     
+                    </div>
+                    <input type="file"
+                    id="avatar" name="avatar"
+                    accept=""  >
+
+
+                  </div>
+                  <div class="row justify-content-center">
+                    <div class="col-md-5 form-group text-center">
+                      <input type="submit" value="Answer " (click) = "addAns()" class="btn btn-block btn-primary ">
+                      <span class="submitting"></span>
+                    </div>
+                  </div>
+                </form>
+    
+                <div id="form-message-warning mt-4"></div> 
+                <div id="form-message-success">
+                  Your message was sent, thank you!
+                </div>
+    
+              </div>
+            </div>
+          </div>
+        </div>
+    
+      
+        
+        
+    
+       
+    
+      </body>
+    </html>
+
+</section>

@@ -1,0 +1,62 @@
+<app-header></app-header>
+<section id="hero" class="d-flex align-items-center">
+  
+<div class="row">  
+  <div class="card shadow border-2 mb-5 ml-5" style="width:250px ; height:350px;" *ngFor="let dataItem of CatList">
+    <div class="card-header">
+        <img class="card-img-top" [src]="dataItem.Image ? ImagePath+dataItem.Image : '/assets/img/blank_img.png'" height="150" width="150"  alt="Card image cap" style="width: 100px; height: 100px ;">
+       
+    </div>
+
+    <div class="card-body"  >
+
+      <h5 class="card-title">{{dataItem.CatName}}</h5>
+      <p class="card-text"> Frameworks  : {{dataItem.CatFramework}} </p>
+      <p class="card-text">  Language   : {{dataItem.CatLang}} </p>
+     
+    </div>
+    <div class="card-footer">  <button type="button" class="btn btn-light mr-1" (click)="showClick(dataItem)" data-toggle="modal"
+      data-target="#show" data-keyboard="false">
+      Show
+    </button>
+    </div>
+  </div>
+  </div>
+  <div class="modal fade" id="show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeClick()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <app-show-cat [Cat]="cat" 
+                          
+        *ngIf="ActivateAddEditCatComp">
+
+        </app-show-cat>
+        
+      </div>
+    </div>
+  </div>
+</div>
+  
+</section>
+
+
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-end">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>

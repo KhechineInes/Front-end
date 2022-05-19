@@ -1,0 +1,92 @@
+<section id="addform" class="addform">
+
+    <body>
+
+
+        <div class="content">
+
+            <div class="container">
+                <div class="row align-items-stretch justify-content-center no-gutters">
+                    <div class="col-md-7">
+                        <div class="form h-100 contact-wrap p-5">
+                            <h3 class="text-center">
+                                User
+                            </h3>
+                            <form class="mb-5" method="post" id="contactForm">
+
+
+
+
+
+                                <div class="row">
+                                    <div class="col-md-12 form-group mb-3">
+                                        <label for="budget" class="col-form-label">username</label>
+                                        <input type="text" class="form-control" name="subject" id="subject"
+                                            [(ngModel)]="username" placeholder="Your LastName">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12 form-group mb-3">
+                                        <label for="budget" class="col-form-label">E-mail </label>
+                                        <input type="text" class="form-control" name="subject" id="subject"
+                                            [(ngModel)]="email" placeholder="Email">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12 form-group mb-3">
+                                        <label for="budget" class="col-form-label">Password </label>
+                                        <input type="password" class="form-control" name="subject" id="subject"
+                                            [(ngModel)]="password" placeholder="**********">
+                                    </div>
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                                <div class="row justify-content-center">
+                                    <div class="col-md-5 form-group text-center">
+                                        <input (click)="addUser()" value="Add User" class="btn btn-block btn-primary ">
+
+
+                                        <input (click)="updateUser()" *ngIf="user.UserId!=0" value="Update"
+                                            class="btn btn-block btn-primary ">
+
+
+
+
+                                        <span class="submitting"></span>
+                                    </div>
+                                </div>
+                            </form>
+
+                            <div id="form-message-warning mt-4"></div>
+                            <div id="form-message-success">
+                                Your message was sent, thank you!
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+    </body>
+
+
+
+</section>

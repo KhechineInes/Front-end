@@ -1,0 +1,126 @@
+<section id="home">
+  <div class="container">
+    <div class="card shadow border-0 mb-7">
+      <div class="card-header">
+
+        <div class ="row">
+              
+          <div class="col"> 
+            <span class="userimage"><img class="mr-3" width="70" height="70"
+             src="assets/img/blank_profile.png" class="avatar avatar-sm rounded-circle me-2"
+              alt="Generic placeholder image" > 
+          {{post.user.username}} </span>
+        
+      </div>
+
+      <div class="col-6">  </div> 
+      <div class="col"><td>
+  <span class="date">  {{post.date}}</span></td></div>
+
+</div>
+</div>
+<div class="card-body">
+  <div class="row"> 
+    <div class="col-9"> <td>
+      <p><h5>{{post.pubsubject}}</h5>
+
+      <p>{{post.pub}}</p>
+      </td>
+      </div>
+
+
+
+      <div class="container">
+      <div class="table-responsive">
+        <table class="table table-hover table-nowrap">
+         
+
+
+
+
+
+          <tbody>
+            
+            <tr *ngFor="let ans of ansList">
+              <div *ngIf="ans.pub_id.pubId == post.pubId" >
+                <div class="container card shadow border-0 mb-2 ">
+
+                  
+                    
+                  
+                    
+                    <div class = "card-header" >
+                      
+                      <div class="row">
+                        <div class="col">
+                          <img class="mr-3" width="40" height="40" src="assets/img/blank_profile.png"
+                      class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
+                     {{ans.user.username}}  
+                      
+                     </div>
+                     <div class="col-6">        </div>
+                     <div class="col">date of ans</div>
+                    </div>
+                  
+
+                 
+                  
+
+
+</div>
+<div class="card-body">
+<div class="row">
+  <div class="col">         
+                
+                {{ans.Ans}}
+                
+              </div>
+              <div class="col-2">
+                <div *ngIf="ans.user.username==user.username">
+                  <button type="button" class="btn"  (click)="deleteAnsClick(ans.AnsId)">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+            </div>
+            
+
+
+
+           
+
+
+
+</div>
+</div>
+
+          </tbody>
+          <button type="button" class="btn btn-light mr-1" (click)="ansClick()" >
+          Answer
+        </button>
+
+        
+
+                <app-ans [post]="post" *ngIf="ActivateAddEditAnsComp">
+
+                </app-ans>
+             
+       
+        </table>
+      </div>
+
+
+    </div>
+
+
+
+
+
+
+
+  </div>

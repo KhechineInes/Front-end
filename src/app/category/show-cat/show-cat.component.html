@@ -1,0 +1,204 @@
+<section id="home">
+  <div class="container">
+    <div class="card shadow border-0 mb-7"style=" border-color:#929bcc;">
+      <th>
+        <button type="button" class="btn btn-light mr-1" (click)="addClick(Cat)" data-toggle="modal" data-target="#res"
+          data-backdrop="static" data-keyboard="true">
+          Add Post
+        </button>
+
+        <div class="modal fade" id="res" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeClick()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+                <app-add-edit-pub [Cat]="cat" *ngIf="ActivateAddEditPostComp">
+
+                </app-add-edit-pub>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+      </th>
+      <div class="card-header">
+
+        <div class="row">
+
+          <div class="col">
+            <span class="userimage"><img class="mr-3" width="70" height="70" [src]="Cat.Image ? ImagePath+Cat.Image : '/assets/img/blank_img.png'"
+                class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image"> {{Cat.CatName}}</span>
+          </div>
+          <ul>Framework : {{Cat.CatFramework}}</ul>
+          <ul>Languages : {{Cat.CatLang}}</ul>
+        </div>
+      </div>
+
+
+
+  
+
+    <div class="table-responsive">
+      <table class="table">
+        <tbody>
+          <tr *ngFor="let pub of PostList">
+            <div *ngIf="pub.cat_id == Cat.CatId">
+
+
+              <div class="card-header">
+                <div class="row">
+
+                  <div class="col">
+                    <span class="userimage"><img class="mr-3" width="70" height="70" src="assets/img/blank_profile.png"
+                        class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
+                      {{pub.user.username}}</span></div>
+                      <div class="col-6">  </div> 
+                      <div class="col"><td>
+                  <span class="date">  {{pub.date}}</span></td></div>
+                    
+                    </div></div>
+                      
+<div class="card-body">
+                  <div class="row">
+<div class="col-8">
+
+                  {{pub.pub}}
+                  </div>
+                  <div class="col-2">
+                  <button type="button" class="btn btn-light mr-1 "(click)="ansClick(pub)" data-toggle="modal" data-target="#ans"
+                      data-backdrop="static" data-keyboard="true">
+                      Answer
+                    </button></div>
+                    <div class="col-2">
+                      <div *ngIf="pub.user.username == user.username" >
+                        <button type="button" class="btn"  (click)="deletePostClick(pub)">
+                          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                              d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z" />
+                          </svg>
+                        </button>
+                      </div>
+                      </div>
+  <!-- modal -->
+                    <div class="modal fade" id="ans" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                              (click)="closeClick()">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+
+                            <app-ans [post]="pub" *ngIf="ActivateAddEditAnsComp">
+
+                            </app-ans>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  
+<!--end modal-->
+
+
+<div class="table-responsive">
+  <table class="table table-hover table-nowrap">
+
+    <tbody>
+            
+      <tr *ngFor="let ans of ansList">
+        <div *ngIf="ans.pub_id.pubId == pub.pubId" >
+          <div class="container card shadow border-0 mb-2 ">
+
+            
+              
+            
+              
+              <div class = "card-header" >
+                
+                <div class="row">
+                  <div class="col">
+                    <img class="mr-3" width="40" height="40" src="assets/img/blank_profile.png"
+                class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
+                {{ans.user.username}} 
+                
+               </div>
+               <div class="col-6">        </div>
+               <div class="col">date of ans</div>
+              </div>
+            
+
+           
+            
+
+
+</div>
+<div class="card-body">
+<div class="row">
+<div class="col-10">         
+          
+          {{ans.Ans}}
+          
+        </div>
+        <div class="col-2">
+          <div *ngIf="ans.user.username==user.username">
+            <button type="button" class="btn"  (click)="deleteAnsClick(ans)">
+              <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor"
+                xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      </div>
+      
+
+
+
+     
+
+
+
+</div>
+</div>
+
+    </tbody>
+                  
+
+
+</table>
+                </div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+</div>
+
+          </tr>
+        </tbody>
+        </table>
+        </div>
+        </div>
+        </div>
+        </section>

@@ -1,0 +1,94 @@
+<app-header></app-header>
+<section id="editprofile">
+    
+<div class="container rounded bg-white mt-5 mb-5">
+    <div class="card shadow border-0 mb-7">
+    <div class="row">
+        
+        <div class="col-md-3 border-right ">
+            
+            <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+               
+                <img class="rounded-circle mt-5" width="150px" src="assets/img/blank_profile.png">
+                <span class="font-weight-bold">{{user.username}}</span><span class="text-white-50">{{user.email}}</span>
+                <div *ngIf="option == ''"><span class="font-weight-bold"> <button class="btn" (click)="changeclick()"><i class="bi bi-pencil-square"> </i>
+                </button> </span></div>
+                <div *ngIf="option == 'profile'">
+                    <span class="font-weight-bold"> <button class="btn" (click)="anuulClick()"><i class="bi bi-arrow-bar-left"></i>
+                    </button> </span>
+
+                </div>
+
+<span class="font-weight-bold"> <a class="btn" href="profile"><i class="bi bi-backspace-fill"></i></a></span>
+
+            </div>
+                
+        </div>
+        
+           <div class="col-md-5 border-right" >
+            
+            <div class="p-3 py-5">
+                <div *ngIf="option == 'profile'">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h4 class="text-right">Profile Settings</h4>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-6"><label class="labels">First Name</label><input type="text" class="form-control" [(ngModel)]="first_name"placeholder="first name" value=""></div>
+                    <div class="col-md-6"><label class="labels">Last Name</label><input type="text" class="form-control" [(ngModel)]="last_name" placeholder="last name"></div>
+                </div>
+                <div class="row mt-3">
+                    <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text" class="form-control" [(ngModel)]="MobileNumber" placeholder="enter phone number" value=""></div>
+                    <div class="col-md-12"><label class="labels">Address </label><input type="text" class="form-control" [(ngModel)]="Address" placeholder="Enter phone numberenter address " value=""></div>
+                    <div class="col-md-12"><label class="labels">Username</label><input type="text" class="form-control" [(ngModel)]="username" placeholder="username" value=""></div>
+                    <div class="col-md-12"><label class="labels">Function</label><input type="text" class="form-control"[(ngModel)]="Function" placeholder="enter address line 2" value=""></div>
+                    <div class="col-md-12"><label class="labels">Email </label><input type="text" class="form-control" [(ngModel)]="email" placeholder="enter email id" value=""></div>
+                    <div class="col-md-12"><label class="labels">Education</label><input type="text" class="form-control"[(ngModel)]="Education" placeholder="education" value=""></div>
+                    <img class="rounded-circle mt-5" width="150px" [src]=ImagePath height="250px;" width="200px;">
+                    <input type="file" value="Edit your Photo" (change)="uploadPhoto($event)" class="mt-2"/>
+                </div>
+               
+                <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="button" (click)="updateUser()" >Save Profile</button>
+                 <button class="btn" type="button" (click)="anuulClick()" >Annuler</button></div>
+            </div>
+            <div *ngIf="option == ''">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="text-right">Profile Informations</h4>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-6"><label class="labels">First Name: </label>{{user.first_name}}</div>
+                <div class="col-md-6"><label class="labels">Last Name: </label>{{user.last_name}}</div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-12"><label class="labels">Mobile Number: </label>{{user.MobileNumber}}</div>
+                <div class="col-md-12"><label class="labels">Address:  </label>{{user.Address}}</div>
+                <div class="col-md-12"><label class="labels">Username :</label> {{user.username}} </div>
+                <div class="col-md-12"><label class="labels">Function :</label>{{user.Function}}</div>
+                <div class="col-md-12"><label class="labels">Email : </label> {{user.email}} </div>
+                <div class="col-md-12"><label class="labels">Education: </label>{{user.Education}}</div>
+            </div>
+</div>
+
+
+
+            </div>
+        </div>
+    
+        <div class="col-md-4">
+            <div class="p-3 py-5">
+                <div *ngIf="option == 'profile'">
+                <div class="d-flex justify-content-between align-items-center experience"><span>Edit Experience</span></div><br>
+                <div class="col-md-12"><label class="labels">Experience level </label><input type="text" class="form-control" placeholder="experience" value=""></div> <br>
+                <div class="col-md-12"><label class="labels">Additional Details</label><input type="text" class="form-control" placeholder="additional details" value=""></div>
+            </div>
+            <div *ngIf="option == ''">
+                <div class="d-flex justify-content-between align-items-center experience"><span>Developper Experience</span></div><br>
+                <div class="col-md-12"><label class="labels">Experience level </label><div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: 75%; background-color:#4A649E" aria-valuenow="75" aria-valuemin="20" aria-valuemax="100"></div>
+                  </div></div> <br>
+                <div class="col-md-12"><label class="labels">Additional Details</label></div>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+</div>

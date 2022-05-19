@@ -1,0 +1,24 @@
+{
+    "workbench.preferredHighContrastColorTheme": "Visual Studio Dark",
+    "workbench.preferredLightColorTheme": "Visual Studio Dark",
+    "workbench.view.alwaysShowHeaderActions": true,
+    "workbench.colorCustomizations":{
+    
+    "activityBar.inactiveForeground": "#e0deee" , "activityBarBadge.background": "#601174", "activityBar.border": "#f70994",
+    "activityBar.background": "#7c0e80",
+"activityBar.foreground": "#190368",
+"activityBar.activeBackground": "#e662e6",
+
+
+"sideBarTitle.foreground": "#7c0e80",
+"dropdown.background": "#7c0e80" ,
+"contrastBorder": "#240119",
+"menu.border": "#7c0e80",
+"menu.foreground": "#ebc0d7",
+"scrollbarSlider.background": "#8d6382",
+"statusBar.background": "#7c0e80",
+
+}
+
+
+}

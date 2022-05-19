@@ -1,0 +1,97 @@
+<!-- Header -->
+
+
+
+<div class="row align-items-center">
+    <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+        <!-- Title -->
+
+    </div> <!-- Actions -->
+    <div class="col-sm-6 col-12 text-sm-end">
+        <div class="mx-n1"> <button class="btn" data-toggle="modal" data-target="#exampleModal" (click)="addClick()"
+                data-backdrop="static" data-keyboard="false">
+                Add Category
+            </button>
+            <!-- Modal -->
+
+
+
+
+        </div>
+
+    </div> <!-- Nav -->
+
+</div>
+
+<!-- Main -->
+
+
+<div class="card-header">
+    <h5 class="mb-0">Categories List</h5>
+</div>
+<div class="table-responsive">
+    <table class="table table-hover table-nowrap">
+        <thead class="thead-light">
+            <tr>
+
+                <th scope="col">Title</th>
+                <th scope="col">Frameworks</th>
+                <th scope="col">Languages</th>
+                <th></th>
+                <th></th>
+                <th></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let dataItem of CatList">
+
+
+
+                <td> <a class="text-heading font-semibold">{{dataItem.CatName}}</a>
+                </td>
+                <td>{{dataItem.CatFramework}}</td>
+
+                <td> {{dataItem.CatLang}}</td>
+                <td> <img [src]="dataItem.Image ? ImagePath+dataItem.Image : '/assets/img/blank_img.png'" height="150"
+                        width="150">
+                    <div type="file" class="mt-2"></div>
+                </td>
+
+                <td> <span class="badge badge-lg badge-dot"> <i class="bg-success"></i>Scheduled
+                    </span> </td>
+                <td class="text-end"> <a>
+
+
+                        <button class="btn" data-toggle="modal" data-target="#exampleModal"
+                            (click)="editClick(dataItem)" data-backdrop="static" data-keyboard="false">
+                            Edit
+                        </button> </a>
+                    <button type="button" (click)="deleteClick(dataItem)"
+                        class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                        <i class="bi bi-trash"></i> </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeClick()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <app-add [cat]="cat" *ngIf="ActivateAddEditComp">
+                </app-add>
+            </div>
+        </div>
+    </div>
+</div>
+<!------->
