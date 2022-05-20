@@ -15,6 +15,7 @@ import { ShowPubComponent } from './publication/show-pub/show-pub.component';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 import {ShowComponent} from './admin/dashboard/user/show/show.component';
 import { ChangepassComponent } from './changepass/changepass.component';
+
 const routes: Routes = [
 {path:'post',component:ShowPubComponent},
 {path:'',component:HomeComponent},
@@ -27,6 +28,7 @@ const routes: Routes = [
 {path:'admin/dashboard', component:DashboardComponent},
 {path:'changepassword', component:ChangepassComponent},
 {path:'edit', component:EditProfileComponent},
+
 
 ];
 @NgModule({

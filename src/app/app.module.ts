@@ -34,6 +34,7 @@ import { StatisticComponent } from './admin/dashboard/statistic/statistic.compon
 
 
 
+
 const appRoutes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'publication', component: PublicationComponent },
@@ -65,6 +66,7 @@ const appRoutes: Routes = [
          ShowComponent,
          ChangepassComponent,
          StatisticComponent,
+        
          
   
 

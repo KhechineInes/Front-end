@@ -1,24 +1,62 @@
 <div id="wrapper">
 
-  <div class="d-flex flex-column flex-shrink-0 bg-light vh-100" style="width: 120px;">
+  <div class="d-flex flex flex-column flex-shrink-0 bg-light vh-1000">
 
     <ul class="nav nav-pills nav-flush flex-column mb-auto text-center ">
-      <li><a class="py-3 border-bottom"><small><img src="assets/img/logo4.png" style="max-height: 65px;"></small></a>
+      <li class="flex-column mb-2"><a class="py-3 border-bottom"><small><img src="assets/img/logo4.png"
+              style="max-height: 65px; width:200px"></small></a>
       </li>
-      <li class="nav-item "> <a href="admin/dashboard" class="nav-link active py-3 border-bottom"
-          style=" background: #5777ba;color: #fff; "> <small><i class="bi bi-house"></i> Dashboard
-          </small> </a> </li>
-
-
-
-      <li> <a class="nav-link  py-4 border-bottom scrollto" (click)="userClick()"> <small><i class="bi bi-people"></i>
-            Users </small>
+      <li class=" flex-column mb-3 "> <a href="admin/dashboard" class="nav-link active py-3 border-bottom" style="background-color: #5777ba; 
+         color: #fff; "> <i class="bi bi-house"></i> Dashboard
         </a> </li>
-      <li> <a class="nav-link scrollto py-4 border-bottom" (click)="catClick()"> <small><i class="bi bi-list">
-            </i>categories</small></a> </li>
-      <li> <a (click)="statClick()" class="nav-link scrollto py-4 border-bottom"> <small><i class="bi bi-bar-chart"></i>
+
+
+
+
+      <li class="flex-column mb-3">
+        <div *ngIf="pos != 'user'"><a class="nav-link  py-3 border-bottom scrollto" (click)="userClick()">
+
+            <small><i class="bi bi-people"></i>
+              Users </small>
+          </a> </div>
+        <div *ngIf="pos =='user'">
+          <a class="nav-link scrollto py-3 border-bottom" style="background-color:#7790d64d; "><i
+              class="bi bi-people"></i>
+            Users </a>
+        </div>
+      </li>
+
+
+      <li class="flex-column mb-3">
+        <div *ngIf="pos !='cat'">
+          <a class="nav-link scrollto py-3 border-bottom" (click)="catClick()"> <small><i class="bi bi-list">
+              </i>categories</small></a>
+        </div>
+
+        <div *ngIf="pos =='cat'">
+
+          <a class="nav-link scrollto py-3 border-bottom" style="background-color:#7790d64d; "><i class="bi bi-list">
+            </i>categories </a>
+        </div>
+
+      </li>
+
+
+      <li class="flex-column mb-3">
+        <div *ngIf="pos !='stat'">
+
+          <a (click)="statClick()" class="nav-link scrollto py-3 mb-4 border-bottom"> <small><i
+                class="bi bi-bar-chart"></i>
+              Analitycs
+            </small></a>
+        </div>
+        <div *ngIf="pos =='stat'">
+          <a class="nav-link scrollto py-3 mb-3 border-bottom" style="background-color:#7790d64d; ">
+            <i class="bi bi-bar-chart"></i>
             Analitycs
-          </small></a> </li>
+          </a>
+        </div>
+      </li>
     </ul>
     <div class="dropdown border-top"> <a href="#"
         class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle"
@@ -35,146 +73,147 @@
       </ul>
     </div>
   </div>
-<section id ="home">
-  <div *ngIf="pos == ''">
-  <div class="container">
-    <div class="card shadow border-0 mb-7" style="width:1300px">
-      
-      <div class="card-header">
-        <h5 class="mb-0">Posts List</h5>
-    </div>
-    <div class="table-responsive">
-      <table class="table table-hover table-nowrap">
-        <thead class="thead-light">
-          <tr>
-            
-            <th>
-              <div class="d-flex flex-row">
-                <input [(ngModel)]="PostIdFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
+  <section id="home">
+    <div *ngIf="pos == ''">
+      <div class="container">
+        <div class="card shadow border-0 mb-7" style="width:1300px">
 
-                <button type="button" class="btn" (click)="sortResult('PostId',true)" >
-                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down-square-fill"
-                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                      d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 5a.5.5 0 0 0-1 0v4.793L5.354 7.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 9.793V5z" />
-                  </svg>
-                </button>
-                <button type="button" class="btn btn-light" (click)="sortResult('PostId',false)" >
-                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up-square-fill"
-                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                      d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 8.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z" />
-                  </svg>
-                </button>
-
-              </div>
-            </th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr *ngFor="let dataItem of PostList ">
-            <td >
-              <li class="media" >
-                {{dataItem.user.username}}
-                
-                  
-
-                
-              </li>
-              <img class="mr-3" width="50" height="50"
-                  src="assets/img/blank_profile.png"
-                  class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
-            </td>
-            <td><h6>{{dataItem.pubsubject}}</h6>
-              {{dataItem.pub}}</td>
-            <td >
-             
-            </td>
-              
-            <td>{{dataItem.date}}</td>
-            
-            
-           
-
-
-            <td>
-             
-                <button type="button" class="btn btn-light mr-1" (click)="showClick(dataItem , user)" data-toggle="modal"
-                  data-target="#show" data-keyboard="false">
-                  Show
-                </button>
-                
-              </td>
-              <td>
-              <button type="button" class="btn"  (click)="deleteClick(dataItem)">
-                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg">
-                  <path fill-rule="evenodd"
-                    d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z" />
-                </svg>
-              </button>
-            </td>
-            <div class="modal fade" id="show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel"></h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeClick1()">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  
-                  <app-publication [post] = "post" 
-                  *ngIf="ActivateAddEditPostComp">
-
-                  </app-publication>
-                </div>
-              </div>
-            </div>
+          <div class="card-header">
+            <h5 class="mb-0">Posts List</h5>
           </div>
-          </tr>
-        </tbody>
+          <div class="table-responsive">
+            <table class="table table-hover table-nowrap">
+              <thead class="thead-light">
+                <tr>
 
-      </table>
+                  <th>
+                    <div class="d-flex flex-row">
+                      <input [(ngModel)]="PostIdFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
+
+                      <button type="button" class="btn" (click)="sortResult('PostId',true)">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down-square-fill"
+                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd"
+                            d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 5a.5.5 0 0 0-1 0v4.793L5.354 7.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 9.793V5z" />
+                        </svg>
+                      </button>
+                      <button type="button" class="btn btn-light" (click)="sortResult('PostId',false)">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up-square-fill"
+                          fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd"
+                            d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 8.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z" />
+                        </svg>
+                      </button>
+
+                    </div>
+                  </th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let dataItem of PostList ">
+                  <td>
+                    <li class="media">
+                      {{dataItem.user.username}}
+
+
+
+
+                    </li>
+                    <img class="mr-3" width="50" height="50" src="assets/img/blank_profile.png"
+                      class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
+                  </td>
+                  <td>
+                    <h6>{{dataItem.pubsubject}}</h6>
+                    {{dataItem.pub}}
+                  </td>
+                  <td>
+
+                  </td>
+
+                  <td>{{dataItem.date}}</td>
+
+
+
+
+
+                  <td>
+
+                    <button type="button" class="btn btn-light mr-1" (click)="showClick(dataItem , user)"
+                      data-toggle="modal" data-target="#show" data-keyboard="false">
+                      Show
+                    </button>
+
+                  </td>
+                  <td>
+                    <button type="button" class="btn" (click)="deleteClick(dataItem)">
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z" />
+                      </svg>
+                    </button>
+                  </td>
+                  <div class="modal fade" id="show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel"></h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                            (click)="closeClick1()">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+
+                          <app-publication [post]="post" *ngIf="ActivateAddEditPostComp">
+
+                          </app-publication>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </tr>
+              </tbody>
+
+            </table>
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+
+
     </div>
-   
-  </div>
- 
-</div>
+
+    <div *ngIf="pos =='stat'">
+      <div class="container">
+
+        <app-statistic></app-statistic>
+      </div>
+    </div>
 
 
-
-
-
-</div>
-
-<div *ngIf="pos =='stat'">
-  <div class="container">
- 
-  <app-statistic></app-statistic>
-  </div>
-  </div>
-
-
-<div *ngIf="pos =='user'">
-  <div class="container">
-    <div class="card shadow border-0 mb-7" style="width:1300px">
-  <app-user></app-user>
-  </div>
-  </div>
-</div>
-<div *ngIf="pos =='cat'">
-  <div class="container">
-    <div class="card shadow border-0 mb-7" style="width:1300px">
-  <app-cat></app-cat>
-  </div>
-  </div>
-</div>
+    <div *ngIf="pos =='user'">
+      <div class="container">
+        <div class="card shadow border-0 mb-7" style="width:1300px">
+          <app-user></app-user>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="pos =='cat'">
+      <div class="container">
+        <div class="card shadow border-0 mb-7" style="width:1300px">
+          <app-cat></app-cat>
+        </div>
+      </div>
+    </div>
