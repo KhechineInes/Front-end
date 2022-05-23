@@ -75,8 +75,8 @@
   </div>
   <section id="home">
     <div *ngIf="pos == ''">
-      <div class="container">
-        <div class="card shadow border-0 mb-7" style="width:1300px">
+      <div class="container ">
+        <div class="card  mb-7" style="width:1300px">
 
           <div class="card-header">
             <h5 class="mb-0">Posts List</h5>
@@ -197,22 +197,23 @@
 
     <div *ngIf="pos =='stat'">
       <div class="container">
+        <div class="card  mb-7" style="width:1300px">
 
         <app-statistic></app-statistic>
       </div>
     </div>
-
+</div>
 
     <div *ngIf="pos =='user'">
-      <div class="container">
-        <div class="card shadow border-0 mb-7" style="width:1300px">
+      <div class="container" >
+        <div class="card  mb-7" style="width:1300px">
           <app-user></app-user>
         </div>
       </div>
     </div>
     <div *ngIf="pos =='cat'">
       <div class="container">
-        <div class="card shadow border-0 mb-7" style="width:1300px">
+        <div class="card  mb-7" style="width:1300px">
           <app-cat></app-cat>
         </div>
       </div>

@@ -84,7 +84,9 @@ h1, h2, h3, h4, h5, h6 {
             color: #fff;
             line-height: 1;
             border-radius: 50px;
+
 }
+
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
@@ -985,6 +987,22 @@ body {
 .nav-link:hover .fa {
   transform: rotate(360deg)
 }
+/*#wrapper .card-header {
+  
+
+border-radius: 5px;
+  
+border-bottom: 1px solid #ebe2eb;
+
+background-color: rgb(214, 220, 245);}
+#wrapper .card-footer {
+border-top: 1px solid #ebe2eb;
+line-height: 30px;
+background-color: rgb(239, 241, 248);
+     
+    
+  
+  }*/
 
 /*--------------------------------------------------------------
 # user
@@ -1008,6 +1026,13 @@ body {
             line-height: 1;
             border-radius: 50px;
 }
+#home{
+  background-color:#e8ecf5 }  
+#home .card{
+  box-shadow: 0px 0px 10px rgba(68, 68, 70, 0.64);
+}
+
+
 /*-------------------------------------------------------------
  # viewprofile
 ---------------------------------------------------------------*/

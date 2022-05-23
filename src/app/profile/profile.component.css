@@ -367,6 +367,7 @@ select.form-control:not([size]):not([multiple]) {
     font-size: 16px;
     font-weight: 600;
     background-color: rgb(245, 246, 250) ;
+    
 }
 
 .timeline-header .username,
