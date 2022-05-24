@@ -24,17 +24,7 @@ export class PostComponent implements OnInit {
   ngOnInit(): void {
     this.refreshPubList();
   }
-  dash(){
-    this.pos="dash";  }
-userClick(){
-  this.pos="user";
-}
-catClick(){
-  this.pos="cat";
-}
-statClick(){
-  this.pos="stat";
-}
+  
   refreshPubList() {
     this.service.getPostList().subscribe((data) => 
       this.PostList=data

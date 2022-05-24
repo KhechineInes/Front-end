@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Cat, Post } from 'src/app/model';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-statistic',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./statistic.component.css']
 })
 export class StatisticComponent implements OnInit {
-
-  constructor() { }
+  CatList: Cat[] =[];
+  PostList:Post[]=[];
+  ansList: any[]=[];
+  userList: any[]=[];
+  constructor(private service: SharedService) { }
   link:string ="";
+  nb : number =0 ;
   ngOnInit(): void {
+   this.refreshPubList();
+   this.refreshCatList();
+   this.refreshAnsList();
+   this.refreshUserList();
+    
   }
   nbAnswers(){
     this.link='ans';
@@ -24,4 +35,30 @@ export class StatisticComponent implements OnInit {
   anal(){
     this.link='';
   }
+  refreshCatList() {
+    this.service.getCatList().subscribe(data => 
+      this.CatList=data,
+    );
+    
+  }
+  refreshPubList() {
+    this.service.getPostList().subscribe((data) => 
+      this.PostList=data
+    );
+    this.nb=this.PostList.length;
+  }
+  refreshAnsList() {
+    this.service.getAnsList().subscribe(data=>{
+      this.ansList=data;
+    
+    });
+  }
+  refreshUserList() {
+    this.service.getUserList().subscribe((data =>
+      this.userList = data));
+
+    
+
+  }
+
 }

@@ -10,7 +10,7 @@
       <div class="col-4">
         <div class="card border mb-3" style="background: linear-gradient(to right,#F85EBD, #7AA0F3);">
            <h5 align = "center"> Number of back-end developpers</h5>
-            <p align="center">50</p>
+            <p align="center">{{userList.length}}</p>
             <div class="card-footer"> <a class="nav-link" >View details</a></div>
         </div>
       </div>
@@ -34,21 +34,25 @@
       <div class="col-4">
         <div class="card border mb-3" style="background: linear-gradient(to right, #92B3FA ,  #49E6DE);">
            <h5 align = "center"> Number of Categories</h5>
-            <p align="center">50</p>
+            <p align="center" >
+              {{CatList.length}}
+            </p>
             <div class="card-footer">  <a class="nav-link" (click)="nbCat()">View details</a></div>
         </div>
       </div>
       <div class ="col-4">
       <div class="card border mb-2"  style="background: linear-gradient(to right, #49E6DE, #47A5E4);  ">
         <h5 align = "center"> Number of Posts</h5>
-        <p align="center">50</p>
+        <p align="center">
+          {{PostList.length}}
+          </p>
         <div class="card-footer"><a class="nav-link" (click)="nbPost()">View details</a></div>
       </div>
     </div>
     <div class ="col-4">
       <div class="card border mb-2" style="background: linear-gradient(to right, #92B3FA ,  #F85EBD);">
         <h5 align = "center"> Number of Answers</h5>
-        <p align="center">50</p>
+        <p align="center">{{ansList.length}}</p>
         <div class="card-footer"><a class="nav-link" (click)="nbAnswers()">View details </a></div>
       </div>
     </div>
@@ -100,4 +104,71 @@
  
 
  
+</div>
+<div *ngIf="link == 'ans'">
+  
+  <span class="font-weight-bold"> <button class="btn" (click)="anal()"><i class="bi bi-arrow-bar-left"></i></button></span>
+  <div class="container ">
+    <div class="card  mb-7" style="width:1250px">
+
+      <div class="card-header">
+        <h5 class="mb-0">Answers List</h5>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-hover table-nowrap">
+          <thead class="thead-light">
+            <tr>
+
+              
+              <th>User</th>
+              <th>Answer</th>
+              
+              <th>Post</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let dataItem of ansList ">
+              <td>
+                <li class="media">
+                  {{dataItem.user.username}}
+
+
+
+
+                </li>
+                <img class="mr-3" width="50" height="50" src="assets/img/blank_profile.png"
+                  class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
+              </td>
+              <td>
+              <h6>{{dataItem.Ans}}</h6>
+                
+              </td>
+              
+              <td>
+                {{dataItem.pub_id.pub}}
+              </td>
+
+              <td>{{dataItem.date}}</td>
+
+
+
+
+
+              
+            
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
 </div>
