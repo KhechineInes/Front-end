@@ -61,7 +61,7 @@
                                  <li>
                                     <!-- begin timeline-time -->
                                     <div class="timeline-time">
-                                       <span class="date">{{pub.date}}</span>
+                                       <span class="date">{{pub.date | date: 'dd/MM/yyyy' }}</span>
 
                                     </div>
                                     <!-- end timeline-time -->
@@ -183,6 +183,8 @@
                                                                <span class="text-bold"> {{ans.user.username}} </span>
 
                                                             </div>
+                                                            <div class="col-6">        </div>
+                                                            <div class="col">{{ans.date | date: 'HH:mm , le dd/MM/yyyy' }}</div>
 
                                                          </div>
                                                       </div>
@@ -201,7 +203,7 @@
 
                                                             </div>
 
-
+                                                            
                                                          </div>
 
                                                       </div>

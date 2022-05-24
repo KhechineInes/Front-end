@@ -3,7 +3,7 @@
     <section id="home">
     <div class="card shadow border-0 mb-2" style="width:1240px">
         <div class="card-header">
-            <h5> Overview </h5>
+            <h5 style="color :rgb(28, 5, 133)"> Overview </h5>
             </div>
             </div>
     <div class="row align-center">
@@ -61,7 +61,7 @@
   
   <div class="card shadow border-0 mb-2 " style="width:1240px">
     <div class="card-header">
-        <h5> User Activity </h5>
+        <h5 style="color :rgb(28, 5, 133)"> User Activity </h5>
         </div>
 <div class="row">
   <div class="col">
@@ -85,7 +85,57 @@
     3 of 3
   </div>
 </div>
-</div></section>
+</div>
+<div class="card shadow border-0 mb-2 " style="width:1240px">
+  <div class="card-header">
+      <h5  style="color :rgb(28, 5, 133)"> Recent Activities </h5>
+      </div>
+
+
+        <table class="table table-hover table">
+          <tbody>
+            
+            <tr><h5 style="color :rgb(236, 81, 200)"> Aujourd'hui {{myDate| date : " le dd/MM/YYYY  à HH:MM"}}</h5></tr>
+            
+          <tr *ngFor="let item of PostList" >
+            
+            <td >
+              
+              <img class="mr-3" width="50" height="50" src="assets/img/blank_profile.png"
+              class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
+              {{item.user.username}}
+            </td>
+            <td>Added a New Post </td>
+            <td>
+            {{item.pub}}
+           </td>
+           <td>{{item.date | date: 'HH:mm , le dd/MM/yyyy' }}</td>
+         
+          </tr>
+         
+          
+          <tr *ngFor="let ans of ansList">
+            <td class="py-1">
+              <img class="mr-3" width="50" height="50" src="assets/img/blank_profile.png"
+              class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
+              {{ans.user.username}}
+            </td>
+            <td>Added a New Answer </td>
+            <td>
+            {{ans.Ans}}
+           </td>
+           <td>{{ans.date | date: 'HH:mm , le dd/MM/yyyy' }}</td>
+
+          </tr>
+          
+          
+          </tbody>
+        
+            </table>
+            </div>
+
+
+</section>
 </div>
 <div *ngIf="link == 'cat'">
   
@@ -150,7 +200,7 @@
                 {{dataItem.pub_id.pub}}
               </td>
 
-              <td>{{dataItem.date}}</td>
+              <td>{{dataItem.date  | date: ' HH:mm , le dd/MM/yyyy'}}</td>
 
 
 

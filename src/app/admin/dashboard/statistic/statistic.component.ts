@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Cat, Post } from 'src/app/model';
 import { SharedService } from 'src/app/services/shared.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-statistic',
@@ -9,10 +10,13 @@ import { SharedService } from 'src/app/services/shared.service';
 })
 export class StatisticComponent implements OnInit {
   CatList: Cat[] =[];
-  PostList:Post[]=[];
+  PostList:any[]=[];
   ansList: any[]=[];
   userList: any[]=[];
-  constructor(private service: SharedService) { }
+  myDate : any = new Date();
+  constructor(private service: SharedService , ) {
+    
+   }
   link:string ="";
   nb : number =0 ;
   ngOnInit(): void {
@@ -20,8 +24,14 @@ export class StatisticComponent implements OnInit {
    this.refreshCatList();
    this.refreshAnsList();
    this.refreshUserList();
-    
+   var d = new Date();
+   var date = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+   console.log(this.myDate);
+   this.myDate=this.myDate;
+   
   }
+ 
+
   nbAnswers(){
     this.link='ans';
 

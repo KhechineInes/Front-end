@@ -15,7 +15,7 @@
 
       <div class="col-6">  </div> 
       <div class="col"><td>
-  <span class="date">  {{post.date}}</span></td></div>
+  <span class="date">  {{post.date | date: 'HH:mm , le dd/MM/yyyy' }}</span></td></div>
 
 </div>
 </div>
@@ -59,7 +59,7 @@
                       
                      </div>
                      <div class="col-6">        </div>
-                     <div class="col">{{ans.date}}</div>
+                     <div class="col">{{ans.date | date: 'HH:mm , le dd/MM/yyyy' }}</div>
                     </div>
                   
 

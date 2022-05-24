@@ -1032,8 +1032,10 @@ background-color: rgb(239, 241, 248);
  }  
 #home .card{
   box-shadow: 0px 0px 10px rgba(68, 68, 70, 0.64);
+  
 }
-
+#home .card .table-hover tbody tr:hover {
+  background-color: #bdcdfa69 ;}
 
 /*-------------------------------------------------------------
  # viewprofile
@@ -1169,7 +1171,7 @@ body {
   }
   
   #viewprofile .buttons button:nth-child(2) {
-    background: #5777ba;
+    background: home;
     color: #fff;
     padding: 12px 25px;
     margin-left: 30px;
