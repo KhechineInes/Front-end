@@ -31,6 +31,7 @@ import { EditProfileComponent } from './profile/edit-profile/edit-profile.compon
 import { ShowComponent } from './admin/dashboard/user/show/show.component';
 import { ChangepassComponent } from './changepass/changepass.component';
 import { StatisticComponent } from './admin/dashboard/statistic/statistic.component';
+import { PostComponent } from './admin/dashboard/post/post.component';
 
 
 
@@ -66,6 +67,7 @@ const appRoutes: Routes = [
          ShowComponent,
          ChangepassComponent,
          StatisticComponent,
+         PostComponent,
         
          
   
