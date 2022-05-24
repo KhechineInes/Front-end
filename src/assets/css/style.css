@@ -1027,7 +1027,9 @@ background-color: rgb(239, 241, 248);
             border-radius: 50px;
 }
 #home{
-  background-color:#e8ecf5 }  
+  background-color:#e8ecf5;
+  padding: 25px 20px;
+ }  
 #home .card{
   box-shadow: 0px 0px 10px rgba(68, 68, 70, 0.64);
 }
