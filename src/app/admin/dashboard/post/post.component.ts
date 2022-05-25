@@ -30,7 +30,11 @@ export class PostComponent implements OnInit {
       this.PostList=data
     );
   }
-  
+  get sortData() {
+    return this.PostList.sort((a:any, b:any) => {
+      return <any>new Date(b.date) - <any>new Date(a.date);
+    });
+  }
  
   
  

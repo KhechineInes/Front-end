@@ -41,7 +41,8 @@
         </div>
       </div>
       <div class ="col-4">
-      <div class="card border mb-2"  style="background: linear-gradient(to bottom right, #92B3FA,#F85EBD);  ">
+      <div class="card border mb-2"  style="background: linear-gradient(to bottom right, #92B3FA,#F85EBD); 
+       ">
         <h5 align = "center"> Number of Posts</h5>
         <p align="center">
           {{PostList.length}}
@@ -97,7 +98,9 @@
             
             <tr><h5 style="color :rgb(236, 81, 200)"> Aujourd'hui {{myDate| date : " le dd/MM/YYYY  à HH:MM"}}</h5></tr>
             
-          <tr *ngFor="let item of PostList" >
+          <tr *ngFor="let item of sortData" >
+            
+            <div *ngIf="dateDiff(myDate,item.date)<1">
             
             <td >
               
@@ -110,12 +113,14 @@
             {{item.pub}}
            </td>
            <td>{{item.date | date: 'HH:mm , le dd/MM/yyyy' }}</td>
-         
+          </div>
           </tr>
          
           
-          <tr *ngFor="let ans of ansList">
-            <td class="py-1">
+          <tr *ngFor="let ans of sortDataAns">
+            
+            <div *ngIf="dateDiff(myDate,ans.date)<1">
+            <td>
               <img class="mr-3" width="50" height="50" src="assets/img/blank_profile.png"
               class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
               {{ans.user.username}}
@@ -125,7 +130,7 @@
             {{ans.Ans}}
            </td>
            <td>{{ans.date | date: 'HH:mm , le dd/MM/yyyy' }}</td>
-
+</div>
           </tr>
           
           
@@ -179,7 +184,7 @@
           </thead>
 
           <tbody>
-            <tr *ngFor="let dataItem of ansList ">
+            <tr *ngFor="let dataItem of sortDataAns ">
               <td>
                 <li class="media">
                   {{dataItem.user.username}}

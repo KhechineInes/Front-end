@@ -45,7 +45,11 @@ console.log(this.pubId);
         
         });
       }
- 
+      get sortData() {
+        return this.ansList.sort((a:any, b:any) => {
+          return <any>new Date(b.date) - <any>new Date(a.date);
+        });
+      }
 closeClick(){
         this.ActivateAddEditAnsComp=false;
         this.refreshAnsList();

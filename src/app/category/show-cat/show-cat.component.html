@@ -50,7 +50,7 @@
     <div class="table-responsive">
       <table class="table">
         <tbody>
-          <tr *ngFor="let pub of PostList">
+          <tr *ngFor="let pub of sortData">
             <div *ngIf="pub.cat_id == Cat.CatId">
 
 
@@ -119,7 +119,7 @@
 
     <tbody>
             
-      <tr *ngFor="let ans of ansList">
+      <tr *ngFor="let ans of sortDataAns">
         <div *ngIf="ans.pub_id.pubId == pub.pubId" >
           <div class="container card shadow border-0 mb-2 ">
 

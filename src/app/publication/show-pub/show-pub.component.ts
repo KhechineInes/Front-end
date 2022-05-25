@@ -131,6 +131,11 @@ ansClick(item:any){
       this.filePath=this.service.PhotoUrl+this.pub;
     })
   }
+  get sortData() {
+    return this.PostList.sort((a:any, b:any) => {
+      return <any>new Date(b.date) - <any>new Date(a.date);
+    });
+  }
   FilterFn(){
     var PostIdFilter = this.PostIdFilter;
     var PostNameFilter = this.PostNameFilter;

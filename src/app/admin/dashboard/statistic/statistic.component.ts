@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Cat, Post } from 'src/app/model';
 import { SharedService } from 'src/app/services/shared.service';
 import { DatePipe } from '@angular/common';
+import { Pipe, PipeTransform } from '@angular/core';
+
+
 
 @Component({
   selector: 'app-statistic',
@@ -11,8 +14,9 @@ import { DatePipe } from '@angular/common';
 export class StatisticComponent implements OnInit {
   CatList: Cat[] =[];
   PostList:any[]=[];
-  ansList: any[]=[];
+  ansList:any []=[];
   userList: any[]=[];
+  actList:any[]=[];
   myDate : any = new Date();
   constructor(private service: SharedService , ) {
     
@@ -28,9 +32,14 @@ export class StatisticComponent implements OnInit {
    var date = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
    console.log(this.myDate);
    this.myDate=this.myDate;
+ 
    
   }
- 
+  get sortData() {
+    return this.PostList.sort((a:any, b:any) => {
+      return <any>new Date(b.date) - <any>new Date(a.date);
+    });
+  }
 
   nbAnswers(){
     this.link='ans';
@@ -44,6 +53,11 @@ export class StatisticComponent implements OnInit {
   }
   anal(){
     this.link='';
+    this.refreshPubList();
+    this.refreshCatList();
+    this.refreshAnsList();
+    this.refreshUserList();
+
   }
   refreshCatList() {
     this.service.getCatList().subscribe(data => 
@@ -63,6 +77,29 @@ export class StatisticComponent implements OnInit {
     
     });
   }
+  get sortDataAns() {
+    return this.ansList.sort((a:any, b:any) => {
+      return <any>new Date(b.date) - <any>new Date(a.date);
+    });
+  }
+  dateDiff(date1:any , date2: any){
+                              // Initialisation du retour
+    var tmp = <any>new Date(date1) - <any>new Date(date2);
+ 
+    tmp = Math.floor(tmp/1000);             // Nombre de secondes entre les 2 dates
+    const diffsec = tmp % 60;                    // Extraction du nombre de secondes
+ 
+    tmp = Math.floor((tmp-diffsec)/60);    // Nombre de minutes (partie entière)
+    const diffmin = tmp % 60;                    // Extraction du nombre de minutes
+ 
+    tmp = Math.floor((tmp-diffmin)/60);    // Nombre d'heures (entières)
+    const diffhour = tmp % 24;                   // Extraction du nombre d'heures
+     
+    tmp = Math.floor((tmp-diffhour)/24);   // Nombre de jours restants
+    const diffday = tmp;
+     
+    return diffday;
+}
   refreshUserList() {
     this.service.getUserList().subscribe((data =>
       this.userList = data));
