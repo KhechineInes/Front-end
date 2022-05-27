@@ -32,6 +32,7 @@ import { ShowComponent } from './admin/dashboard/user/show/show.component';
 import { ChangepassComponent } from './changepass/changepass.component';
 import { StatisticComponent } from './admin/dashboard/statistic/statistic.component';
 import { PostComponent } from './admin/dashboard/post/post.component';
+import { RichTextEditorModule } from '@syncfusion/ej2-angular-richtexteditor';
 
 
 
@@ -85,6 +86,7 @@ const appRoutes: Routes = [
       appRoutes,
       { enableTracing: true } 
     ),
+    RichTextEditorModule,
   ],
   providers: [SharedService],
   bootstrap: [AppComponent]

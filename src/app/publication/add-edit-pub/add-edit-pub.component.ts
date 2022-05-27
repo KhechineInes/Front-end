@@ -3,12 +3,25 @@ import { FormGroup } from '@angular/forms';
 import { SharedService } from 'src/app/services/shared.service';
 import { Post, Pub } from 'src/app/model';
 
+import {  ToolbarService,  LinkService,  ImageService,  HtmlEditorService } from '@syncfusion/ej2-angular-richtexteditor';
+
+
 @Component({
   selector: 'app-add-edit-pub',
   templateUrl: './add-edit-pub.component.html',
   styleUrls: ['./add-edit-pub.component.css']
 })
 export class AddEditPubComponent implements OnInit {
+  private rteValue: string = `<p>The Rich Text Editor component is a WYSIWYG ("what you see is what you get") editor that provides the best user experience to create and update the content. Users can format their content using standard toolbar commands.</p>
+  <p><b>Key features:</b></p>
+  <ul>
+      <li>
+          <p>Provides &lt;IFRAME&gt; and &lt;DIV&gt; modes</p>
+      </li>
+      <li>
+          <p>Capable of handling markdown editing.</p>
+      </li>
+  </ul>`;
   [x: string]: any;
 formValue !: FormGroup;
 
