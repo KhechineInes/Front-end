@@ -36,6 +36,8 @@
               "src/assets/vendor/boxicons/css/boxicons.min.css" ,
               "src/assets/vendor/glightbox/css/glightbox.min.css", 
               "src/assets/vendor/swiper/swiper-bundle.min.css" 
+         
+              
             ],
             "scripts": [
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
@@ -45,6 +47,8 @@
               "src/assets/vendor/swiper/swiper-bundle.min.js",
               "src/assets/vendor/php-email-form/validate.js",
               "src/assets/js/main.js"
+             
+             
             ]
           },
           "configurations": {
@@ -114,6 +118,18 @@
               "src/styles.css"
             ],
             "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "src/tsconfig.app.json",
+              "src/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }

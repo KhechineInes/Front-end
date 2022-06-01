@@ -1,4 +1,5 @@
 
+
 :root {
   --bs-blue: #3a8fd9;
   --bs-indigo: #6610f2;
@@ -86,7 +87,9 @@ h1, h2, h3, h4, h5, h6 {
             border-radius: 50px;
 
 }
-
+/*::ng-deep .ck-editor__editable {
+  min-height: 200px !important;
+}
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/

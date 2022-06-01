@@ -1,6 +1,3 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PublicationComponent } from './publication/publication.component';
@@ -8,11 +5,11 @@ import { AddEditPubComponent } from './publication/add-edit-pub/add-edit-pub.com
 import { ShowPubComponent } from './publication/show-pub/show-pub.component';
 import { SharedService} from './services/shared.service';
 import {HttpClientModule} from '@angular/common/http' ; 
-import { FormsModule , ReactiveFormsModule } from '@angular/forms';
+
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { RouterModule, Routes } from '@angular/router';
+
 import { CategoryComponent } from './category/category.component';
 import { ProfileComponent } from './profile/profile.component';
 import { HomedevComponent } from './homedev/homedev.component';
@@ -32,7 +29,19 @@ import { ShowComponent } from './admin/dashboard/user/show/show.component';
 import { ChangepassComponent } from './changepass/changepass.component';
 import { StatisticComponent } from './admin/dashboard/statistic/statistic.component';
 import { PostComponent } from './admin/dashboard/post/post.component';
-import { RichTextEditorModule } from '@syncfusion/ej2-angular-richtexteditor';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+
+import { FirstchartComponent } from './admin/dashboard/charts/firstchart/firstchart.component'; 
+
+import{ HighchartsChartModule } from 'highcharts-angular'
+
+
+
+
 
 
 
@@ -42,6 +51,7 @@ const appRoutes: Routes = [
   { path: 'publication', component: PublicationComponent },
 ];
 @NgModule({
+  
   declarations: [
     AppComponent,
     PublicationComponent,
@@ -63,12 +73,14 @@ const appRoutes: Routes = [
     CatComponent,
     AddComponent,
     AnsComponent,
+  
     
     EditProfileComponent,
          ShowComponent,
          ChangepassComponent,
          StatisticComponent,
          PostComponent,
+         FirstchartComponent,
         
          
   
@@ -86,7 +98,13 @@ const appRoutes: Routes = [
       appRoutes,
       { enableTracing: true } 
     ),
-    RichTextEditorModule,
+    CKEditorModule,
+    HighchartsChartModule
+   
+    
+    
+   
+   
   ],
   providers: [SharedService],
   bootstrap: [AppComponent]
