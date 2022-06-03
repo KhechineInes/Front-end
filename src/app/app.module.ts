@@ -33,14 +33,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 import { FirstchartComponent } from './admin/dashboard/charts/firstchart/firstchart.component'; 
 
 import{ HighchartsChartModule } from 'highcharts-angular'
 
 
-
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 
 
@@ -98,8 +97,9 @@ const appRoutes: Routes = [
       appRoutes,
       { enableTracing: true } 
     ),
-    CKEditorModule,
-    HighchartsChartModule
+
+    HighchartsChartModule,
+    AngularEditorModule 
    
     
     

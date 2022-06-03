@@ -71,7 +71,7 @@
                   <div class="row">
 <div class="col-8">
 
-                  {{pub.pub}}
+  <div [innerHTML]="pub.pub"></div>
                   </div>
                   <div class="col-2">
                   <button type="button" class="btn btn-light mr-1 "(click)="ansClick(pub)" data-toggle="modal" data-target="#ans"
@@ -149,8 +149,7 @@
 <div class="card-body">
 <div class="row">
 <div class="col-10">         
-          
-          {{ans.Ans}}
+  <div [innerHTML]="ans.Ans"></div> 
           
         </div>
         <div class="col-2">

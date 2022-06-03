@@ -31,16 +31,7 @@ export class UserComponent implements OnInit {
 
   }
   addClick() {
-    this.user = {
-      id: 0,
-      username: "",
-      email: "",
-      first_name: "",
-      last_name: "",
-      
-    
-
-    }
+   
     this.ModalTitle = "Add User";
     this.ActivateAddEditComp = true;
 

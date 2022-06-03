@@ -62,7 +62,7 @@
                 <td>{{dataItem.email}}</td>
 
                 <td> {{dataItem.date_joined | date: 'dd/MM/yyyy' }}</td>
-                <td>{{dataItem.posts.pubId}}</td>
+                <td>{{dataItem.posts?.pubId}}</td>
 
 
                 <td> <span class="badge badge-lg badge-dot"> <i class="bg-success"></i>
@@ -122,7 +122,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <app-show [user]="user" *ngIf="ActivateShowComp">
+                            <app-show *ngIf="ActivateShowComp">
                             </app-show>
                         </div>
                     </div>

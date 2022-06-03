@@ -12,9 +12,9 @@ export class ShowComponent implements OnInit {
   username:string="";
   constructor() { }
   @Input() user:any;
+
   ngOnInit(): void {
-    this.UserId = this.user.UserId;
-    this.username = this.user.username;
+    
     
   }
 

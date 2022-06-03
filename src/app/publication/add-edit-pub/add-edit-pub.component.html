@@ -12,7 +12,10 @@
 
 
 
-    <title>Add a Post </title>
+    <title > <div *ngIf="pubId == 0 ">Add a Post</div>
+      <div *ngIf="pubId != 0 ">Update post</div>
+     </title>
+   
     
   </head>
 
@@ -26,7 +29,8 @@
           <div class="col-md-7">
             <div class="form h-100 contact-wrap p-5">
               <h3 class="text-center">
-                Add a Post
+                <div *ngIf="pubId == 0 ">Add a Post</div>
+                <div *ngIf="pubId != 0 ">Update post</div>
               </h3>
               
               <form class="mb-5" method="post" id="contactForm" name="contactForm">
@@ -45,13 +49,20 @@
                   <div class="col-md-12 form-group mb-3">
                   
                     <label for="message" class="col-form-label">Message *</label>
+                    
+                    
+
+                    <angular-editor name="pub" id="message" cols="30" rows="4" [(ngModel)]="pub"
+                    placeholder=" Write your  message " [config]="config" ></angular-editor>
                    
-                  
+                    <!--<div class="html">
+                      {{ htmlContent }}
+                    </div>-->
                     
                 
-                    <!-- <textarea class="form-control" name="pub" id="message" cols="30" rows="4" [(ngModel)]="pub"
+                   <!----<textarea class="form-control" name="pub" id="message" cols="30" rows="4" [(ngModel)]="pub"
                       placeholder=" Write your  message ">
-                        </textarea> -->
+                        </textarea>-->
                        
                     <div placeholder="user_id"></div>
                    
@@ -64,9 +75,9 @@
                 <div class="row justify-content-center">
                   <div class="col col-lg-6 form-group text-center">
 
-                    <button  (click)="addPostDetails()" *ngIf="pubId==0"
+                    <button  (click)="addPostDetails()" *ngIf="pubId == 0 "
                       class="btn btn-primary">Add Post</button>
-                      <button (click)="updatePost()" *ngIf="Post.pubId!=0"
+                      <button (click)="updatePost()" *ngIf="pubId != 0 "
                       class="btn btn-primary">update</button> 
                     </div>
                       <div class="col col-lg-6 form-group text-center">

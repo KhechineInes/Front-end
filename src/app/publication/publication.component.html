@@ -24,7 +24,7 @@
     <div class="col-9"> <td>
       <p><h5>{{post.pubsubject}}</h5>
 
-      <p>{{post.pub}}</p>
+      <div [innerHTML]="post.pub"></div>
       </td>
       </div>
 
@@ -72,7 +72,7 @@
 <div class="row">
   <div class="col">         
                 
-                {{ans.Ans}}
+    <div [innerHTML]="ans.Ans"></div>  
                 
               </div>
               <div class="col-2">

@@ -29,10 +29,12 @@
                   <div class="row mb-5">
                     <div class="col-md-12 form-group mb-3">
                       <label for="message" class="col-form-label">Answer</label>
-                      <textarea class="form-control" name="pub" id="message" cols="30" rows="4" [(ngModel)]="Ans"  placeholder=" Write your  message ">
-                        </textarea>
+                     <!----- <textarea class="form-control" name="pub" id="message" cols="30" rows="4" [(ngModel)]="Ans"  placeholder=" Write your  message ">
+                        </textarea>-->
                     
-                     
+                        <angular-editor name="ans" id="message" cols="30" rows="4" [(ngModel)]="Ans"
+                        placeholder=" Write your  message " [config]="config" ></angular-editor>
+                       
                     </div>
                     <input type="file"
                     id="avatar" name="avatar"

@@ -149,7 +149,7 @@
             </td>
             <td>Added a New Post </td>
             <td>
-            {{item.pub}}
+              <div [innerHTML]="item.pub"></div>
            </td>
            <td>{{item.date | date: 'HH:mm , le dd/MM/yyyy' }}</td>
           </div>
@@ -166,7 +166,7 @@
             </td>
             <td>Added a New Answer </td>
             <td>
-            {{ans.Ans}}
+              <div [innerHTML]="ans.Ans"></div> 
            </td>
            <td>{{ans.date | date: 'HH:mm , le dd/MM/yyyy' }}</td>
 </div>
@@ -236,12 +236,12 @@
                   class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
               </td>
               <td>
-              <h6>{{dataItem.Ans}}</h6>
+              <h6> <div [innerHTML]="dataItem.Ans"></div></h6>
                 
               </td>
               
               <td>
-                {{dataItem.pub_id.pub}}
+                <div [innerHTML]="dataItem.pub_id.pub"></div>
               </td>
 
               <td>{{dataItem.date  | date: ' HH:mm , le dd/MM/yyyy'}}</td>

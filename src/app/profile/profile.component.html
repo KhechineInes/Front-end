@@ -79,10 +79,10 @@
                                           <span> </span>
                                        </div>
                                        <div class="timeline-content">
-                                          <p>
-                                             {{pub.pub}}
+                                          
+                                             <div [innerHTML]="pub.pub"></div>
 
-                                          </p>
+                                          
                                           <p></p>
                                        </div>
                                        <div class="timeline-likes">
@@ -199,7 +199,7 @@
                                                          <div class="row">
                                                             <div class="col">
 
-                                                               {{ans.Ans}}
+                                                               <div [innerHTML]="ans.Ans"></div> 
 
                                                             </div>
 
