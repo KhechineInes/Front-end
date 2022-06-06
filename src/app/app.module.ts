@@ -25,7 +25,7 @@ import { AddComponent } from './admin/dashboard/cat/add/add.component';
 import { AnsComponent } from './publication/ans/ans.component';
 
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
-import { ShowComponent } from './admin/dashboard/user/show/show.component';
+
 import { ChangepassComponent } from './changepass/changepass.component';
 import { StatisticComponent } from './admin/dashboard/statistic/statistic.component';
 import { PostComponent } from './admin/dashboard/post/post.component';
@@ -75,7 +75,7 @@ const appRoutes: Routes = [
   
     
     EditProfileComponent,
-         ShowComponent,
+       
          ChangepassComponent,
          StatisticComponent,
          PostComponent,

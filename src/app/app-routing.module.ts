@@ -13,7 +13,7 @@ import { UserComponent } from './admin/dashboard/user/user.component';
 import { CatComponent } from './admin/dashboard/cat/cat.component';
 import { ShowPubComponent } from './publication/show-pub/show-pub.component';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
-import {ShowComponent} from './admin/dashboard/user/show/show.component';
+
 import { ChangepassComponent } from './changepass/changepass.component';
 
 const routes: Routes = [

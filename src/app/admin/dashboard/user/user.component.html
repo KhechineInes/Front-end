@@ -41,7 +41,7 @@
 
                 <th scope="col">Name</th>
                 <th scope="col">E-mail</th>
-
+                <th scope="col">Function</th>
                 <th scope="col">Inscit le </th>
                 <th scope="col"></th>
                 <th scope="col"></th>
@@ -59,32 +59,22 @@
                         class="avatar avatar-sm rounded-circle me-2"> {{dataItem.username}}
                 </td>
                 <td>{{dataItem.email}}</td>
+                <td>developper</td>
 
                 <td> {{dataItem.date_joined | date: 'dd/MM/yyyy' }}</td>
+
                 <td>{{dataItem.posts?.pubId}}</td>
+<td></td>
+<td></td>
 
-
-                <td> <span class="badge badge-lg badge-dot"> <i class="bg-success"></i>
-                    </span> </td>
+               
 
                 <td class="text-end"> <a>
 
-                        <button class="btn "data-toggle="modal" data-target="#edit"
-                        data-backdrop="static" data-keyboard="false" (click)="editClick(dataItem)" >
-                            Edit
-                        </button>
+                       
                         
                      </a>
-                    <a>
-
-
-                        <button class="btn " data-toggle="modal" data-target="#show"
-                        data-keyboard="false" (click)="showClick(dataItem)" >
-                            Show
-                        </button>
-                        
-
-                    </a>
+                    
 
                     <button class="btn" (click)="deleteClick(dataItem)"
                         class="btn btn-sm btn-square btn-neutral text-danger-hover">
@@ -93,40 +83,8 @@
                 </td>
                
             </tr>
-            <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel"></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
-                            (click)="closeClick()">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <app-add-user  *ngIf="ActivateEditComp">
-                        </app-add-user>
-                    </div>
-                </div>
-            </div>
-        </div>
-            <div class="modal fade" id="show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-            
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeClick()">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <app-show *ngIf="ActivateShowComp">
-                            </app-show>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          
+           
         </tbody>
     </table>
    

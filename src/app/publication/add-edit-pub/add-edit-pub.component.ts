@@ -88,7 +88,8 @@ posts:any= [];
   this.date = value.date;
   this.user_id = value.user_id;
   }
-  @Input() Cat:number = 0;
+  @Input() Cat:any;
+  @Input() category:number = 0;
   @Input() CatName : string = "";
   @Input() ng: any;
   PubId: string = "";

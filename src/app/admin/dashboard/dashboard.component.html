@@ -29,14 +29,14 @@
 
       <li class="flex-column mb-3">
         <div *ngIf="pos !='cat'">
-          <a class="nav-link scrollto py-3 border-bottom" (click)="catClick()"> <small><i class="bi bi-list">
-              </i>categories</small></a>
+          <a class="nav-link scrollto py-3 border-bottom" (click)="catClick()"> <small><i class="fa-brands fa-buffer" >
+              </i>    categories</small></a>
         </div>
 
         <div *ngIf="pos =='cat'">
 
-          <a class="nav-link scrollto py-3 border-bottom" style="background-color:#7790d64d; "><i class="bi bi-list">
-            </i>categories </a>
+          <a class="nav-link scrollto py-3 border-bottom" style="background-color:#7790d64d; "><i class="fa-brands fa-buffer" >
+            </i>    categories </a>
         </div>
 
       </li>
@@ -46,13 +46,13 @@
         <div *ngIf="pos !='stat'">
 
           <a (click)="statClick()" class="nav-link scrollto py-3 mb-4 border-bottom"> <small><i
-                class="bi bi-bar-chart"></i>
+                class="bi bi-list"></i>
               Posts
             </small></a>
         </div>
         <div *ngIf="pos =='stat'">
           <a class="nav-link scrollto py-3 mb-3 border-bottom" style="background-color:#7790d64d; ">
-            <i class="bi bi-bar-chart"></i>
+            <i class="bi bi-list"></i>
             Posts
           </a>
         </div>

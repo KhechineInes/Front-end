@@ -30,36 +30,37 @@
     <h5 class="mb-0">Categories List</h5>
 </div>
 <div class="table-responsive">
-    <table class="table table-hover table-nowrap">
+    <table class="table table-hover ">
         <thead class="thead-light">
             <tr>
-
+                <th scope="col"></th>
                 <th scope="col">Title</th>
                 <th scope="col">Frameworks</th>
                 <th scope="col">Languages</th>
                 <th></th>
                 <th></th>
-                <th></th>
+                <th>Options</th>
+              
 
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let dataItem of CatList">
 
+              
 
-
-                <td> {{dataItem.CatName}}
+                  <td> <img alt="..." height="50" width=" 50"  [src]="dataItem.Image ? ImagePath+dataItem.Image : '/assets/img/blank_img.png'"
+                    class="avatar avatar-sm rounded-circle me-2" height="200"
+                    width="200"></td>  <td>{{dataItem.CatName}}
                 </td>
                 <td>{{dataItem.CatFramework}}</td>
 
                 <td> {{dataItem.CatLang}}</td>
-                <td> <img [src]="dataItem.Image ? ImagePath+dataItem.Image : '/assets/img/blank_img.png'" height="150"
-                        width="150">
-                    <div type="file" class="mt-2"></div>
-                </td>
+               
 
-                <td> <span class="badge badge-lg badge-dot"> <i class="bg-success"></i>Scheduled
+                <td> <span class="badge badge-lg badge-dot"> <i class="bg-success"></i>
                     </span> </td>
+                    <td></td>
                 <td class="text-end"> <a>
 
 
