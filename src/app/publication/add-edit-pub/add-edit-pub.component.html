@@ -70,8 +70,27 @@
                   
                <!-- =======   <input type="file" id="avatar" name="avatar" accept="" [(ngModel)]="pub" [src]=filePath   (change)="uploadfile($event)" [src]=filePath>  -- =======-->
 
+  <label for="message" class="col-form-label">Category *</label>
 
-                </div>
+  <select  *ngIf ="Cat != 0" class="form-select form-select-sm" aria-label=".form-select-sm example"  
+    
+  >
+  
+    <option>{{CatName}}</option> 
+  </select>
+
+    <select  *ngIf ="Cat == 0"class="form-select form-select-sm" aria-label=".form-select-sm example"  >
+    
+    
+    <option *ngFor="let dataItem of CatList"> {{dataItem.CatName}}</option>
+    <option >Other </option>
+    
+  </select>
+  
+     </div>               
+
+
+                
                 <div class="row justify-content-center">
                   <div class="col col-lg-6 form-group text-center">
 

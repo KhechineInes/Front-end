@@ -1,207 +1,234 @@
-
-  <div *ngIf="link == ''">
-    <div class="row">
-      <div class="col-9" >
-    <div class="card shadow border-0 mb-2" style="width:950px">
+<div *ngIf="link == ''">
+  <div class="row">
+    <div class="col-9">
+      <div class="card shadow border-0 mb-2" style="width:950px">
         <div class="card-header">
-            <h5 style="color :rgb(28, 5, 133)"> Overview </h5>
-            </div>
-            </div>
-            <div class="row"style="width:1300px" >
-              <div class="col-3">
-    
-        <div class="card border mb-2" style="background: linear-gradient(to bottom right,rgb(236, 81, 200) ,  #FF0080);width:300px">
-           <h5 align = "center" style="color : white;"> Number of back-end developpers</h5>
-            <p align="center" style="color : white;">{{userList.length}}</p>
-            <div class="card-footer"><td><a class="nav-link" style="color :white">View details</a></td>
-              <td><i class="fa-solid fa-gears" style="color:white; font-size:44px; font-weight:bold"></i></td></div>
-            
+          <h5 style="color :rgb(28, 5, 133)"> Overview </h5>
         </div>
       </div>
-      <div class ="col-3">
-      <div class="card border mb-2"  style="background: linear-gradient(to bottom right,#5777ba, #B5A6F5); width:300px ">
-        <h5 align = "center" style="color : white;"> Number of Front developpers</h5>
-        <p align="center" style="color : white;">50</p>
-        <div class="card-footer"><td><a class="nav-link" style="color : white;">View details</a></td>
-        <td><i class="fa-solid fa-laptop-code"style="color:white; font-size:44px; font-weight:bold"></i></td></div>
-      </div>
-    </div>
-    <div class ="col-3">
-     <div class="card border mb-2" style="background: linear-gradient(to bottom right,#5777ba, rgb(255, 31, 203) );width:300px">
-        <h5 align = "center" style="color : white;"> Number of Designers </h5>
-        <p align="center" style="color : white;">50</p>
-        <div class="card-footer"><td><a class="nav-link" style="color : white;">View details</a>
-        </td>
-      <td><i  class="fa-solid fa-wand-magic-sparkles"style="color:white; font-size:44px; font-weight:bold"></i></td></div>
-      </div>
-    </div>
-    </div>
+      <div class="row" style="width:1300px">
+        <div class="col-3">
 
-    <div class="row align-center" style="width:1300px" >
-      <div class="col-3">
-        <div class="card border mb-2" style="background: linear-gradient(to bottom right,#5777ba, #B5A6F5); width:300px">
-           <h5 align = "center" style="color : white;"> Number of Categories</h5>
+          <div class="card border mb-2"
+            style="background: linear-gradient(to bottom right,rgb(236, 81, 200) ,  #FF0080);width:300px">
+            <h5 align="center" style="color : white;"> Number of back-end developpers</h5>
+            <p align="center" style="color : white;">{{userList.length}}</p>
+            <div class="card-footer">
+              <td><a class="nav-link" style="color :white">View details</a></td>
+              <td><i class="fa-solid fa-gears" style="color:white; font-size:44px; font-weight:bold"></i></td>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="card border mb-2"
+            style="background: linear-gradient(to bottom right,#5777ba, #B5A6F5); width:300px ">
+            <h5 align="center" style="color : white;"> Number of Front developpers</h5>
+            <p align="center" style="color : white;">50</p>
+            <div class="card-footer">
+              <td><a class="nav-link" style="color : white;">View details</a></td>
+              <td><i class="fa-solid fa-laptop-code" style="color:white; font-size:44px; font-weight:bold"></i></td>
+            </div>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="card border mb-2"
+            style="background: linear-gradient(to bottom right,#5777ba, rgb(255, 31, 203) );width:300px">
+            <h5 align="center" style="color : white;"> Number of Designers </h5>
+            <p align="center" style="color : white;">50</p>
+            <div class="card-footer">
+              <td><a class="nav-link" style="color : white;">View details</a>
+              </td>
+              <td><i class="fa-solid fa-wand-magic-sparkles" style="color:white; font-size:44px; font-weight:bold"></i>
+              </td>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row align-center" style="width:1300px">
+        <div class="col-3">
+          <div class="card border mb-2"
+            style="background: linear-gradient(to bottom right,#5777ba, #B5A6F5); width:300px">
+            <h5 align="center" style="color : white;"> Number of Categories</h5>
             <p align="center" style="color : white;">
               {{CatList.length}}
             </p>
-            <div class="card-footer"> <td> <a class="nav-link" style="color : white;" (click)="nbCat()">View details</a></td>
-<td>
- 
- 
-  <i class="fa-brands fa-buffer"style="color:white; font-size:44px; font-weight:bold"></i></td>
+            <div class="card-footer">
+              <td> <a class="nav-link" style="color : white;" (click)="nbCat()">View details</a></td>
+              <td>
+
+
+                <i class="fa-brands fa-buffer" style="color:white; font-size:44px; font-weight:bold"></i>
+              </td>
             </div>
+          </div>
         </div>
-      </div>
-      <div class ="col-3">
-      <div class="card border mb-2"  style="background: linear-gradient(to bottom right,#5777ba, rgb(255, 31, 203)); 
+        <div class="col-3">
+          <div class="card border mb-2" style="background: linear-gradient(to bottom right,#5777ba, rgb(255, 31, 203)); 
        width:300px">
-        <h5 align = "center" style="color : white;"> Number of Posts</h5>
-        <p align="center" style="color : white;">
-          {{PostList.length}}
-          </p>
-        <div class="card-footer"><td><a class="nav-link"style="color : white;" (click)="nbPost()">View details</a></td>
-        <td><i class="fa-solid fa-bars"style="color:white; font-size:44px; font-weight:bold"></i></td></div>
-      </div>
-    </div>
-    <div class ="col-3">
-      <div class="card border mb-2" style="background: linear-gradient(to bottom right, rgb(236, 81, 200) ,  #FF0080);width:300px">
-        <h5 align = "center" style="color : white;"> Number of Answers</h5>
-        <p align="center"style="color : white;">{{ansList.length}}</p>
-        <div class="card-footer">
-          <td>
-          <a class="nav-link"style="color : white;" (click)="nbAnswers()">View details </a></td>
-          
-          <td>
-            <i class="fa-solid fa-lightbulb"style="color:white; font-size:44px; font-weight:bold"></i>
-            
-            
-            
-            
-          </td>
+            <h5 align="center" style="color : white;"> Number of Posts</h5>
+            <p align="center" style="color : white;">
+              {{PostList.length}}
+            </p>
+            <div class="card-footer">
+              <td><a class="nav-link" style="color : white;" (click)="nbPost()">View details</a></td>
+              <td><i class="fa-solid fa-bars" style="color:white; font-size:44px; font-weight:bold"></i></td>
+            </div>
+          </div>
+        </div>
+        <div class="col-3">
+          <div class="card border mb-2"
+            style="background: linear-gradient(to bottom right, rgb(236, 81, 200) ,  #FF0080);width:300px">
+            <h5 align="center" style="color : white;"> Number of Answers</h5>
+            <p align="center" style="color : white;">{{ansList.length}}</p>
+            <div class="card-footer">
+              <td>
+                <a class="nav-link" style="color : white;" (click)="nbAnswers()">View details </a>
+              </td>
+
+              <td>
+                <i class="fa-solid fa-lightbulb" style="color:white; font-size:44px; font-weight:bold"></i>
+
+
+
+
+              </td>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    </div>
-    </div>
-    <div class="col">    
+    <div class="col">
       <div class="card border mb-2" style="background: linear-gradient(to bottom right, #5777ba, #B5A6F5);height:350px">
         <div class="card-header">
           <h5 style="color :white" align="center"> Number of visit</h5>
-          </div>
+        </div>
       </div>
-          </div>
     </div>
-  
+  </div>
+
   <div class="card shadow border-0 mb-2 " style="width:1280px">
     <div class="card-header">
-        <h5 style="color :rgb(28, 5, 133)"> User Activities </h5>
-        </div>
-        </div>
-<div class="row">
-  <div class="col">
-    <div class="card">
-       
-        <highcharts-chart *ngIf="chartOptions"
-        [Highcharts]="Highcharts"
-        [options]="chartOptions"
-        >
-      </highcharts-chart>
+      <h5 style="color :rgb(28, 5, 133)"> User Activities </h5>
     </div>
   </div>
-  <div class="col border mb-2">
-    <div class="card"><app-firstchart></app-firstchart></div>
-    
-  </div>
-</div>
-<div class="row">
-  <div class="col">
-    1 of 3
-  </div>
-  <div class="col border ">
-    2 of 3
-  </div>
-  <div class="col border">
-    3 of 3
-  </div>
-</div>
+  <div class="row">
+    <div class="col">
+      <div class="card">
 
-
-<div class="card shadow border-0 mb-2 " style="width:1240px">
-  <div class="card-header">
-      <h5  style="color :rgb(28, 5, 133)"> Recent Activities </h5>
+        <highcharts-chart *ngIf="chartOptions" [Highcharts]="Highcharts" [options]="chartOptions">
+        </highcharts-chart>
+      </div>
+    </div>
+    <div class="col border mb-2">
+      <div class="card">
+        <app-firstchart></app-firstchart>
       </div>
 
-
-        <table class="table table-hover table">
-          <tbody>
-            
-            <tr><h5 style="color :rgb(236, 81, 200)"> Aujourd'hui {{myDate| date : " le dd/MM/YYYY  à HH:MM"}}</h5></tr>
-            
-          <tr *ngFor="let item of sortData">
-            
-            <div *ngIf="dateDiff(myDate,item.date)<1">
-            
-            <td >
-              
-              <img class="mr-3" width="50" height="50" src="assets/img/blank_profile.png"
-              class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
-              {{item.user.username}}
-            </td>
-            <td>Added a New Post </td>
-            <td>
-              <div [innerHTML]="item.pub"></div>
-           </td>
-           <td>{{item.date | date: 'HH:mm , le dd/MM/yyyy' }}</td>
-          </div>
-          </tr>
-         
-          
-          <tr *ngFor="let ans of sortDataAns">
-            
-            <div *ngIf="dateDiff(myDate,ans.date)<1">
-            <td>
-              <img class="mr-3" width="50" height="50" src="assets/img/blank_profile.png"
-              class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
-              {{ans.user.username}}
-            </td>
-            <td>Added a New Answer </td>
-            <td>
-              <div [innerHTML]="ans.Ans"></div> 
-           </td>
-           <td>{{ans.date | date: 'HH:mm , le dd/MM/yyyy' }}</td>
-</div>
-          </tr>
-          
-          
-          </tbody>
-        
-            </table>
-            </div>
-
-
-
-</div>
-<div *ngIf="link == 'cat'">
-  
-    <span class="font-weight-bold"> <button class="btn" (click)="anal()"><i class="bi bi-arrow-bar-left"></i></button></span>
-  <app-cat></app-cat>
- 
- 
-
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      1 of 3
+    </div>
+    <div class="col border ">
+      2 of 3
+    </div>
+    <div class="col border">
+      3 of 3
+    </div>
   </div>
 
-<div *ngIf="link == 'post'">
-  
-    <span class="font-weight-bold"> <button class="btn" (click)="anal()"><i class="bi bi-arrow-bar-left"></i></button></span>
-  <app-post></app-post>
- 
- 
 
- 
+  <div class="card shadow border-0 mb-2 " style="width:1280px">
+    <div class="card-header">
+      <h5 style="color :rgb(28, 5, 133)"> Recent Activities </h5>
+      <h5 style="color :rgb(236, 81, 200)"> Aujourd'hui {{myDate| date : " le dd/MM/YYYY à HH:MM"}}</h5>
+    </div>
+
+    </div>
+      <div class="row">
+        <div class="col">
+          <div class="card">
+          <table class="table table-hover table"  >
+            
+            <tbody>
+              
+              <tr *ngFor="let item of sortData" >
+
+              
+
+                  <td *ngIf="dateDiff(myDate,item.date)<1">
+
+                    <img class="mr-3" width="50" height="50" src="assets/img/blank_profile.png"
+                      class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
+                    {{item.user.username}}
+                  </td>
+                  <td *ngIf="dateDiff(myDate,item.date)<1">Added a New Post </td>
+                  <td *ngIf="dateDiff(myDate,item.date)<1">
+                    <div [innerHTML]="item.pub"></div>
+                  </td>
+                  <td *ngIf="dateDiff(myDate,item.date)<1">{{item.date | date: 'HH:mm , le dd/MM/yyyy' }}</td>
+                
+                
+
+
+</tr>
+
+
+            </tbody>
+
+          </table>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+          <table class="table table-hover table" >
+            <tbody>
+
+            
+
+
+              <tr *ngFor="let ans of sortDataAns">
+
+                
+                  <td *ngIf="dateDiff(myDate,ans.date)<1">
+                    <img class="mr-3" width="50" height="50" src="assets/img/blank_profile.png"
+                      class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
+                    {{ans.user.username}}
+                  </td>
+                  <td *ngIf="dateDiff(myDate,ans.date)<1">Added a New Answer </td>
+                  <td *ngIf="dateDiff(myDate,ans.date)<1">
+                    <div [innerHTML]="ans.Ans"></div>
+                  </td>
+                  <td *ngIf="dateDiff(myDate,ans.date)<1">{{ans.date | date: 'HH:mm , le dd/MM/yyyy' }}</td>
+               
+              </tr>
+
+
+            </tbody>
+
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div *ngIf="link == 'cat'">
+  <span class="font-weight-bold"> <button class="btn" (click)="anal()"><i
+        class="bi bi-arrow-bar-left"></i></button></span>
+  <app-cat></app-cat>
+</div>
+<div *ngIf="link == 'post'">
+ <span class="font-weight-bold"> <button class="btn" (click)="anal()"><i
+        class="bi bi-arrow-bar-left"></i></button></span>
+  <app-post></app-post>
 </div>
 <div *ngIf="link == 'ans'">
-  
-  <span class="font-weight-bold"> <button class="btn" (click)="anal()"><i class="bi bi-arrow-bar-left"></i></button></span>
+
+  <span class="font-weight-bold"> <button class="btn" (click)="anal()"><i
+        class="bi bi-arrow-bar-left"></i></button></span>
   <div class="container ">
     <div class="card  mb-7" style="width:1250px">
 
@@ -213,10 +240,10 @@
           <thead class="thead-light">
             <tr>
 
-              
+
               <th>User</th>
               <th>Answer</th>
-              
+
               <th>Post</th>
               <th>Date</th>
             </tr>
@@ -236,22 +263,24 @@
                   class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
               </td>
               <td>
-              <h6> <div [innerHTML]="dataItem.Ans"></div></h6>
-                
+                <h6>
+                  <div [innerHTML]="dataItem.Ans"></div>
+                </h6>
+
               </td>
-              
+
               <td>
                 <div [innerHTML]="dataItem.pub_id.pub"></div>
               </td>
 
-              <td>{{dataItem.date  | date: ' HH:mm , le dd/MM/yyyy'}}</td>
+              <td>{{dataItem.date | date: ' HH:mm , le dd/MM/yyyy'}}</td>
 
 
 
 
 
-              
-            
+
+
             </tr>
           </tbody>
 

@@ -35,6 +35,7 @@ export class ShowPubComponent implements OnInit {
     this.user=JSON.parse(localStorage.getItem('currentUser')!);
     this.refreshPubList();
     this.filePath=this.service.PhotoUrl+this.pub;
+  
   }
   
   

@@ -125,29 +125,34 @@ export class StatisticComponent implements OnInit {
     
     });
   }
+  dateDiff(date1:any , date2: any){
+    // Initialisation du retour
+var tmp = <any>new Date(date1) - <any>new Date(date2);
+
+tmp = Math.floor(tmp/1000);             // Nombre de secondes entre les 2 dates
+const diffsec = tmp % 60;                    // Extraction du nombre de secondes
+
+tmp = Math.floor((tmp-diffsec)/60);    // Nombre de minutes (partie entière)
+const diffmin = tmp % 60;                    // Extraction du nombre de minutes
+
+tmp = Math.floor((tmp-diffmin)/60);    // Nombre d'heures (entières)
+const diffhour = tmp % 24;                   // Extraction du nombre d'heures
+
+tmp = Math.floor((tmp-diffhour)/24);   // Nombre de jours restants
+const diffday = tmp;
+
+return diffday;
+}
+
   get sortDataAns() {
+
+
     return this.ansList.sort((a:any, b:any) => {
+      
       return <any>new Date(b.date) - <any>new Date(a.date);
     });
   }
-  dateDiff(date1:any , date2: any){
-                              // Initialisation du retour
-    var tmp = <any>new Date(date1) - <any>new Date(date2);
- 
-    tmp = Math.floor(tmp/1000);             // Nombre de secondes entre les 2 dates
-    const diffsec = tmp % 60;                    // Extraction du nombre de secondes
- 
-    tmp = Math.floor((tmp-diffsec)/60);    // Nombre de minutes (partie entière)
-    const diffmin = tmp % 60;                    // Extraction du nombre de minutes
- 
-    tmp = Math.floor((tmp-diffmin)/60);    // Nombre d'heures (entières)
-    const diffhour = tmp % 24;                   // Extraction du nombre d'heures
-     
-    tmp = Math.floor((tmp-diffhour)/24);   // Nombre de jours restants
-    const diffday = tmp;
-     
-    return diffday;
-}
+  
   refreshUserList() {
     this.service.getUserList().subscribe((data =>
       this.userList = data));

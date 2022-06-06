@@ -19,7 +19,9 @@
               </div>
               <div class="modal-body">
 
-                <app-add-edit-pub [Cat]="cat" *ngIf="ActivateAddEditPostComp">
+                <app-add-edit-pub [Cat]="cat"
+                [CatName]="CatName"
+                 *ngIf="ActivateAddEditPostComp">
 
                 </app-add-edit-pub>
               </div>

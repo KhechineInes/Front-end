@@ -74,6 +74,9 @@ export class AddEditPubComponent implements OnInit {
   formBuilber: any;
   PostList: Post[] = [];
 posts:any= [];
+  CatList: any[]=[];
+  ImagePath: string='';
+  Image: string='';
 
   constructor(private service: SharedService) { }
   @Input() set Post(value:any){
@@ -85,7 +88,8 @@ posts:any= [];
   this.date = value.date;
   this.user_id = value.user_id;
   }
-  @Input() Cat: any;
+  @Input() Cat:number = 0;
+  @Input() CatName : string = "";
   @Input() ng: any;
   PubId: string = "";
   pub: string = "";
@@ -136,11 +140,12 @@ posts:any= [];
   
 };
 
-
 filePath: string = "";
 ngOnInit(): void {
   console.log(this.ng);
+  console.log(this.Cat);
   
+  this.refreshCatList();
   this.filePath = this.service.PhotoUrl + this.pub;
   this.editorConfig=this.editorConfig;
 }
@@ -202,6 +207,15 @@ updatePost() {
   });
   this.refreshPostList();
   console.log(val)
+}
+refreshCatList() {
+    
+  this.service.getCatList().subscribe(data => 
+    this.CatList=data
+   
+  );
+ 
+
 }
 
 
