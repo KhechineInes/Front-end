@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, PipeTransform } from '@angular/core';
 import { Answer, Cat, Post, User } from 'src/app/model';
 import {SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-show-pub',
   templateUrl: './show-pub.component.html',
-  styleUrls: ['./show-pub.component.css']
+  styleUrls: ['./show-pub.component.css'],
+  
 })
+
 export class ShowPubComponent implements OnInit {
   PostList: any;
   AnsList: any;

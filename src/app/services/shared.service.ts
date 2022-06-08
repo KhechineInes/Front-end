@@ -66,7 +66,16 @@ httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
   }
 
 
-
+  getVoteList():Observable<any[]>{
+    return this.http.get<Post[]>(this.APIUrl + '/vote/');
+  }
+  addVote(val:any){
+    return this.http.post(this.APIUrl + '/vote/' , val);
+  }
+ 
+  deleteVote(val:any){
+    return this.http.delete(this.APIUrl + '/vote/'+val);
+  }
 
   getUserList():Observable<any[]>{
     return this.http.get<any[]>(this.APIUrl + '/user/');

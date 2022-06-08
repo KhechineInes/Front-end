@@ -76,13 +76,13 @@
     
   >
   
-    <option>{{CatName}}</option> 
+    <option >{{CatName}}</option> 
   </select>
 
     <select  *ngIf ="Cat == undefined"class="form-select form-select-sm" aria-label=".form-select-sm example"  >
     
     
-    <option *ngFor="let dataItem of CatList"> {{dataItem.CatName}}</option>
+    <option *ngFor="let dataItem of CatList"   (click)="onSelect(dataItem.CatId)"> {{dataItem.CatName}}</option>
     <option >Other </option>
     
   </select>

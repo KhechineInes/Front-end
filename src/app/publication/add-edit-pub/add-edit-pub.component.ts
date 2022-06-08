@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, VERSION, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, Pipe, VERSION, ViewChild ,  PipeTransform  } from '@angular/core';
 import { SharedService } from 'src/app/services/shared.service';
 import { Post, Pub } from 'src/app/model';
 import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
@@ -15,10 +15,14 @@ import { AngularEditorConfig } from '@kolkov/angular-editor';
   selector: 'app-add-edit-pub',
   templateUrl: './add-edit-pub.component.html',
   styleUrls: ['./add-edit-pub.component.css'],
-  providers: []
+  providers: [],
+ 
 
 })
-export class AddEditPubComponent implements OnInit {
+
+
+
+export class AddEditPubComponent implements OnInit  {
 
   viewMode= '';
 
@@ -77,6 +81,9 @@ posts:any= [];
   CatList: any[]=[];
   ImagePath: string='';
   Image: string='';
+  ans_id: any;
+  Positive: any;
+  Negative: any;
 
   constructor(private service: SharedService) { }
   @Input() set Post(value:any){
@@ -185,12 +192,50 @@ addPostDetails() {
   });
   this.refreshPostList();
 }
+
+
+
+addVote() {
+ 
+  this.user = JSON.parse(localStorage.getItem('currentUser')!);
+  var val = {
+    post_id: this.PubId,
+    ans_id:this.ans_id,
+    user_id: this.user.user_id,
+   Positive:this.Positive,
+   Negative:this.Negative,
+
+  };
+
+
+  this.service.addPost(val).subscribe(res => {
+    alert(res.toString());
+
+    console.log(val);
+
+  });
+  this.refreshPostList();
+}
+
+
 refreshPostList() {
   this.service.getPostList().subscribe(data => {
     this.PostList = data;
 
   });
 }
+
+
+
+
+
+
+
+
+
+
+
+
 updatePost() {
   var val = {
 
@@ -219,7 +264,9 @@ refreshCatList() {
 
 }
 
-
+onSelect(item:any){
+  this.cat_id=item;
+}
 
 
   /* sendEmail(form: HTMLInputElement): void {

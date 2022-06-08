@@ -89,7 +89,7 @@
                     data-backdrop="static" data-keyboard="true">
                     <i class="bi bi-pencil-square"></i>
                   </button>
-                 
+               
 
 
                   <!-------modal---------->
@@ -175,12 +175,42 @@
           </div>
         
           <div class="card-footer">
-            
+            <div class="row">
+              <div class="col-9">
+                <div class="stats">
+                <small> <tr><span class="fa-stack fa-fw stats-icon">
+                     <i class="fa fa-circle fa-stack-2x text-danger"></i>
+                     <i class="fa fa-heart fa-stack-1x fa-inverse t-plus-1"></i>
+                  </span></tr><tr><span class="stats-total">6.5k</span></tr></small>
+                  
+                 <small> <tr><span class="fa-stack fa-fw stats-icon">
+                     <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                     <i class="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
+                     
+                  </span></tr><tr> <span class="stats-total">5.4k</span></tr></small>
+                 <small> <tr><span class="fa-stack fa-fw stats-icon">
+                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                    <i class="fa fa-thumbs-down  fa-stack-1x fa-inverse"></i>
+                  
+                 </span> </tr><tr> <span class="stats-total">4.6k</span></tr></small>
+                 <tr>
+                  
+                 
+                  
+                 </tr>
+                  
+               </div>
+              </div>
+              <div class="col">
+                <button type="button" class="btn btn-light mr-1" (click)="ansClick(dataItem)" data-toggle="modal" data-target="#ans"
+                data-backdrop="static" data-keyboard="true">
+                Answer
+              </button>
+              </div>
+            </div>
 
-            <button type="button" class="btn btn-light mr-1" (click)="ansClick(dataItem)" data-toggle="modal" data-target="#ans"
-            data-backdrop="static" data-keyboard="true">
-            Answer
-          </button>
+           
+         
   
           <div class="modal fade" id="ans" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
