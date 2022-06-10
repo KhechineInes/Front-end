@@ -302,7 +302,9 @@ body{
 .timeline-comment-box .user+.input {
     margin-left: 44px
 }
-
+.timeline-commenr-box .card{
+    border-radius:30px
+}
 .lead {
     margin-bottom: 20px;
     font-size: 21px;
