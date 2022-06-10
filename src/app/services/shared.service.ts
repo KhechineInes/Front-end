@@ -81,7 +81,7 @@ httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.get<any[]>(this.APIUrl + '/user/');
   }
   addUser(val:any){
-    return this.http.post(this.APIUrl + '/user/',val);
+    return this.http.post(this.APIUrl + '/register/',val);
   }
   updateUser(val:any){
     return this.http.put(this.APIUrl + '/user/',val);

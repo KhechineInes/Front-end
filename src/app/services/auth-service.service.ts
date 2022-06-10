@@ -15,7 +15,7 @@ api_url = 'http://127.0.0.1:8000';
 
   login(username: string, password: string){
 
-    return this.http.post<any>( this.api_url + `/accounts/api/auth/` ,
+    return this.http.post<any>( this.api_url + `/api/auth/` ,
     {username, password}, httpOptions).pipe(
       map(user => {
         if (user && user.token) {

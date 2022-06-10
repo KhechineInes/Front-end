@@ -42,8 +42,7 @@ export class AddUserComponent implements OnInit {
       password:this.password,
      
       email : this.email,
-      last_login : this.last_login,
-      date_joined : this.date_joined 
+     
       
     
     };
