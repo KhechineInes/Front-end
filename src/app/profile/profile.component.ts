@@ -25,6 +25,7 @@ export class ProfileComponent implements OnInit {
   ImagePath:any;
   Image:any;
   User:any;
+  userlist:any;
   constructor(private service:SharedService) { }
 
   ngOnInit(): void {
@@ -33,7 +34,7 @@ export class ProfileComponent implements OnInit {
     console.log(this.user);
     this.getPostList();
     this.ImagePath=this.service.PhotoUrl+this.Image;
-    
+    this.getUser();
   }
   uploadPhoto(event: any){
     var file=event.target.files[0];
@@ -66,7 +67,7 @@ export class ProfileComponent implements OnInit {
   
   getPostList() {
     this.service.getPostList().subscribe((data) => {
-      this.PostList=data,
+      this.PostList=data.filter((res:any)=>res.user.id==this.user.user_id),
       console.log(this.PostList)}
     );
     
@@ -87,6 +88,13 @@ export class ProfileComponent implements OnInit {
     this.val=item;
     this.PubId=item;
     this.refreshAnsList();
+  }
+  getUser() {
+    this.service.getUserList().subscribe((data) => {
+      this.userlist=data.filter((res:any)=>res.id==this.user.user_id),
+      console.log(this.userlist)}
+    );
+    
   }
  
 }

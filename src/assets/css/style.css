@@ -1193,8 +1193,8 @@ body {
   }
   /*------------------------editprofile----------------------------*/
 #editprofile .col-md-3{
-  border: 2px solid #4A649E;  
-  background: linear-gradient(to left, #4A649E, rgb(74, 18, 163));
+  /*border: 2px solid #4A649E;  */
+  background: linear-gradient(to bottom left , #4A649E, rgb(255, 31, 203));
 }
  
 

@@ -63,7 +63,7 @@ export class UserComponent implements OnInit {
   }
   deleteClick(item: any) {
     if (confirm('Are you sure??')) {
-      this.service.deleteUser(item.id).subscribe(data => {
+      this.service.deleteUser(item).subscribe(data => {
         alert(data.toString());
         this.refreshUserList();
       })

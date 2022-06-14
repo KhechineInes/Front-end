@@ -14,54 +14,35 @@ export class AddUserComponent implements OnInit {
 
   constructor(private service: SharedService) { }
 
-  @Input() user: any;
+  
   id:number=0;
  
 
-  username:string = "";
+  username:any;
 
-  password:string = "";
-  posts: string ="";
+  password:any;
+
   
-  date_joined! : Date 
-  email : string = "";
+
+  email : any;
 
 
 
   ngOnInit(): void {
-    
+    this.addUser();
   }
 
   addUser() {
     var val = {
-     
-     id:this.id,
-
       username:this.username,
-    
       password:this.password,
-     
       email : this.email,
-     
-      
-    
     };
     this.service.addUser(val).subscribe(res => {
       alert(res.toString());
     });
+    console.log(val);
     
-  }
-
-  updateUser() {
-    var val = {
-
-     
-      
-    };
-    this.service.updateUser(val).subscribe(res => {
-      alert(res.toString());
-    });
-    console.log(val)
   }
 
 }

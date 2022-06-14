@@ -9,7 +9,7 @@ import { SharedService } from 'src/app/services/shared.service';
 })
 export class EditProfileComponent implements OnInit {
   user: any;
-  userlist : User[]=[];
+  
   username: string = "";
   Address:string = "";
   Function:string = "";
@@ -26,6 +26,7 @@ export class EditProfileComponent implements OnInit {
   last_login: any;
   account: any;
   owner: any;
+  userlist: any;
   constructor(private service: SharedService) { }
 
   ngOnInit(): void {
@@ -41,11 +42,9 @@ export class EditProfileComponent implements OnInit {
     this.Address=this.user.Address,
     this.date_joined=this.user.date_joined,
     this.last_login=this.user.last_login,
-    
-    
-    this.User=JSON.parse(localStorage.getItem('User')!);
     console.log(this.user);
     this.ImagePath=this.service.PhotoUrl+this.Image;
+    this.getUser();
   }
 
 
@@ -93,5 +92,12 @@ export class EditProfileComponent implements OnInit {
       this.Image=data.toString();
       this.ImagePath=this.service.PhotoUrl+this.Image;
     })
+  }
+  getUser() {
+    this.service.getUserList().subscribe((data) => {
+      this.userlist=data.filter((res:any)=>res.id==this.user.user_id),
+      console.log(this.userlist)}
+    );
+    
   }
 }

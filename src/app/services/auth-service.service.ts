@@ -28,7 +28,7 @@ api_url = 'http://127.0.0.1:8000';
 
   logout() {
     localStorage.removeItem('currentUser');
-    localStorage.removeItem('user');
+    
   }
   changePassword(username: string, password: string){
     return this.http.post<any>(this.api_url+ '/password/change/' , {username, password}, httpOptions).pipe()
