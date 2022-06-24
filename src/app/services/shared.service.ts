@@ -66,9 +66,12 @@ httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
   }
 
 
-  getVoteList():Observable<any[]>{
-    return this.http.get<Post[]>(this.APIUrl + '/vote/');
+  getVote():Observable<any[]>{
+    return this.http.get<Post[]>(this.APIUrl + '/uservote/');
   }
+  getuservoted():Observable<any[]>{
+    return this.http.get<Post[]>(this.APIUrl + '/uservote/');}
+    
   addVote(val:any){
     return this.http.post(this.APIUrl + '/vote/' , val);
   }
@@ -84,6 +87,9 @@ httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
     return this.http.post(this.APIUrl + '/register/',val);
   }
   updateUser(val:any){
+    return this.http.put(this.APIUrl + '/user/',val);
+  }
+  updateProfile(val:any){
     return this.http.put(this.APIUrl + '/user/',val);
   }
   deleteUser(val:any){

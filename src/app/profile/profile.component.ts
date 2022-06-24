@@ -10,14 +10,14 @@ import { SharedService } from '../services/shared.service';
 export class ProfileComponent implements OnInit {
 
   @Input() Pub:any;
-  PostList: any;
+  PostList: any=[];
   PubId: number=0;
   pub: string="";
   pubsubject:string="";
   ModalTitle: string ="";
   user:any;
   val:string="";
- ansList:any;
+ ansList:any=[];
   ActivateAddEditPostComp:boolean=false;
   ActivateAddEditAnsComp: boolean=false;
   ans: any;
@@ -25,7 +25,14 @@ export class ProfileComponent implements OnInit {
   ImagePath:any;
   Image:any;
   User:any;
-  userlist:any;
+  userlist:any=[];
+  VoteList: any=[];
+  VotePosList: any=[];
+  VoteNList: any=[];
+  ActivateModal: boolean=false;
+  voteduser: any=[];
+  ActivatedisModal: boolean=false;
+  voteddisuser: any=[];
   constructor(private service:SharedService) { }
 
   ngOnInit(): void {
@@ -35,6 +42,7 @@ export class ProfileComponent implements OnInit {
     this.getPostList();
     this.ImagePath=this.service.PhotoUrl+this.Image;
     this.getUser();
+    this.getVote();
   }
   uploadPhoto(event: any){
     var file=event.target.files[0];
@@ -46,6 +54,7 @@ export class ProfileComponent implements OnInit {
       this.ImagePath=this.service.PhotoUrl+this.Image;
     })
   }
+
   closeClick(){
     this.ActivateAddEditAnsComp=false;
     this.getPostList();
@@ -77,8 +86,121 @@ export class ProfileComponent implements OnInit {
       return <any>new Date(b.date) - <any>new Date(a.date);
     });
   }
- 
+ getVote() {
+    this.service.getVote().subscribe((data) =>
+      this.VoteList=data);
+    }
+    
+    getPositiveLike(id:any){
+      this.VotePosList=this.VoteList.filter((res:any)=>{ return res.Positive==1&&res.post_id==id}),
+      console.log(this.VotePosList)
+    
+    return this.VotePosList.length;
+  }
+  getNegativeLike(id:any){
+    
+    this.VotePosList=this.VoteList.filter((res:any)=>{ return res.Negative==1&&res.post_id==id}),
+    console.log(this.VotePosList);
+    
+  return this.VotePosList;
+
+}
+getList(id:any){
+  this.ActivateModal= true;
+  this.ModalTitle="Like List"
+  this.voteduser=this.VoteList.filter((res:any)=>{return res.Positive==1&& res.post_id==id}),
+  console.log(this.voteduser);
   
+  return this.voteduser
+
+  
+  }
+  getdisList(id:any){
+    this.ActivatedisModal= true;
+    
+    this.voteddisuser=this.VoteList.filter((res:any)=>{return res.Negative==1&& res.post_id==id}),
+    console.log(this.voteddisuser);
+    
+    return this.voteddisuser
+    
+    }
+
+
+    getPositiveansLike(id:any){
+      this.VotePosList=this.VoteList.filter((res:any)=>{ return res.Positive==1&&res.ans_id==id}),
+      console.log(this.VotePosList);
+      
+    return this.VotePosList;
+
+  }
+  getNegativeansLike(id:any){
+    
+    this.VotePosList=this.VoteList.filter((res:any)=>{ return res.Negative==1&&res.ans_id==id}),
+    console.log(this.VotePosList);
+    
+  return this.VotePosList;
+
+}
+getansList(id:any){
+this.ActivateModal= true;
+
+this.voteduser=this.VoteList.filter((res:any)=>{return res.Positive==1&& res.ans_id==id}),
+console.log(this.voteduser);
+
+return this.voteduser
+
+}
+getdisansList(id:any){
+  this.ActivatedisModal= true;
+  
+  this.voteddisuser=this.VoteList.filter((res:any)=>{return res.Negative==1&& res.ans_id==id}),
+  console.log(this.voteddisuser);
+  
+  return this.voteddisuser
+  
+  }
+
+
+
+  addVotePositive(id:any){
+    var val = {
+     
+      user_id:this.user.user_id,
+      post_id:null,
+      Positive:1,
+      Negative:0,
+      ans_id:id,
+     
+
+    };
+    console.log(val);
+    this.service.addVote(val).subscribe(res => {
+      alert(res.toString());
+      this.getVote();
+      
+    });
+  
+     
+  }
+  addVoteNegative(id:any){
+    var val = {
+     
+      user_id:this.user.user_id,
+      ans_id:id,
+      Negative:1,
+      Positive:0,
+      post_id:null
+     
+
+    };
+    console.log(val);
+    this.service.addVote(val).subscribe(res => {
+      alert(res.toString());
+      this.getVote()
+    });
+  }
+
+
   editClick(item: any){
     this.post=item;
     this.ModalTitle="Edit Post";

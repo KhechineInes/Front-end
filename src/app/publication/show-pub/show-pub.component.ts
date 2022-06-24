@@ -10,7 +10,7 @@ import {SharedService } from 'src/app/services/shared.service';
 })
 
 export class ShowPubComponent implements OnInit {
-  PostList: any;
+  PostList: any=[]
   AnsList: any;
   UserList: User[] =[];
   CatList: Cat[]=[];
@@ -18,6 +18,13 @@ export class ShowPubComponent implements OnInit {
   pubId: any;
   ans: any;
   pub: any;
+  pk=0;
+  VoteId:any;
+  ActivateModal: boolean=false;
+  voteduserList:any=[];
+  voteduser:any=[];
+  voteddisuser: any=[];
+  ActivatedisModal: boolean=false;
   constructor(private service:SharedService) { }
  
   ModalTitle: string ="";
@@ -30,33 +37,68 @@ export class ShowPubComponent implements OnInit {
   PostListWithoutFilter:any=[];
   filePath: string="";
   Image: string ="";
-
-
+  VotePosList:any=[]
+  VotePosListData:any=[]
+  liked : number =0;
   ngOnInit(): void {
     
     this.user=JSON.parse(localStorage.getItem('currentUser')!);
-    this.refreshPubList();
-    this.filePath=this.service.PhotoUrl+this.pub;
-  
-  }
-  
-  
-
-
-
-
-  refreshPubList() {
-    this.service.getPostList().subscribe((data) => {
-      this.PostList=data,
-      console.log(this.PostList)}
-    );
+    this.refreshPostList();
     
+    this.filePath=this.service.PhotoUrl+this.pub;
+    this.getVote();
+    
+    
+
+    
+  }
+  getVote(){
+    this.service.getVote().subscribe((data) => {
+      this.VotePosListData=data
+         
+           }
+        )
+  }
+ 
+
+  getPositiveLike(id:any){
+      this.VotePosList=this.VotePosListData.filter((res:any)=>{ return res.Positive==1&&res.post_id==id}),
+      console.log(this.VotePosList);
+      
+    return this.VotePosList;
+
+  }
+  getNegativeLike(id:any){
+    
+    this.VotePosList=this.VotePosListData.filter((res:any)=>{ return res.Negative==1&&res.post_id==id}),
+    console.log(this.VotePosList);
+    
+  return this.VotePosList;
+
+}
+getList(id:any){
+this.ActivateModal= true;
+this.ModalTitle="Like List"
+this.voteduser=this.VotePosListData.filter((res:any)=>{return res.Positive==1&& res.post_id==id}),
+console.log(this.voteduser);
+
+return this.voteduser
+
+}
+getdisList(id:any){
+  this.ActivatedisModal= true;
+  
+  this.voteddisuser=this.VotePosListData.filter((res:any)=>{return res.Negative==1&& res.post_id==id}),
+  console.log(this.voteddisuser);
+  
+  return this.voteddisuser
+  
   }
   
   addClick(){
     this.ModalTitle="Add Post";
     this.ActivateAddEditPostComp=true;
-    this.refreshPubList();
+    this.refreshPostList();
 
   }
   
@@ -68,6 +110,8 @@ export class ShowPubComponent implements OnInit {
   }
   closeClick(){
     this.ActivateAddEditAnsComp=false;
+    this.ActivateModal=false;
+    this.ActivatedisModal=false;
     this.refreshPostList();
   }
   deleteClick(item : any){
@@ -120,7 +164,11 @@ ansClick(item:any){
   }
   refreshPostList(){
     this.service.getPostList().subscribe(data=>{
-      this.PostList=data;
+      this.PostList= data.sort((a:any, b:any) => {
+        return <any>new Date(b.date) - <any>new Date(a.date);
+      });
+      console.log(this.PostList,'eeeeee');
+      
       this.PostListWithoutFilter=data;
     });
   }
@@ -133,6 +181,40 @@ ansClick(item:any){
       this.pub=data.toString();
       this.filePath=this.service.PhotoUrl+this.pub;
     })
+  }
+  addVotePositivePoste(id:any){
+    var val = {
+     
+      user_id:this.user.user_id,
+      post_id:id,
+      Positive:1,
+     
+
+    };
+    console.log(val);
+    this.service.addVote(val).subscribe(res => {
+      alert(res.toString());
+      this.getVote();
+      this.liked=1;
+    });
+  
+     
+  }
+  addVoteNegativePoste(id:any){
+    var val = {
+     
+      user_id:this.user.user_id,
+      post_id:id,
+      Negative:1,
+      Positive:0
+     
+
+    };
+    console.log(val);
+    this.service.addVote(val).subscribe(res => {
+      alert(res.toString());
+      this.getVote()
+    });
   }
   get sortData() {
     return this.PostList.sort((a:any, b:any) => {
@@ -164,3 +246,4 @@ ansClick(item:any){
   
 
 }
+

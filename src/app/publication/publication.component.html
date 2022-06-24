@@ -88,6 +88,122 @@
               </div>
             </div>
             </div>
+            <div class="card-footer">
+              <div class="row">
+                <div class="col-9">
+                  <div class="stats">
+                    <tr>
+                      <td> <small> <button style="border:0px; background-color:transparent"
+                            (click)=" addVotePositive(ans.AnsId)" > <span class="fa-stack fa-fw stats-icon">
+                              <i class="fa fa-circle fa-stack-2x text-danger"></i>
+                              <i class="fa fa-heart fa-stack-1x fa-inverse t-plus-1"></i></span></button></small>
+                             
+                            
+                            
+                            
+                            </td>
+                      <td><small> <button style="border:0px; background-color:transparent"
+                            (click)=" addVoteNegative(ans.AnsId)"> <span class="fa-stack fa-fw stats-icon">
+                              <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                              <i class="fa fa-thumbs-down  fa-stack-1x fa-inverse"></i>
+      
+                            </span></button></small></td>
+                    </tr>
+                    <tr>
+                      <td><small> <button style="border:0px; background-color:transparent" (click)="getList(ans.AnsId)"
+                            data-toggle="modal" data-target="#likes" data-backdrop="static" data-keyboard="true">
+                            <span class="fa-stack fa-fw stats-icon">
+                              {{getPositiveLike(ans.AnsId).length}}</span></button></small>
+      
+      
+                        <div class="modal fade bd-example-modal-sm" id="likes" tabindex="-1" role="dialog"
+                          aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">{{voteduser.length}} likes <small>
+                                    <span class="fa-stack fa-fw stats-icon">
+                                      <i class="fa fa-circle fa-stack-2x text-danger"></i>
+                                      <i class="fa fa-heart fa-stack-1x fa-inverse t-plus-1"></i></span></small></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                  (click)="closeClick()">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+      
+                                <div *ngIf="ActivateModal">
+      
+                                  <table class="table table-borderless">
+                                    <tr *ngFor="let item of voteduser">
+                                      <td><span class="userimage"><img class="mr-3" width="50" height="50"
+                                            src="assets/img/blank_profile.png" class="avatar avatar-sm rounded-circle me-2"
+                                            alt="Generic placeholder image"></span>{{item.user_id.first_name}}
+                                        {{item.user_id.last_name}}</td>
+      
+                                    </tr>
+                                  </table>
+      
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+      
+      
+                      </td>
+                      <td>
+                        <small> <button style="border:0px; background-color:transparent" (click)="getdisList(ans.AnsId)"
+                            data-toggle="modal" data-target="#dislikes" data-backdrop="static" data-keyboard="true">
+      
+                            <span class="fa-stack fa-fw stats-icon">
+                              {{getNegativeLike(ans.AnsId).length}}</span></button></small>
+                        <div class="modal fade bd-example-modal-sm" id="dislikes" tabindex="-1" role="dialog"
+                          aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                          <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">{{voteddisuser.length}} dislikes
+                                  <span class="fa-stack fa-fw stats-icon">
+                                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                                    <i class="fa fa-thumbs-down  fa-stack-1x fa-inverse"></i>
+      
+                                  </span></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                  (click)="closeClick()">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+      
+                                <div *ngIf="ActivatedisModal">
+      
+                                  <table class="table table-borderless">
+                                    <tr *ngFor="let item of voteddisuser">
+                                      <td><span class="userimage"><img class="mr-3" width="50" height="50"
+                                            src="assets/img/blank_profile.png" class="avatar avatar-sm rounded-circle me-2"
+                                            alt="Generic placeholder image"></span>{{item.user_id.first_name}}
+                                        {{item.user_id.last_name}}</td>
+      
+                                    </tr>
+                                  </table>
+      
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+      
+      
+      
+      
+      
+      
+                  </div>
+                </div>
+            </div>
             
 
 
@@ -98,7 +214,7 @@
 
 </div>
 </div>
-
+</div>
           </tbody>
           <button type="button" class="btn btn-light mr-1" (click)="ansClick()" >
           Answer

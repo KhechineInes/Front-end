@@ -10,12 +10,12 @@ import { SharedService } from 'src/app/services/shared.service';
 export class ShowCatComponent implements OnInit {
 @Input() Cat:any
 
-  ansList: any;
-  PostList: any;
+  ansList: any=[];
+  PostList: any=[];
   ActivateAddEditPostComp: boolean= false;
   ActivateAddEditPosComp: boolean = false;
   ActivateAddEditAnsComp : boolean= false;
-  CatList: any;
+  CatList: any=[];
   ImagePath: string="";
  
 constructor(private service:SharedService) { }

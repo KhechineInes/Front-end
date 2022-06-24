@@ -16,7 +16,7 @@ ImagePath: string="";
 ModalTitle: string ="";
   ActivateAddEditCatComp:boolean=false;
   user: any;
-  PostList: any;
+  PostList: any=[];
   Image: string="";
   constructor(private service: SharedService , private router: Router) { }
 
@@ -33,7 +33,7 @@ ModalTitle: string ="";
       this.CatList=data
      
     );
-    this.ImagePath=this.service.PhotoUrl+this.cat.Image;
+    this.ImagePath=this.service.PhotoUrl+this.Image;
   
 }
   showClick(Item:any){

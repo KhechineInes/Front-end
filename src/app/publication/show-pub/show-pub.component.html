@@ -1,245 +1,334 @@
 <section id="hero" class="d-flex align-items-center">
-<app-header></app-header>
+  <app-header></app-header>
 
   <div class="container">
     <div class="card shadow border-2 mb-2">
-      <table class="table table-striped" >
-        
-          <tr>
-            <th>
-              <div class="d-flex flex-row">
-                <input [(ngModel)]="PostIdFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
+      <table class="table table-striped">
 
-                <button type="button" class="btn btn-light" (click)="sortResult('pubId',true)">
-                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down-square-fill"
-                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                      d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 5a.5.5 0 0 0-1 0v4.793L5.354 7.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 9.793V5z" />
-                  </svg>
-                </button>
+        <tr>
+          <th>
+            <div class="d-flex flex-row">
+              <input [(ngModel)]="PostIdFilter" class="form-control" (keyup)="FilterFn()" placeholder="Filter">
 
-                <button type="button" class="btn btn-light" (click)="sortResult('pubId',false)">
-                  <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up-square-fill"
-                    fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                      d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 8.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z" />
-                  </svg>
-                </button>
+              <button type="button" class="btn btn-light" (click)="sortResult('pubId',true)">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-down-square-fill"
+                  fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm6.5 5a.5.5 0 0 0-1 0v4.793L5.354 7.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 9.793V5z" />
+                </svg>
+              </button>
 
-              </div>
+              <button type="button" class="btn btn-light" (click)="sortResult('pubId',false)">
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-up-square-fill" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm3.354 8.354a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 6.207V11a.5.5 0 0 1-1 0V6.207L5.354 8.354z" />
+                </svg>
+              </button>
 
-
-            </th>
-            <th> </th>
-            <th> </th>
-            <th> </th>
-            <th></th>
-            <th></th>
+            </div>
 
 
-            <th>
-              <div class="d-flex flex-row"> <a href="addpost" class="btn">Add Post</a> </div>
-            </th>
-          </tr>
-        
+          </th>
+          <th> </th>
+          <th> </th>
+          <th> </th>
+          <th></th>
+          <th></th>
+
+
+          <th>
+            <div class="d-flex flex-row"> <a href="addpost" class="btn">Add Post</a> </div>
+          </th>
+        </tr>
+
       </table>
+    </div>
+    <div class="card shadow border-2 mb-3 " *ngFor="let dataItem of PostList">
+
+      <div class="card-header ">
+        <div class="row">
+
+          <div class="col">
+            <span class="userimage"><img class="mr-3" width="70" height="70" src="assets/img/blank_profile.png"
+                class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image"> {{dataItem.user.username}}
+            </span>
+            <span class="username"></span>
+          </div>
+
+          <div class="col-6"> </div>
+          <div class="col">
+            <td>
+              <span class="date"> {{dataItem.date | date: 'HH:mm , le dd/MM/yyyy' }}</span>
+            </td>
+          </div>
+
+        </div>
+
       </div>
-          <div class="card shadow border-2 mb-3 " *ngFor="let dataItem of sortData"  >
-            
-            <div class="card-header " >
-            <div class ="row">
-              
-              <div class="col"> 
-                <span class="userimage"><img class="mr-3" width="70" height="70"
-                 src="assets/img/blank_profile.png" class="avatar avatar-sm rounded-circle me-2"
-                  alt="Generic placeholder image" > {{dataItem.user.username}} </span>
-                  <span class="username"  ></span>
-                </div> 
-
-                  <div class="col-6">  </div> 
-                  <div class="col"><td>
-              <span class="date"> {{dataItem.date | date: 'HH:mm , le dd/MM/yyyy' }}</span></td>
-              </div>
-              
-              </div>
-            
-              </div>
-              <div class="card-body">
-              <div class="row"> 
-                <div class="col-9"> <td>
-                  <p><h5>{{dataItem.pubsubject}} </h5> 
-                  <div [innerHTML]="dataItem.pub"> </div>
-                 
-                  
-                  
-                </td>
-                </div>
-                <div class="col-1">
-                 <button type="button" class="btn btn-light mr-1" (click)="showClick(dataItem , user)" data-toggle="modal"
-                data-target="#show" data-keyboard="false">
-                Show
-                </button>
-                </div>
-                <div class="col-2">
-                <div *ngIf="dataItem.user.username == user.username" >
-                <div class="row">
-                  <div class="col-5">
-                
-                  <span><button type="button" class="btn" (click)="editClick(dataItem)" data-toggle="modal" data-target="#edit"
-                    data-backdrop="static" data-keyboard="true">
-                    <i class="bi bi-pencil-square"></i>
-                  </button>
-               
+      <div class="card-body">
+        <div class="row">
+          <div class="col-9">
+            <td>
+              <p>
+              <h5>{{dataItem.pubsubject}} </h5>
+              <div [innerHTML]="dataItem.pub"> </div>
 
 
-                  <!-------modal---------->
-                  <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                  aria-hidden="true">
-                  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-                    <div class="modal-content">
-                      <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel"></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeClick()">
-                          <span aria-hidden="true">&times;</span>
-                        </button>
-                      </div>
-                      <div class="modal-body">
-        
-                        <app-add-edit-pub [Post]="post"
-                        [ng]="'salut'"
-                         *ngIf="ActivateAddEditPostComp">
-        
-                        </app-add-edit-pub>
+
+            </td>
+          </div>
+          <div class="col-1">
+            <button type="button" class="btn btn-light mr-1" (click)="showClick(dataItem , user)" data-toggle="modal"
+              data-target="#show" data-keyboard="false">
+              Show
+            </button>
+          </div>
+          <div class="col-2">
+            <div *ngIf="dataItem.user.username == user.username">
+              <div class="row">
+                <div class="col-5">
+
+                  <span><button type="button" class="btn" (click)="editClick(dataItem)" data-toggle="modal"
+                      data-target="#edit" data-backdrop="static" data-keyboard="true">
+                      <i class="bi bi-pencil-square"></i>
+                    </button>
+
+
+
+                    <!-------modal---------->
+                    <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                      aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                              (click)="closeClick()">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+
+                            <app-add-edit-pub [Post]="post" [ng]="'salut'" *ngIf="ActivateAddEditPostComp">
+
+                            </app-add-edit-pub>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
+
+
+
+                  </span>
                 </div>
-              
-                 
-                 
-                 </span>
-                 </div>
-                 <div class="col-5">
-                  <button type="button" class="btn"  (click)="deleteClick(dataItem)">
+                <div class="col-5">
+                  <button type="button" class="btn" (click)="deleteClick(dataItem)">
                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor"
                       xmlns="http://www.w3.org/2000/svg">
                       <path fill-rule="evenodd"
                         d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z" />
                     </svg>
                   </button>
-                  </div>
-                </div>
-
-
-                
                 </div>
               </div>
-          </div>
-           
-               
-              
 
-            
-              
-            
 
-              
-             
-            
-           
-            <div class="modal fade" id="show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-              aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeClick1()">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    <app-publication [post]="post" 
-                                      
-                    *ngIf="ActivateAddEditPostComp">
 
-                    </app-publication>
-                    
-                  </div>
-                </div>
-              </div>
             </div>
-
-
-
-           
           </div>
-        
-          <div class="card-footer">
-            <div class="row">
-              <div class="col-9">
-                <div class="stats">
-                <small> <tr><span class="fa-stack fa-fw stats-icon">
-                     <i class="fa fa-circle fa-stack-2x text-danger"></i>
-                     <i class="fa fa-heart fa-stack-1x fa-inverse t-plus-1"></i>
-                  </span></tr><tr><span class="stats-total">6.5k</span></tr></small>
-                  
-                 <small> <tr><span class="fa-stack fa-fw stats-icon">
-                     <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                     <i class="fa fa-thumbs-up fa-stack-1x fa-inverse"></i>
-                     
-                  </span></tr><tr> <span class="stats-total">5.4k</span></tr></small>
-                 <small> <tr><span class="fa-stack fa-fw stats-icon">
-                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                    <i class="fa fa-thumbs-down  fa-stack-1x fa-inverse"></i>
-                  
-                 </span> </tr><tr> <span class="stats-total">4.6k</span></tr></small>
-                 <tr>
-                  
-                 
-                  
-                 </tr>
-                  
-               </div>
-              </div>
-              <div class="col">
-                <button type="button" class="btn btn-light mr-1" (click)="ansClick(dataItem)" data-toggle="modal" data-target="#ans"
-                data-backdrop="static" data-keyboard="true">
-                Answer
-              </button>
-              </div>
-            </div>
+        </div>
 
-           
-         
-  
-          <div class="modal fade" id="ans" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel"></h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeClick()">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-  
-                  <app-ans [post]="post" *ngIf="ActivateAddEditAnsComp">
-  
-                  </app-ans>
-                </div>
+
+
+
+
+
+
+
+
+
+
+
+        <div class="modal fade" id="show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeClick1()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <app-publication [post]="post" *ngIf="ActivateAddEditPostComp">
+
+                </app-publication>
+
               </div>
             </div>
           </div>
-</div>
+        </div>
 
+
+
+
+      </div>
+
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-9">
+            <div class="stats">
+              <tr>
+                <td> <small> <button style="border:0px; background-color:transparent"
+                      (click)=" addVotePositivePoste(dataItem.pubId)" > <span class="fa-stack fa-fw stats-icon">
+                        <i class="fa fa-circle fa-stack-2x text-danger"></i>
+                        <i class="fa fa-heart fa-stack-1x fa-inverse t-plus-1"></i></span></button></small>
+                       
+                      
+                      
+                      
+                      </td>
+                <td><small> <button style="border:0px; background-color:transparent"
+                      (click)=" addVoteNegativePoste(dataItem.pubId)"> <span class="fa-stack fa-fw stats-icon">
+                        <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                        <i class="fa fa-thumbs-down  fa-stack-1x fa-inverse"></i>
+
+                      </span></button></small></td>
+              </tr>
+              <tr>
+                <td><small> <button style="border:0px; background-color:transparent" (click)="getList(dataItem.pubId)"
+                      data-toggle="modal" data-target="#likes" data-backdrop="static" data-keyboard="true">
+                      <span class="fa-stack fa-fw stats-icon">
+                        {{getPositiveLike(dataItem.pubId).length}}</span></button></small>
+
+
+                  <div class="modal fade bd-example-modal-sm" id="likes" tabindex="-1" role="dialog"
+                    aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">{{voteduser.length}} likes <small>
+                              <span class="fa-stack fa-fw stats-icon">
+                                <i class="fa fa-circle fa-stack-2x text-danger"></i>
+                                <i class="fa fa-heart fa-stack-1x fa-inverse t-plus-1"></i></span></small></h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                            (click)="closeClick()">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+
+                          <div *ngIf="ActivateModal">
+
+                            <table class="table table-borderless">
+                              <tr *ngFor="let item of voteduser">
+                                <td><span class="userimage"><img class="mr-3" width="50" height="50"
+                                      src="assets/img/blank_profile.png" class="avatar avatar-sm rounded-circle me-2"
+                                      alt="Generic placeholder image"></span>{{item.user_id.first_name}}
+                                  {{item.user_id.last_name}}</td>
+
+                              </tr>
+                            </table>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </td>
+                <td>
+                  <small> <button style="border:0px; background-color:transparent" (click)="getdisList(dataItem.pubId)"
+                      data-toggle="modal" data-target="#dislikes" data-backdrop="static" data-keyboard="true">
+
+                      <span class="fa-stack fa-fw stats-icon">
+                        {{getNegativeLike(dataItem.pubId).length}}</span></button></small>
+                  <div class="modal fade bd-example-modal-sm" id="dislikes" tabindex="-1" role="dialog"
+                    aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">{{voteddisuser.length}} dislikes
+                            <span class="fa-stack fa-fw stats-icon">
+                              <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                              <i class="fa fa-thumbs-down  fa-stack-1x fa-inverse"></i>
+
+                            </span></h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                            (click)="closeClick()">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+
+                          <div *ngIf="ActivatedisModal">
+
+                            <table class="table table-borderless">
+                              <tr *ngFor="let item of voteddisuser">
+                                <td><span class="userimage"><img class="mr-3" width="50" height="50"
+                                      src="assets/img/blank_profile.png" class="avatar avatar-sm rounded-circle me-2"
+                                      alt="Generic placeholder image"></span>{{item.user_id.first_name}}
+                                  {{item.user_id.last_name}}</td>
+
+                              </tr>
+                            </table>
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+
+
+
+
+
+
+            </div>
           </div>
+          <div class="col">
+            <button type="button" class="btn btn-light mr-1" (click)="ansClick(dataItem)" data-toggle="modal"
+              data-target="#ans" data-backdrop="static" data-keyboard="true">
+              Answer
+            </button>
+          </div>
+        </div>
 
 
-        
 
-    
-  
-  
-</div>
+
+        <div class="modal fade" id="ans" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeClick()">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+
+                <app-ans [post]="post" *ngIf="ActivateAddEditAnsComp">
+
+                </app-ans>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+
+
+
+  </div>
 </section>

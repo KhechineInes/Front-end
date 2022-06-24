@@ -27,51 +27,54 @@ export class EditProfileComponent implements OnInit {
   account: any;
   owner: any;
   userlist: any;
+  id:any;
   constructor(private service: SharedService) { }
 
   ngOnInit(): void {
     this.user=JSON.parse(localStorage.getItem('currentUser')!);
-    this.MobileNumber=this.user.MobileNumber,
+   
     this.username=this.user.username,
     this.email=this.user.email,
     this.first_name=this.user.first_name,
     this.last_name=this.user.last_name,
-    this.Image=this.user.Image,
-    this.Education=this.user.Education,
+  
+    
     this.Function=this.user.Function,
-    this.Address=this.user.Address,
-    this.date_joined=this.user.date_joined,
-    this.last_login=this.user.last_login,
+   
+    
     console.log(this.user);
+    
+    
     this.ImagePath=this.service.PhotoUrl+this.Image;
+    
     this.getUser();
   }
 
 
   updateUser(){
     var val = {
-    
+    id:this.user.user_id,
     username:this.user.username,
     email:this.email,
     first_name:this.first_name,
     last_name:this.last_name,
     
+    account:{
+    id:this.id,
     Image:this.Image,
     Education:this.Education,
     Function:this.Function,
     Address:this.Address,
     MobileNumber:this.MobileNumber,
-  
-    date_joined:this.date_joined,
-    last_login:this.last_login,
-    owner:this.owner,
-    password:this.user.password,
+    account_id:this.user.user_id}
+    
+   
 
 
       
     };
     console.log(val);
-    this.service.updateUser(val).subscribe(res=>{
+    this.service.updateProfile(val).subscribe(res=>{
     alert(res.toString());
     localStorage.setItem("User", JSON.stringify(val));
     console.log(JSON.parse(localStorage.getItem('User')!)   )
@@ -98,6 +101,6 @@ export class EditProfileComponent implements OnInit {
       this.userlist=data.filter((res:any)=>res.id==this.user.user_id),
       console.log(this.userlist)}
     );
-    
+    this.ImagePath=this.service.PhotoUrl+this.user.Image;
   }
 }

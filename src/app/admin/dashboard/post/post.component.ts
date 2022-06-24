@@ -8,7 +8,7 @@ import { SharedService } from 'src/app/services/shared.service';
   styleUrls: ['./post.component.css']
 })
 export class PostComponent implements OnInit {
-  PostList:any;
+  PostList:any=[];
   AnsList: Answer[] = [];
   UserList: User[]=[];
   CatList: Cat[]=[];

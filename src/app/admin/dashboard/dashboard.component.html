@@ -7,7 +7,7 @@
               style="max-height: 65px; width:200px"></small></a>
       </li>
       <li class=" flex-column mb-3 "> <a href="admin/dashboard" class="nav-link active py-3 border-bottom" style="background-color: #5777ba; 
-         color: #fff; "> <i class="bi bi-house"></i> Dashboard
+         color: #fff; "> <i class="bi bi-house"></i>  <button style=" border:0px; background-color:transparent ; color :currentcolor">Dashboard</button>
         </a> </li>
 
 
@@ -17,7 +17,7 @@
         <div *ngIf="pos != 'user'"><a class="nav-link   py-3 border-bottom scrollto" (click)="userClick()">
 
             <small><i class="bi bi-people"></i>
-              Users </small>
+              <button style=" border:0px; background-color:transparent ; color :currentcolor"> Users </button></small>
             </a> </div>
         <div *ngIf="pos =='user'">
           <a class="nav-link scrollto py-3 border-bottom" style="background-color:#7790d64d; "><i
@@ -30,13 +30,13 @@
       <li class="flex-column mb-3">
         <div *ngIf="pos !='cat'">
           <a class="nav-link scrollto py-3 border-bottom" (click)="catClick()"> <small><i class="fa-brands fa-buffer" >
-              </i>    categories</small></a>
+              </i>   <button style=" border:0px; background-color:transparent ; color :currentcolor"> categories</button></small></a>
         </div>
 
         <div *ngIf="pos =='cat'">
 
           <a class="nav-link scrollto py-3 border-bottom" style="background-color:#7790d64d; "><i class="fa-brands fa-buffer" >
-            </i>    categories </a>
+            </i>    categories</a>
         </div>
 
       </li>
@@ -47,7 +47,7 @@
 
           <a (click)="statClick()" class="nav-link scrollto py-3 mb-4 border-bottom"> <small><i
                 class="bi bi-list"></i>
-              Posts
+                <button style=" border:0px; background-color:transparent ; color :currentcolor"> Posts</button>
             </small></a>
         </div>
         <div *ngIf="pos =='stat'">
