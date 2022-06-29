@@ -35,7 +35,9 @@
               "src/assets/vendor/bootstrap-icons/bootstrap-icons.css", 
               "src/assets/vendor/boxicons/css/boxicons.min.css" ,
               "src/assets/vendor/glightbox/css/glightbox.min.css", 
-              "src/assets/vendor/swiper/swiper-bundle.min.css" 
+              "src/assets/vendor/swiper/swiper-bundle.min.css" ,
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "src/styles.css"
          
               
             ],

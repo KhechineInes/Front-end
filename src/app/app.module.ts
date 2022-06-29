@@ -36,11 +36,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { FirstchartComponent } from './admin/dashboard/charts/firstchart/firstchart.component'; 
 
-import{ HighchartsChartModule } from 'highcharts-angular'
+
 
 
 import { AngularEditorModule } from '@kolkov/angular-editor';
+import { NgChartsModule } from 'ng2-charts';
 
+import { DoughnutChartComponent } from './admin/dashboard/charts/doughnut-chart/doughnut-chart.component';
+import { BarchartComponent } from './admin/dashboard/charts/barchart/barchart.component';
 
 
 
@@ -80,6 +83,8 @@ const appRoutes: Routes = [
          StatisticComponent,
          PostComponent,
          FirstchartComponent,
+         DoughnutChartComponent,
+         BarchartComponent,
         
          
   
@@ -98,9 +103,10 @@ const appRoutes: Routes = [
       { enableTracing: true } 
     ),
 
-    HighchartsChartModule,
-    AngularEditorModule 
-   
+    
+    AngularEditorModule ,
+    NgChartsModule,
+  
     
     
    

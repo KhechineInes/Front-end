@@ -24,7 +24,7 @@ export class PublicationComponent implements OnInit {
  
   ans:any
   list :Post[] =[];
-  pubId:number =0;
+  pbId:number =0;
   pub:string="";
   pubsubject:string=""
   UserName:string="";
@@ -34,13 +34,13 @@ export class PublicationComponent implements OnInit {
   user:any;
   ngOnInit(): void {
     this.user=JSON.parse(localStorage.getItem('currentUser')!);
-    this.pubId=this.post.pubId;
+    this.pbId=this.post.pubId;
     this.pub=this.post.pub;
     this.pubsubject=this.post.pubSubject;
     this.UserName=this.UserName;
     this.UserLastName=this.UserLastName;
     this.getVote();
-console.log(this.pubId);
+console.log(this.pbId);
    this.refreshAnsList();
     
       }
@@ -60,16 +60,16 @@ console.log(this.pubId);
             )
       }
       getPositiveLike(id:any){
-        this.VotePosList=this.VotePosListData.filter((res:any)=>{ return res.Positive==1&&res.ans_id==id}),
-        console.log(this.VotePosList);
+        this.VotePosList=this.VotePosListData.filter((res:any)=>{ return res.Positive==1&&res.ans_id==id});
+        
         
       return this.VotePosList;
   
     }
     getNegativeLike(id:any){
       
-      this.VotePosList=this.VotePosListData.filter((res:any)=>{ return res.Negative==1&&res.ans_id==id}),
-      console.log(this.VotePosList);
+      this.VotePosList=this.VotePosListData.filter((res:any)=>{ return res.Negative==1&&res.ans_id==id});
+    
       
     return this.VotePosList;
   
@@ -77,8 +77,8 @@ console.log(this.pubId);
   getList(id:any){
   this.ActivateModal= true;
   
-  this.voteduser=this.VotePosListData.filter((res:any)=>{return res.Positive==1&& res.ans_id==id}),
-  console.log(this.voteduser);
+  this.voteduser=this.VotePosListData.filter((res:any)=>{return res.Positive==1&& res.ans_id==id});
+  
   
   return this.voteduser
   
@@ -86,8 +86,8 @@ console.log(this.pubId);
   getdisList(id:any){
     this.ActivatedisModal= true;
     
-    this.voteddisuser=this.VotePosListData.filter((res:any)=>{return res.Negative==1&& res.ans_id==id}),
-    console.log(this.voteddisuser);
+    this.voteddisuser=this.VotePosListData.filter((res:any)=>{return res.Negative==1&& res.ans_id==id});
+    
     
     return this.voteddisuser
     
@@ -162,6 +162,17 @@ closeClick(){
     })
     
   }
+}
+validateAns(item:any){
+  var val={
+    AnsId:item,
+    validated:true
+
+  }
+  this.service.validateAns(val).subscribe(data=>{
+    alert(data.toString());
+    this.refreshAnsList();
+  })
 }
     
  

@@ -1,44 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import * as Highcharts from 'highcharts';
-declare var require: any;
+
+import { ChartData, ChartOptions } from 'chart.js';
+
 @Component({
   selector: 'app-firstchart',
   templateUrl: './firstchart.component.html',
   styleUrls: ['./firstchart.component.css']
 })
-export class FirstchartComponent implements OnInit {
+export class FirstchartComponent {
   
-  public options: any = {
-    Chart: {
-      type: 'area',
-      height: 700
-    },
-    title: {
-      text: 'Developpers'
-    },
-    credits: {
-      enabled: false
-    },
-    xAxis: {
-      categories: ['1750', '1800', '1850', '1900', '1950', '1999', '2050'],
-      tickmarkPlacement: 'on',
+  salesData: ChartData<'line'> = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+    datasets: [
+      { label: 'Mobiles', data: [1000, 1200, 1050, 2000, 500], tension: 0.5 ,borderColor:[" #F71E8A","#7293DB"," #F7D568"]},
+      { label: 'Laptop', data: [200, 100, 400, 50, 90], tension: 0.5 },
+      { label: 'AC', data: [500, 400, 350, 450, 650], tension: 0.5 },
+     
+     
+    ],
+    
+  };
+  
+    
+  chartOptions: ChartOptions = {
+    responsive: true,
+    plugins: {
       title: {
-          enabled: false
-      }
-  },
-    series: [{
-      name: 'Front-end',
-      data: [502, 635, 809, 947, 1402, 3634, 5268]
-  }, {
-      name: 'Back-end',
-      data: [163, 203, 276, 408, 547, 729, 628]
-  }, {
-      name: 'Designers',
-      data: [18, 31, 54, 156, 339, 818, 1201]
-  }]
-  }
-  constructor() { }
-  ngOnInit() {
-    Highcharts.chart('container', this.options);
-  }
+        display: true,
+        text: 'Monthly Sales Data',
+      },
+    },
+    
+  };
 }

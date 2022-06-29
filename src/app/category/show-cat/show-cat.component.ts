@@ -17,6 +17,7 @@ export class ShowCatComponent implements OnInit {
   ActivateAddEditAnsComp : boolean= false;
   CatList: any=[];
   ImagePath: string="";
+  pubId: any;
  
 constructor(private service:SharedService) { }
  post : any;
@@ -30,7 +31,7 @@ constructor(private service:SharedService) { }
   CatLanguage: string = "";
   AdminId: number = 0;
   Image: string = "";
- 
+ pub:any;
 
 
 
@@ -41,7 +42,7 @@ constructor(private service:SharedService) { }
     this.CatFramework=this.Cat.CatFramework;
     this.CatLanguage=this.Cat.CatLanguage;
     this.ImagePath=this.service.PhotoUrl+this.Image;
-   
+   console.log(this.CatId)
    
     this.refreshPubList()
    this.refreshAnsList();
@@ -82,7 +83,7 @@ constructor(private service:SharedService) { }
 
   }
   ansClick(data:any){
-    this.post=data;
+    this.pubId=data;
     this.ActivateAddEditAnsComp=true;
   }
   
@@ -91,9 +92,9 @@ constructor(private service:SharedService) { }
     if(confirm('Are you sure??')){
       this.service.deleteAns(item.AnsId).subscribe(data=>{
         alert(data.toString());
-        
+        this.refreshAnsList();
       })
-      this.refreshAnsList();
+     
     }
   }
   deletePostClick(item:any){

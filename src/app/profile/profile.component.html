@@ -266,9 +266,11 @@
                                                                <span class="text-bold"> {{ans.user.username}} </span>
 
                                                             </div>
-                                                            <div class="col-6">        </div>
-                                                            <div class="col">{{ans.date | date: 'HH:mm , le dd/MM/yyyy' }}</div>
-
+                                                            
+                                                            <div class="col-4">{{ans.date | date: 'HH:mm , le dd/MM/yyyy' }}</div>
+                                                            <div class="col"*ngIf="ans.validated==true">  
+                    
+                                                               <i style="color:green;"class="fa-solid fa-check"></i></div>
                                                          </div>
                                                       </div>
 
@@ -405,6 +407,9 @@
                                                  
                                                              </div>
                                                            </div>
+                                                           <div class="col" *ngIf="ans.validated==false">  
+                    
+                                                            <button class="btn" (click)="validateAns(ans.AnsId)">  <i class="fa-solid fa-check"  ></i></button></div>
                                                        </div>
                                                        
                                            

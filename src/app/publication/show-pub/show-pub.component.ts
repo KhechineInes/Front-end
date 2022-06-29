@@ -62,16 +62,16 @@ export class ShowPubComponent implements OnInit {
  
 
   getPositiveLike(id:any){
-      this.VotePosList=this.VotePosListData.filter((res:any)=>{ return res.Positive==1&&res.post_id==id}),
-      console.log(this.VotePosList);
+      this.VotePosList=this.VotePosListData.filter((res:any)=>{ return res.Positive==1&&res.post_id==id});
+      
       
     return this.VotePosList;
 
   }
   getNegativeLike(id:any){
     
-    this.VotePosList=this.VotePosListData.filter((res:any)=>{ return res.Negative==1&&res.post_id==id}),
-    console.log(this.VotePosList);
+    this.VotePosList=this.VotePosListData.filter((res:any)=>{ return res.Negative==1&&res.post_id==id});
+    
     
   return this.VotePosList;
 
@@ -79,8 +79,8 @@ export class ShowPubComponent implements OnInit {
 getList(id:any){
 this.ActivateModal= true;
 this.ModalTitle="Like List"
-this.voteduser=this.VotePosListData.filter((res:any)=>{return res.Positive==1&& res.post_id==id}),
-console.log(this.voteduser);
+this.voteduser=this.VotePosListData.filter((res:any)=>{return res.Positive==1&& res.post_id==id})
+;
 
 return this.voteduser
 
@@ -88,8 +88,8 @@ return this.voteduser
 getdisList(id:any){
   this.ActivatedisModal= true;
   
-  this.voteddisuser=this.VotePosListData.filter((res:any)=>{return res.Negative==1&& res.post_id==id}),
-  console.log(this.voteddisuser);
+  this.voteddisuser=this.VotePosListData.filter((res:any)=>{return res.Negative==1&& res.post_id==id})
+  ;
   
   return this.voteddisuser
   
@@ -130,7 +130,7 @@ getdisList(id:any){
   }
   showClick(item:any,user:any) {
     this.GetOnePost(item,user);
-    console.log(item);
+    
     this.refreshAnsList();
     
    
@@ -140,7 +140,7 @@ getdisList(id:any){
       this.post=data
       this.user=user
   
-  console.log(data,'data');
+  
   
   
   
@@ -167,7 +167,7 @@ ansClick(item:any){
       this.PostList= data.sort((a:any, b:any) => {
         return <any>new Date(b.date) - <any>new Date(a.date);
       });
-      console.log(this.PostList,'eeeeee');
+     
       
       this.PostListWithoutFilter=data;
     });
@@ -191,7 +191,7 @@ ansClick(item:any){
      
 
     };
-    console.log(val);
+    
     this.service.addVote(val).subscribe(res => {
       alert(res.toString());
       this.getVote();
@@ -210,7 +210,7 @@ ansClick(item:any){
      
 
     };
-    console.log(val);
+    
     this.service.addVote(val).subscribe(res => {
       alert(res.toString());
       this.getVote()

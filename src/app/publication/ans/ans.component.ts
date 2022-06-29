@@ -50,7 +50,7 @@ config: AngularEditorConfig = {
   pub_id : number =0;
   user:any;
   ngOnInit() {
-    
+   
   }
   addAns(){
     this.user=JSON.parse(localStorage.getItem('currentUser')!);
@@ -58,8 +58,10 @@ config: AngularEditorConfig = {
                Ans:this.Ans,
                date:this.date,
                user:this.user.user_id,
-               pub_id:this.post.pubId
+               pub_id:this.post.pubId,
+               validated:false
                };
+               console.log(val , 'answer');
     this.service.addAns(val).subscribe(res=>{
       alert(res.toString());
       

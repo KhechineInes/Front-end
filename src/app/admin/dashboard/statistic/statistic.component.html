@@ -12,9 +12,10 @@
           <div class="card border mb-2"
             style="background: linear-gradient(to bottom right,rgb(236, 81, 200) ,  #FF0080);width:300px">
             <h5 align="center" style="color : white;"> Number of back-end developpers</h5>
-            <p align="center" style="color : white;">{{userList.length}}</p>
+            <p align="center" style="color : white;">{{back.length}}</p>
             <div class="card-footer">
-              <td><button class="nav-link" style="color :white; border:0px; background-color:transparent">View details</button></td>
+              <td><button class="nav-link" style="color :white; border:0px; background-color:transparent"
+                  (click)="nbBack()">View details</button></td>
               <td><i class="fa-solid fa-gears" style="color:white; font-size:44px; font-weight:bold"></i></td>
             </div>
 
@@ -24,9 +25,10 @@
           <div class="card border mb-2"
             style="background: linear-gradient(to bottom right,#5777ba, #B5A6F5); width:300px ">
             <h5 align="center" style="color : white;"> Number of Front developpers</h5>
-            <p align="center" style="color : white;">50</p>
+            <p align="center" style="color : white;">{{Front.length}}</p>
             <div class="card-footer">
-              <td><button class="nav-link" style="color : white; border:0px; background-color:transparent">View details</button></td>
+              <td><button class="nav-link" style="color : white; border:0px; background-color:transparent"
+                  (click)="nbFront()">View details</button></td>
               <td><i class="fa-solid fa-laptop-code" style="color:white; font-size:44px; font-weight:bold"></i></td>
             </div>
           </div>
@@ -35,9 +37,10 @@
           <div class="card border mb-2"
             style="background: linear-gradient(to bottom right,#5777ba, rgb(255, 31, 203) );width:300px">
             <h5 align="center" style="color : white;"> Number of Designers </h5>
-            <p align="center" style="color : white;">50</p>
+            <p align="center" style="color : white;">{{Designer.length}} </p>
             <div class="card-footer">
-              <td><button class="nav-link" style="color : white; border:0px; background-color:transparent">View details</button>
+              <td><button class="nav-link" style="color : white; border:0px; background-color:transparent"
+                  (click)="nbDesign()">View details</button>
               </td>
               <td><i class="fa-solid fa-wand-magic-sparkles" style="color:white; font-size:44px; font-weight:bold"></i>
               </td>
@@ -55,7 +58,8 @@
               {{CatList.length}}
             </p>
             <div class="card-footer">
-              <td> <button class="nav-link" style="color : white;border:0px; background-color:transparent" (click)="nbCat()">View details</button></td>
+              <td> <button class="nav-link" style="color : white;border:0px; background-color:transparent"
+                  (click)="nbCat()">View details</button></td>
               <td>
 
 
@@ -72,7 +76,8 @@
               {{PostList.length}}
             </p>
             <div class="card-footer">
-              <td><button class="nav-link" style="color : white;border:0px; background-color:transparent" (click)="nbPost()">View details</button></td>
+              <td><button class="nav-link" style="color : white;border:0px; background-color:transparent"
+                  (click)="nbPost()">View details</button></td>
               <td><i class="fa-solid fa-bars" style="color:white; font-size:44px; font-weight:bold"></i></td>
             </div>
           </div>
@@ -84,7 +89,8 @@
             <p align="center" style="color : white;">{{ansList.length}}</p>
             <div class="card-footer">
               <td>
-                <button style="border:0px; background-color:transparent;color : white;"class="nav-link" (click)="nbAnswers()">View details </button>
+                <button style="border:0px; background-color:transparent;color : white;" class="nav-link"
+                  (click)="nbAnswers()">View details </button>
               </td>
 
               <td>
@@ -100,10 +106,14 @@
       </div>
     </div>
     <div class="col">
-      <div class="card border mb-2" style="background: linear-gradient(to bottom right, #5777ba, #B5A6F5);height:350px">
-        
-          <h5 style="color :white" align="center"> Number of visit</h5>
-       
+      <div class="card border mb-2"
+        style="background: linear-gradient(to bottom left, #25468D, #fff,#fff);height:350px">
+
+        <h5 style="color :white" align="center"> Number of visit</h5>
+        <div style="width:300px ; text-align:center">
+
+          <app-doughnut-chart></app-doughnut-chart>
+        </div>
       </div>
     </div>
   </div>
@@ -116,9 +126,9 @@
   <div class="row">
     <div class="col">
       <div class="card">
-
-        <highcharts-chart *ngIf="chartOptions" [Highcharts]="Highcharts" [options]="chartOptions">
-        </highcharts-chart>
+        <div style="height:50%">
+          <app-barchart></app-barchart>
+        </div>
       </div>
     </div>
     <div class="col border mb-2">
@@ -147,79 +157,79 @@
       <h5 style="color :rgb(236, 81, 200)"> Aujourd'hui {{myDate| date : " le dd/MM/YYYY à HH:MM"}}</h5>
     </div>
 
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">Recent Posts List</h5>
+        </div>
+        <table class="table table-hover table">
+
+          <tbody>
+
+            <tr *ngFor="let item of sortData">
+
+
+
+              <td *ngIf="dateDiff(myDate,item.date)<1">
+
+                <img class="mr-3" width="50" height="50" src="assets/img/blank_profile.png"
+                  class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
+                {{item.user.username}}
+              </td>
+              <td *ngIf="dateDiff(myDate,item.date)<1">Added a New Post </td>
+              <td *ngIf="dateDiff(myDate,item.date)<1">
+                <div [innerHTML]="item.pub"></div>
+              </td>
+              <td *ngIf="dateDiff(myDate,item.date)<1">{{item.date | date: 'HH:mm , le dd/MM/yyyy' }}</td>
+
+
+
+
+            </tr>
+
+
+          </tbody>
+
+        </table>
+      </div>
     </div>
-      <div class="row">
-        <div class="col">
-          <div class="card">
-            <div class="card-header">
-              <h5 class="mb-0">Recent Posts List</h5>
-            </div>
-          <table class="table table-hover table"  >
-            
-            <tbody>
-              
-              <tr *ngFor="let item of sortData" >
-
-              
-
-                  <td *ngIf="dateDiff(myDate,item.date)<1">
-
-                    <img class="mr-3" width="50" height="50" src="assets/img/blank_profile.png"
-                      class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
-                    {{item.user.username}}
-                  </td>
-                  <td *ngIf="dateDiff(myDate,item.date)<1">Added a New Post </td>
-                  <td *ngIf="dateDiff(myDate,item.date)<1">
-                    <div [innerHTML]="item.pub"></div>
-                  </td>
-                  <td *ngIf="dateDiff(myDate,item.date)<1">{{item.date | date: 'HH:mm , le dd/MM/yyyy' }}</td>
-                
-                
-
-
-</tr>
-
-
-            </tbody>
-
-          </table>
-          </div>
+    <div class="col">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">Recent Answers List</h5>
         </div>
-        <div class="col">
-          <div class="card">
-            <div class="card-header">
-              <h5 class="mb-0">Recent Answers List</h5>
-            </div>
-          <table class="table table-hover table" >
-            <tbody>
-              
-            
+        <table class="table table-hover table">
+          <tbody>
 
 
-              <tr *ngFor="let ans of sortDataAns">
-
-                
-                  <td *ngIf="dateDiff(myDate,ans.date)<1">
-                    <img class="mr-3" width="50" height="50" src="assets/img/blank_profile.png"
-                      class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
-                    {{ans.user.username}}
-                  </td>
-                  <td *ngIf="dateDiff(myDate,ans.date)<1">Added a New Answer </td>
-                  <td *ngIf="dateDiff(myDate,ans.date)<1">
-                    <div [innerHTML]="ans.Ans"></div>
-                  </td>
-                  <td *ngIf="dateDiff(myDate,ans.date)<1">{{ans.date | date: 'HH:mm , le dd/MM/yyyy' }}</td>
-               
-              </tr>
 
 
-            </tbody>
+            <tr *ngFor="let ans of sortDataAns">
 
-          </table>
-        </div>
+
+              <td *ngIf="dateDiff(myDate,ans.date)<1">
+                <img class="mr-3" width="50" height="50" src="assets/img/blank_profile.png"
+                  class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
+                {{ans.user.username}}
+              </td>
+              <td *ngIf="dateDiff(myDate,ans.date)<1">Added a New Answer </td>
+              <td *ngIf="dateDiff(myDate,ans.date)<1">
+                <div [innerHTML]="ans.Ans"></div>
+              </td>
+              <td *ngIf="dateDiff(myDate,ans.date)<1">{{ans.date | date: 'HH:mm , le dd/MM/yyyy' }}</td>
+
+            </tr>
+
+
+          </tbody>
+
+        </table>
       </div>
     </div>
   </div>
+</div>
 
 <div *ngIf="link == 'cat'">
   <span class="font-weight-bold"> <button class="btn" (click)="anal()"><i
@@ -227,10 +237,14 @@
   <app-cat></app-cat>
 </div>
 <div *ngIf="link == 'post'">
- <span class="font-weight-bold"> <button class="btn" (click)="anal()"><i
+  <span class="font-weight-bold"> <button class="btn" (click)="anal()"><i
         class="bi bi-arrow-bar-left"></i></button></span>
   <app-post></app-post>
 </div>
+
+
+
+
 <div *ngIf="link == 'ans'">
 
   <span class="font-weight-bold"> <button class="btn" (click)="anal()"><i
@@ -287,6 +301,183 @@
 
 
 
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+</div>
+<div *ngIf="link == 'back'">
+
+  <span class="font-weight-bold"> <button class="btn" (click)="anal()"><i
+        class="bi bi-arrow-bar-left"></i></button></span>
+  <div class="container ">
+    <div class="card  mb-7" style="width:1250px">
+
+      <div class="card-header">
+        <h5 class="mb-0">Back-end developpers</h5>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-hover table-nowrap">
+          <thead class="thead-light">
+            <tr>
+
+
+              <th>User</th>
+              <th>E-mail</th>
+
+              <th>Inscrit le</th>
+
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let user of back ">
+              <td>
+                <li class="media">
+                  {{user.username}}
+
+
+
+
+                </li>
+                <img class="mr-3" width="50" height="50" src="assets/img/blank_profile.png"
+                  class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
+              </td>
+              <td>
+                {{user.email}}
+
+              </td>
+
+              <td>
+                {{user.date_joined | date: ' dd/MM/yyyy'}}
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+</div>
+<div *ngIf="link == 'Front'">
+
+  <span class="font-weight-bold"> <button class="btn" (click)="anal()"><i
+        class="bi bi-arrow-bar-left"></i></button></span>
+  <div class="container ">
+    <div class="card  mb-7" style="width:1250px">
+
+      <div class="card-header">
+        <h5 class="mb-0">Front-end developpers</h5>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-hover table-nowrap">
+          <thead class="thead-light">
+            <tr>
+
+
+              <th>User</th>
+              <th>E-mail</th>
+
+              <th>Inscrit le</th>
+
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let user of Front ">
+              <td>
+                <li class="media">
+                  {{user.username}}
+
+
+
+
+                </li>
+                <img class="mr-3" width="50" height="50" src="assets/img/blank_profile.png"
+                  class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
+              </td>
+              <td>
+                {{user.email}}
+
+              </td>
+
+              <td>
+                {{user.date_joined | date: ' dd/MM/yyyy'}}
+              </td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+
+
+
+
+</div>
+<div *ngIf="link == 'des'">
+
+  <span class="font-weight-bold"> <button class="btn" (click)="anal()"><i
+        class="bi bi-arrow-bar-left"></i></button></span>
+  <div class="container ">
+    <div class="card  mb-7" style="width:1250px">
+
+      <div class="card-header">
+        <h5 class="mb-0">Designers</h5>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-hover table-nowrap">
+          <thead class="thead-light">
+            <tr>
+
+
+              <th>User</th>
+              <th>E-mail</th>
+
+              <th>Inscrit le</th>
+
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let user of Designer ">
+              <td>
+                <li class="media">
+                  {{user.username}}
+
+
+
+
+                </li>
+                <img class="mr-3" width="50" height="50" src="assets/img/blank_profile.png"
+                  class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
+              </td>
+              <td>
+                {{user.email}}
+
+              </td>
+
+              <td>
+                {{user.date_joined | date: ' dd/MM/yyyy'}}
+              </td>
             </tr>
           </tbody>
 

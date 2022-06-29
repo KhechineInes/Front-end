@@ -3,7 +3,7 @@ import { Cat, Post } from 'src/app/model';
 import { SharedService } from 'src/app/services/shared.service';
 import { DatePipe } from '@angular/common';
 import { Pipe, PipeTransform } from '@angular/core';
-import * as Highcharts from 'highcharts';
+
 
 
 
@@ -13,7 +13,7 @@ import * as Highcharts from 'highcharts';
   styleUrls: ['./statistic.component.css']
 })
 export class StatisticComponent implements OnInit {
-  Highcharts: typeof Highcharts = Highcharts;
+
  
   departments=[]
   count=[]
@@ -23,20 +23,10 @@ export class StatisticComponent implements OnInit {
   userList: any[]=[];
   actList:any[]=[];
   myDate : any = new Date();
-  public chartOptions :any = {
-    xAxis: {
-      categories: ['1750', '1800', '1850', '1900', '1950', '1999', '2050'],
-     
-      },
-      series: [{
-      name: 'Front-end',
-      data: [502, 635, 809, 947, 1402, 3634, 5268]
-  }],
-  chart: {
-    type: "bar",
-    color: "black",
-  },
-  }
+  back: any=[];
+  Front: any=[];
+  Designer: any=[];
+  
   constructor(private service: SharedService , ) {
     
    }
@@ -51,7 +41,7 @@ export class StatisticComponent implements OnInit {
    var date = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
    console.log(this.myDate);
    this.myDate=this.myDate;
-   Highcharts.chart('content', this.chartOptions);
+  
    
    
   }
@@ -70,6 +60,15 @@ export class StatisticComponent implements OnInit {
   }
   nbPost(){
     this.link='post';
+  }
+  nbBack(){
+    this.link='back';
+  }
+  nbFront(){
+    this.link="Front";
+  }
+  nbDesign(){
+    this.link="des";
   }
   anal(){
     this.link='';
@@ -154,8 +153,12 @@ return diffday;
   }
   
   refreshUserList() {
-    this.service.getUserList().subscribe((data =>
-      this.userList = data));
+    this.service.getUserList().subscribe((data =>{
+      this.userList = data;
+      this.back=this.userList.filter((res:any)=>{ return res.account.Function=="Back-end"});
+      this.Front=this.userList.filter((res:any)=>{ return res.account.Function=="Front-end"});
+      this.Designer=this.userList.filter((res:any)=>{ return res.account.Function=="Designer"});
+    }));
 
     
 

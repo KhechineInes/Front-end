@@ -141,6 +141,17 @@ getList(id:any){
   return this.VotePosList;
 
 }
+validateAns(item:any){
+  var val={
+    AnsId:item,
+    validated:true
+
+  }
+  this.service.validateAns(val).subscribe(data=>{
+    alert(data.toString());
+    this.refreshAnsList();
+  })
+}
 getansList(id:any){
 this.ActivateModal= true;
 
