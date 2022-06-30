@@ -27,7 +27,7 @@ export class StatisticComponent implements OnInit {
   Front: any=[];
   Designer: any=[];
   
-  constructor(private service: SharedService , ) {
+  constructor(private service: SharedService ) {
     
    }
   link:string ="";

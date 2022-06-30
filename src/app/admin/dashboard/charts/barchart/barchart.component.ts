@@ -23,7 +23,7 @@ export class BarchartComponent {
   }
   ngOnInit() {
 this.refreshPubList();
-this.refreshAnsList();
+
 this.refreshUserList();
 console.log(this.userlist,'kkkkkkkkkkkk');
 Chart.register(...registerables);
@@ -35,23 +35,10 @@ console.log(this.anslist,'answers')
     this.service.getPostList().subscribe((data) => 
       this.postList=data,
       
-      
-
-
-      
     );
     
   }
-  refreshAnsList() {
-    this.service.getAnsList().subscribe(data=>{
-      this.anslist=data;
-      this.anslist.push(data);
-      
-
-      
-    
-    });
-  }
+  
   names:string[]=[]
   salesData:ChartData[]=[];
   async refreshUserList() {
