@@ -30,7 +30,7 @@ export class DoughnutChartComponent{
         data:{
           labels:["Back" , "Front" , "Designer"],
           datasets: [
-            {  data: [this.back.length,this.Front.length, this.Designer.length] , backgroundColor:["#F71E8A" ,"#7293DB"," #F7D568" ]},
+            {  data: [this.back.length,this.Front.length, this.Designer.length] , backgroundColor:["#F71E8A" ,"#7293DB"," #F3DE9B" ]},
            
            
            

@@ -12,7 +12,7 @@ export class FirstchartComponent {
   salesData: ChartData<'line'> = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
     datasets: [
-      { label: 'Mobiles', data: [1000, 1200, 1050, 2000, 500], tension: 0.5 ,borderColor:[" #F71E8A","#7293DB"," #F7D568"]},
+      { label: 'Mobiles', data: [1000, 1200, 1050, 2000, 500], tension: 0.5 ,borderColor:[" #F71E8A","#7293DB"," #F3DE9B"]},
       { label: 'Laptop', data: [200, 100, 400, 50, 90], tension: 0.5 },
       { label: 'AC', data: [500, 400, 350, 450, 650], tension: 0.5 },
      
@@ -21,7 +21,7 @@ export class FirstchartComponent {
     
   };
   
-    
+  
   chartOptions: ChartOptions = {
     responsive: true,
     plugins: {
