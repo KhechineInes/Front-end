@@ -3,6 +3,7 @@ import { SharedService } from 'src/app/services/shared.service';
 import { Post, Pub } from 'src/app/model';
 import { AbstractControl, FormControl, FormGroup } from '@angular/forms';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
+import { Router } from '@angular/router';
 
 
 
@@ -85,7 +86,7 @@ posts:any= [];
   Positive: any;
   Negative: any;
 
-  constructor(private service: SharedService) { }
+  constructor(private service: SharedService ,  private router: Router) { }
   @Input() set Post(value:any){
     this.posts=value
     this.cat_id = value.cat_id;
@@ -188,35 +189,11 @@ addPostDetails() {
     alert(res.toString());
 
     console.log(val);
-
+    this.refreshPostList();
   });
-  this.refreshPostList();
+  
+  this.router.navigate(['/post']);
 }
-
-
-
-addVote() {
- 
-  this.user = JSON.parse(localStorage.getItem('currentUser')!);
-  var val = {
-    post_id: this.PubId,
-    ans_id:this.ans_id,
-    user_id: this.user.user_id,
-   Positive:this.Positive,
-   Negative:this.Negative,
-
-  };
-
-
-  this.service.addPost(val).subscribe(res => {
-    alert(res.toString());
-
-    console.log(val);
-
-  });
-  this.refreshPostList();
-}
-
 
 refreshPostList() {
   this.service.getPostList().subscribe(data => {
@@ -224,17 +201,6 @@ refreshPostList() {
 
   });
 }
-
-
-
-
-
-
-
-
-
-
-
 
 updatePost() {
   var val = {
@@ -250,8 +216,9 @@ updatePost() {
   console.log(val);
   this.service.updatePost(val).subscribe(res => {
     alert(res.toString());
+    this.refreshPostList();
   });
-  this.refreshPostList();
+  this.router.navigate(['/post']);
   console.log(val)
 }
 refreshCatList() {
