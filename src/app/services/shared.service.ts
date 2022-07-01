@@ -67,8 +67,13 @@ httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
   deleteAns(val:any){
     return this.http.delete(this.APIUrl + '/ans/'+val);
   }
+getNbVisit():Observable<any[]>{
+  return this.http.get<any[]>(this.APIUrl + '/visit/');
 
-
+}
+addNbVisit(val:any){
+  return this.http.post(this.APIUrl + '/visit/',val);
+}
   getVote():Observable<any[]>{
     return this.http.get<any[]>(this.APIUrl + '/uservote/');
   }

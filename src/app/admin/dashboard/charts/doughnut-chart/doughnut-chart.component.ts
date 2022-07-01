@@ -9,7 +9,7 @@ import { SharedService } from 'src/app/services/shared.service';
   styleUrls: ['./doughnut-chart.component.css']
 })
 export class DoughnutChartComponent{
-  userlist: any;
+  visit: any=[];
   back: any;
   Front: any;
   Designer: any;
@@ -18,15 +18,16 @@ export class DoughnutChartComponent{
     Chart.register(...registerables);
   }
   ngOnInit() {
-    this.service.getAnsList().subscribe((data =>{
-      this.userlist = data;
-      console.log(this.userlist);
-      this.back=this.userlist.filter((res:any)=>{ return res.validated==true&&res.user.account.Function=="Back-end"});
-      this.Front=this.userlist.filter((res:any)=>{ return res.validated==true&&res.user.account.Function=="Front-end"});
-      this.Designer=this.userlist.filter((res:any)=>{ return res.validated==true&&res.user.account.Function=="Designer"});
-      
+    this.service.getNbVisit().subscribe((data =>{
+      this.visit = data;
+      console.log(this.visit.length);
+      this.back=this.visit.filter((res:any)=>{ return res.nbBack==1});
+      this.Front=this.visit.filter((res:any)=>{ return res.nbFront==1});
+      this.Designer=this.visit.filter((res:any)=>{ return res.nbDesigners==1});
+      console.log(this.back.length,": nb vsist back", this.Front.length,": nb vsist Front", this.Designer.length , ": nb vsist Des")
       this.chart =new Chart('canvas' , {
         type:'doughnut',
+        
         data:{
           labels:["Back" , "Front" , "Designer"],
           datasets: [

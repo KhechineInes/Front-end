@@ -35,8 +35,14 @@ export class UserloginComponent implements OnInit {
     alert("Welcome "+this.f['username'].value);
      this.user=data;
     
-     console.log(data);
-     
+     console.log(this.user,"user");
+     if(this.user.Function=="Back-end"){
+       this.addnbvisitBack();
+     }else if(this.user.Function=="Front-end"){
+       this.addnbvisitFront();
+     }else if(this.user.Function=="Designer"){
+       this.addnbvisitDes();
+     };
      this.router.navigate(['/welcome']);
      
     
@@ -45,7 +51,49 @@ export class UserloginComponent implements OnInit {
    
    /*console.warn(this.myform.value);*/
  }
- 
+ addnbvisitBack(){
+  var val = {
+    
+    nbBack:1,
+    nbFront: 0,
+    nbDesigners:0,
+
+
+ }
+ this.service.addNbVisit(val).subscribe(res => {
+      
+    
+  console.log(res);})}
+  addnbvisitFront(){
+    var val = {
+      
+      nbBack:0,
+      nbFront: 1,
+      nbDesigners:0,
+  
+  
+   }
+  
+    this.service.addNbVisit(val).subscribe(res => {
+      
+    
+      console.log(res);})}
+    addnbvisitDes(){
+      var val = {
+        
+        nbBack:0,
+        nbFront: 0,
+        nbDesigners:1,
+    
+    
+     }
+    this.service.addNbVisit(val).subscribe(res => {
+      
+    
+      console.log(res);})}
+    
+  
+
 
   /*login() {
     

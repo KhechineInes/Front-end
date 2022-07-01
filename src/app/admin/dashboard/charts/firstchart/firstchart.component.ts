@@ -10,18 +10,20 @@ import * as moment from 'moment';
   styleUrls: ['./firstchart.component.css']
 })
 export class FirstchartComponent {
-  anslist: any[]=[];
+  anslist: any=[];
   postList: any[]=[];
   salesData: any;
   chart: any=[];
   date: Date[]=[];
   dailypost: any=[];
+  dailyAns:any=[];
+  dailyValidatedAns:any=[]
   constructor(private service:SharedService  ){
     Chart.register(...registerables);
   }
   ngOnInit() {
 this.refreshPubList();
-this.refreshAnsList();
+
 
 Chart.register(...registerables);
 this.buildChart();
@@ -30,12 +32,7 @@ this.buildChart();
 
 }
 
-  refreshAnsList() {
-    this.service.getAnsList().subscribe(data=>{
-      this.anslist=data;
-      this.anslist.push(data);
-    });
-  }
+  
   refreshPubList() {
     this.service.getPostList().subscribe((data) => 
       this.postList=data,
@@ -52,7 +49,9 @@ datelist:any=[];
 
 
 
-  buildChart(){
+async  buildChart(){
+  this.anslist=await this.service.getAnsList().toPromise();
+console.log(this.anslist , 'answers');
     
     this.service.getPostList().subscribe((data) =>{
       this.postList=data.sort((a:any, b:any) => {
@@ -78,8 +77,11 @@ datelist:any=[];
     
   }
   this.datelist.push(moment(this.date[this.postList.length]).format('DD/MM'))
+ 
       for(let i=0; i<this.datelist.length; i++){
         this.dailypost.push((this.postList.filter((res:any)=>{return moment(res.date).format('DD/MM')==this.datelist[i]})).length)
+        this.dailyAns.push((this.anslist.filter((res:any)=>{return moment(res.date).format('DD/MM')==this.datelist[i]})).length)
+        this.dailyValidatedAns.push((this.anslist.filter((res:any)=>{return (moment(res.date).format('DD/MM')==this.datelist[i])&&(res.validated==1)})).length)
       }
     
       
@@ -89,8 +91,8 @@ datelist:any=[];
     labels: /*[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31],*/this.datelist,
     datasets: [
       { label: 'Questions', data:this.dailypost, tension: 0.5 ,borderColor:[" #F71E8A","#7293DB"," #F3DE9B"]},
-      { label: 'Answers', data: [], tension: 0.5 },
-      { label: 'Validated Answers', data: [], tension: 0.5 },
+      { label: 'Answers', data: this.dailyAns, tension: 0.5 },
+      { label: 'Validated Answers', data: this.dailyValidatedAns, tension: 0.5 },
      ],
     }});
   }
