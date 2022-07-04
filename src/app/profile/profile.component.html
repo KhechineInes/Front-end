@@ -25,7 +25,7 @@
                </div>
 
                <div class="user text-center">
-                  <div class="text-center "> <img src="assets/img/blank_profile.png" width="200" class="rounded-circle">
+                  <div class="text-center "> <img [src]="user.Image ? ImagePath+user.Image : '/assets/img/blank_img.png'" width="200" class="rounded-circle">
                   </div>
 
 
@@ -74,7 +74,7 @@
                                     <!-- begin timeline-body -->
                                     <div class="timeline-body">
                                        <div class="timeline-header">
-                                          <span class="userimage"><img src="assets/img/blank_profile.png" alt=""></span>
+                                          <span class="userimage"><img [src]="pub.user.account.Image ? ImagePath+pub.user.account.Image : '/assets/img/blank_img.png'" alt=""></span>
                                           <span class="username">{{user.username}}
                                              <small></small></span>
                                           <span> </span>
@@ -168,9 +168,9 @@
                                                      <table class="table table-borderless">
                                                        <tr *ngFor="let item of voteduser">
                                                          <td><span class="userimage"><img class="mr-3" width="50" height="50"
-                                                               src="assets/img/blank_profile.png" class="avatar avatar-sm rounded-circle me-2"
-                                                               alt="Generic placeholder image"></span>{{item.user_id.first_name}}
-                                                           {{item.user_id.last_name}}</td>
+                                                            [src]="item.user_id.account.Image ? ImagePath+item.user_id.account.Image : '/assets/img/blank_img.png'"  class="avatar avatar-sm rounded-circle me-2"
+                                                               alt="Generic placeholder image"></span>{{item.user_id.username}}
+                                                           </td>
                          
                                                        </tr>
                                                      </table>
@@ -210,9 +210,9 @@
                                                   <table class="table table-borderless">
                                                     <tr *ngFor="let item of voteddisuser">
                                                       <td><span class="userimage"><img class="mr-3" width="50" height="50"
-                                                            src="assets/img/blank_profile.png" class="avatar avatar-sm rounded-circle me-2"
-                                                            alt="Generic placeholder image"></span>{{item.user_id.first_name}}
-                                                        {{item.user_id.last_name}}</td>
+                                                         [src]="item.user_id.account.Image ? ImagePath+item.user_id.account.Image : '/assets/img/blank_img.png'"  class="avatar avatar-sm rounded-circle me-2"
+                                                            alt="Generic placeholder image"></span>{{item.user_id.username}}
+                                                        </td>
                       
                                                     </tr>
                                                   </table>
@@ -257,8 +257,8 @@
 
                                                          <div class="row">
                                                             <div class="col-1">
-                                                               <img class="mr-3" width="40" height="40"
-                                                                  src="assets/img/blank_profile.png"
+                                                               <img class="mr-3" width="60" height="50"
+                                                               [src]="ans.user.account.Image ? ImagePath+ans.user.account.Image : '/assets/img/blank_img.png'" 
                                                                   class="avatar avatar-sm rounded-circle me-2"
                                                                   alt="Generic placeholder image">
                                                             </div>
@@ -341,9 +341,9 @@
                                                                              <table class="table table-borderless">
                                                                                <tr *ngFor="let item of voteduser">
                                                                                  <td><span class="userimage"><img class="mr-3" width="50" height="50"
-                                                                                       src="assets/img/blank_profile.png" class="avatar avatar-sm rounded-circle me-2"
-                                                                                       alt="Generic placeholder image"></span>{{item.user_id.first_name}}
-                                                                                   {{item.user_id.last_name}}</td>
+                                                                                    [src]="item.user_id.account.Image ? ImagePath+item.user_id.account.Image : '/assets/img/blank_img.png'"  class="avatar avatar-sm rounded-circle me-2"
+                                                                                       alt="Generic placeholder image"></span>{{item.user_id.username}}
+                                                                                   </td>
                                                  
                                                                                </tr>
                                                                              </table>
@@ -385,9 +385,9 @@
                                                                              <table class="table table-borderless">
                                                                                <tr *ngFor="let item of voteddisuser">
                                                                                  <td><span class="userimage"><img class="mr-3" width="50" height="50"
-                                                                                       src="assets/img/blank_profile.png" class="avatar avatar-sm rounded-circle me-2"
-                                                                                       alt="Generic placeholder image"></span>{{item.user_id.first_name}}
-                                                                                   {{item.user_id.last_name}}</td>
+                                                                                    [src]="item.user_id.account.Image ? ImagePath+item.user_id.account.Image : '/assets/img/blank_img.png'"  class="avatar avatar-sm rounded-circle me-2"
+                                                                                       alt="Generic placeholder image"></span>{{item.user_id.username}}
+                                                                                   </td>
                                                  
                                                                                </tr>
                                                                              </table>

@@ -14,6 +14,8 @@ export class PostComponent implements OnInit {
   CatList: Cat[]=[];
   ActivateAddEditPostComp: boolean= false;
   user: any;
+  ImagePath: string="";
+  Image: string="";
   constructor(private service:SharedService) { }
   pos:string ="";
   post:any;
@@ -23,6 +25,7 @@ export class PostComponent implements OnInit {
   PostListWithoutFilter:any=[];
   ngOnInit(): void {
     this.refreshPubList();
+    this.ImagePath=this.service.PhotoUrl+this.Image;
   }
   
   refreshPubList() {

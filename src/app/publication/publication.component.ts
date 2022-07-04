@@ -17,6 +17,8 @@ export class PublicationComponent implements OnInit {
   voteduser: any=[];
   ActivatedisModal: boolean=false;
   voteddisuser: any=[];
+  ImagePath: string="";
+  Image: string="";
   
 
   constructor(private service:SharedService) { }
@@ -39,6 +41,7 @@ export class PublicationComponent implements OnInit {
     this.pubsubject=this.post.pubSubject;
     this.UserName=this.UserName;
     this.UserLastName=this.UserLastName;
+    this.ImagePath=this.service.PhotoUrl+this.Image;
     this.getVote();
 console.log(this.pbId);
    this.refreshAnsList();

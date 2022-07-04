@@ -55,7 +55,7 @@
 
 
 
-                <td> <img alt="..." height="50" width=" 50" src="assets/img/blank_profile.png"
+                <td> <img alt="..." height="50" width=" 50"[src]="dataItem.account.Image ? ImagePath+dataItem.account.Image : '/assets/img/blank_img.png'"
                         class="avatar avatar-sm rounded-circle me-2"> {{dataItem.username}}
                 </td>
                 <td>{{dataItem.email}}</td>

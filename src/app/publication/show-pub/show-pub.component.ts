@@ -31,7 +31,7 @@ export class ShowPubComponent implements OnInit {
   ActivateAddEditPostComp:boolean=false;
   post:any;
   user:any;
-
+  ImagePath:string = "";
   PostIdFilter:string="";
   PostNameFilter:string="";
   PostListWithoutFilter:any=[];
@@ -47,7 +47,7 @@ export class ShowPubComponent implements OnInit {
     
     this.filePath=this.service.PhotoUrl+this.pub;
     this.getVote();
-    
+    this.ImagePath=this.service.PhotoUrl+this.Image;
     
 
     
@@ -58,12 +58,13 @@ export class ShowPubComponent implements OnInit {
          
            }
         )
+        this.ImagePath=this.service.PhotoUrl+this.Image;
   }
  
 
   getPositiveLike(id:any){
       this.VotePosList=this.VotePosListData.filter((res:any)=>{ return res.Positive==1&&res.post_id==id});
-      
+      this.ImagePath=this.service.PhotoUrl+this.Image;
       
     return this.VotePosList;
 
@@ -71,7 +72,7 @@ export class ShowPubComponent implements OnInit {
   getNegativeLike(id:any){
     
     this.VotePosList=this.VotePosListData.filter((res:any)=>{ return res.Negative==1&&res.post_id==id});
-    
+    this.ImagePath=this.service.PhotoUrl+this.Image;
     
   return this.VotePosList;
 
@@ -81,7 +82,7 @@ this.ActivateModal= true;
 this.ModalTitle="Like List"
 this.voteduser=this.VotePosListData.filter((res:any)=>{return res.Positive==1&& res.post_id==id})
 ;
-
+this.ImagePath=this.service.PhotoUrl+this.Image;
 return this.voteduser
 
 }

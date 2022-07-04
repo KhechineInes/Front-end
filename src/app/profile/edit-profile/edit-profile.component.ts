@@ -28,6 +28,7 @@ export class EditProfileComponent implements OnInit {
   owner: any;
   userlist: any;
   id:any;
+  
   constructor(private service: SharedService) { }
 
   ngOnInit(): void {

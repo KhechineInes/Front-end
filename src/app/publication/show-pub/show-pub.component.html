@@ -50,7 +50,7 @@
         <div class="row">
 
           <div class="col">
-            <span class="userimage"><img class="mr-3" width="70" height="70" src="assets/img/blank_profile.png"
+            <span class="userimage"><img class="mr-3" width="70" height="70" [src]="dataItem.user.account.Image ? ImagePath+dataItem.user.account.Image : '/assets/img/blank_img.png'"
                 class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image"> {{dataItem.user.username}}
             </span>
             <span class="username"></span>
@@ -224,9 +224,9 @@
                             <table class="table table-borderless">
                               <tr *ngFor="let item of voteduser">
                                 <td><span class="userimage"><img class="mr-3" width="50" height="50"
-                                      src="assets/img/blank_profile.png" class="avatar avatar-sm rounded-circle me-2"
-                                      alt="Generic placeholder image"></span>{{item.user_id.first_name}}
-                                  {{item.user_id.last_name}}</td>
+                                  [src]="item.user_id.account.Image ? ImagePath+item.user_id.account.Image : '/assets/img/blank_img.png'" class="avatar avatar-sm rounded-circle me-2"
+                                     ></span>{{item.user_id.username}}
+                                  </td>
 
                               </tr>
                             </table>
@@ -268,9 +268,9 @@
                             <table class="table table-borderless">
                               <tr *ngFor="let item of voteddisuser">
                                 <td><span class="userimage"><img class="mr-3" width="50" height="50"
-                                      src="assets/img/blank_profile.png" class="avatar avatar-sm rounded-circle me-2"
-                                      alt="Generic placeholder image"></span>{{item.user_id.first_name}}
-                                  {{item.user_id.last_name}}</td>
+                                  [src]="item.user_id.account.Image ? ImagePath+item.user_id.account.Image : '/assets/img/blank_img.png'"  class="avatar avatar-sm rounded-circle me-2"
+                                      alt="Generic placeholder image"></span>{{item.user_id.username}}
+                                  </td>
 
                               </tr>
                             </table>

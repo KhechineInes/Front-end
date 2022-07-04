@@ -164,7 +164,7 @@
 
               <td *ngIf="dateDiff(myDate,item.date)<1">
 
-                <img class="mr-3" width="50" height="50" src="assets/img/blank_profile.png"
+                <img class="mr-3" width="50" height="50" [src]="item.user.account.Image ? ImagePath+item.user.account.Image : '/assets/img/blank_img.png'"
                   class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
                 {{item.user.username}}
               </td>
@@ -200,7 +200,7 @@
 
 
               <td *ngIf="dateDiff(myDate,ans.date)<1">
-                <img class="mr-3" width="50" height="50" src="assets/img/blank_profile.png"
+                <img class="mr-3" width="50" height="50" [src]="ans.user.account.Image ? ImagePath+ans.user.account.Image : '/assets/img/blank_img.png'"
                   class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
                 {{ans.user.username}}
               </td>
@@ -269,7 +269,7 @@
 
 
                 </li>
-                <img class="mr-3" width="50" height="50" src="assets/img/blank_profile.png"
+                <img class="mr-3" width="50" height="50" [src]="dataItem.user.account.Image ? ImagePath+dataItem.user.account.Image : '/assets/img/blank_img.png'"
                   class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
               </td>
               <td>
@@ -339,7 +339,7 @@
 
 
                 </li>
-                <img class="mr-3" width="50" height="50" src="assets/img/blank_profile.png"
+                <img class="mr-3" width="50" height="50" [src]="user.account.Image ? ImagePath+user.account.Image : '/assets/img/blank_img.png'"
                   class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
               </td>
               <td>
@@ -398,7 +398,7 @@
 
 
                 </li>
-                <img class="mr-3" width="50" height="50" src="assets/img/blank_profile.png"
+                <img class="mr-3" width="50" height="50" [src]="user.account.Image ? ImagePath+user.account.Image : '/assets/img/blank_img.png'"
                   class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
               </td>
               <td>
@@ -457,7 +457,7 @@
 
 
                 </li>
-                <img class="mr-3" width="50" height="50" src="assets/img/blank_profile.png"
+                <img class="mr-3" width="50" height="50" [src]="user.account.Image ? ImagePath+user.account.Image : '/assets/img/blank_img.png'"
                   class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
               </td>
               <td>

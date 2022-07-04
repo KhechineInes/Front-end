@@ -26,6 +26,8 @@ export class StatisticComponent implements OnInit {
   back: any=[];
   Front: any=[];
   Designer: any=[];
+  ImagePath: string="";
+  Image: string="";
   
   constructor(private service: SharedService ) {
     
@@ -37,6 +39,7 @@ export class StatisticComponent implements OnInit {
    this.refreshCatList();
    this.refreshAnsList();
    this.refreshUserList();
+   this.ImagePath=this.service.PhotoUrl+this.Image;
    var d = new Date();
    var date = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
    console.log(this.myDate);
