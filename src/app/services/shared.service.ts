@@ -83,7 +83,9 @@ addNbVisit(val:any){
   addVote(val:any){
     return this.http.post(this.APIUrl + '/vote/' , val);
   }
- 
+  predict(val:any){
+    return this.http.post(this.APIUrl + '/predict/' , val);
+  }
   deleteVote(val:any){
     return this.http.delete(this.APIUrl + '/vote/'+val);
   }

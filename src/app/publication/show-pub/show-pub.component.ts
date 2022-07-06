@@ -184,6 +184,7 @@ ansClick(item:any){
     })
   }
   addVotePositivePoste(id:any){
+    
     var val = {
      
       user_id:this.user.user_id,

@@ -85,8 +85,12 @@ posts:any= [];
   ans_id: any;
   Positive: any;
   Negative: any;
+  predictList:any=[];
+  ActivateModal: boolean=false;
+  loader= true;
 
   constructor(private service: SharedService ,  private router: Router) { }
+  public loading = false;
   @Input() set Post(value:any){
     this.posts=value
     this.cat_id = value.cat_id;
@@ -110,6 +114,7 @@ posts:any= [];
   cat_id: number = 0;
   answer: any;
   date!: Date;
+  
   editorConfig: AngularEditorConfig = {
     editable: true,
     spellcheck: true,
@@ -154,9 +159,13 @@ ngOnInit(): void {
   console.log(this.ng);
   console.log(this.Cat);
   
+  
   this.refreshCatList();
   this.filePath = this.service.PhotoUrl + this.pub;
   this.editorConfig=this.editorConfig;
+  setTimeout(()=>{                           
+    this.loader = true;
+}, 10) ; this.loader = false;
 }
 uploadfile(event: any) {
   var file = event.target.files[0];
@@ -194,6 +203,52 @@ addPostDetails() {
   
   this.router.navigate(['/post']);
 }
+usefull(){
+  alert('Happy to Serve you !!!! :)');
+ 
+  this.router.navigate(['/post']);
+}
+predict(){
+  
+  this.cat_id = this.Cat;
+  console.log(this.cat_id);
+  this.user = JSON.parse(localStorage.getItem('currentUser')!);
+  var val = {
+    pubId: this.PubId,
+    pub: this.pub,
+    pubsubject: this.pubsubject,
+    user: this.user.user_id,
+    cat: this.Cat,
+    cat_id: this.Cat
+
+  };
+
+  this.loading = true;
+
+
+  this.service.predict(val).subscribe(res => {
+    
+    if((res.toString()== 'Failed')){
+      alert(res.toString());
+      this.ActivateModal=false;
+      this.router.navigate(['/addpost']);
+    }
+    else if(res.toString()== 'Not Found') {
+      console.log(this.predictList);
+  alert(res.toString());
+  this.ActivateModal=false;
+  this.router.navigate(['/addpost']);
+
+}
+  else {
+      this.ActivateModal=true;
+      this.predictList=res;
+      this.loading = false;}
+    
+   
+  });
+  
+}
 
 refreshPostList() {
   this.service.getPostList().subscribe(data => {
@@ -223,11 +278,12 @@ updatePost() {
 }
 refreshCatList() {
     
-  this.service.getCatList().subscribe(data => 
-    this.CatList=data
+  this.service.getCatList().subscribe(data => {
+    this.CatList=data,
+    console.log(this.CatList)
    
-  );
- 
+  });
+
 
 }
 

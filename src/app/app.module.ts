@@ -44,6 +44,8 @@ import { NgChartsModule } from 'ng2-charts';
 
 import { DoughnutChartComponent } from './admin/dashboard/charts/doughnut-chart/doughnut-chart.component';
 import { BarchartComponent } from './admin/dashboard/charts/barchart/barchart.component';
+import { NgxLoadingModule } from 'ngx-loading';
+
 
 
 
@@ -106,8 +108,8 @@ const appRoutes: Routes = [
     
     AngularEditorModule ,
     NgChartsModule,
-  
-    
+    NgxLoadingModule.forRoot({}),
+   
     
    
    

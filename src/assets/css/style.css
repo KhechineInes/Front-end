@@ -1221,6 +1221,11 @@ body {
   color: #8c8c8c;
   position: relative; 
 }
+#addform {
+  background-color:#e8ecf5;
+  padding: 25px 20px;
+  display: flex;
+ }  
 
 h1, h2, h3, h4, h5, h6,
 .addform .h1, .h2, .h3, .h4, .h5, .h6 {
@@ -1237,14 +1242,7 @@ a {
 .text-black {
   color: rgb(4, 4, 56);; }
 
-.addform .content {
-  background:linear-gradient(to  bottom, #4867a8,rgb(247, 214, 239));
-  
-  
 
-  
-    
-}
 
 .addform .heading {
   font-size: 2.5rem;

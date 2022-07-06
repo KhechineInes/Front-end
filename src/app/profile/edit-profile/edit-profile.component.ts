@@ -28,7 +28,8 @@ export class EditProfileComponent implements OnInit {
   owner: any;
   userlist: any;
   id:any;
-  
+  editpass:any;
+  editphoto:any;
   constructor(private service: SharedService) { }
 
   ngOnInit(): void {
@@ -81,6 +82,18 @@ export class EditProfileComponent implements OnInit {
     console.log(JSON.parse(localStorage.getItem('User')!)   )
    });
   }
+Editpassword(){
+  if(this.editpass==undefined){this.editpass=1;}
+  else {this.editpass=undefined}
+  
+}
+EditPhoto(){
+  if(this.editphoto==undefined){this.editphoto=1;}
+  else {this.editphoto=undefined}
+  
+}
+
+
   changeclick(){
     this.option="profile";
   }

@@ -19,12 +19,10 @@
     
   </head>
 
-  <body>
+  
   
 
-    <div class="content">
-
-      <div class="container">
+    
         <div class="row align-items-stretch justify-content-center no-gutters">
           <div class="col-md-7">
             <div class="form h-100 contact-wrap p-5">
@@ -92,8 +90,9 @@
                 <div class="row justify-content-center">
                   <div class="col col-lg-6 form-group text-center">
 
-                    <button  (click)="addPostDetails()" *ngIf="pubId == 0 "
-                      class="btn btn-primary">Add Post</button>
+                   
+                      <button  (click)="predict()" *ngIf="pubId == 0 "
+                      class="btn btn-primary"   data-toggle="modal" data-target="#predict" data-backdrop="static" data-keyboard="true">Add Post</button>
                       <button (click)="updatePost()" *ngIf="pubId != 0 "
                       class="btn btn-primary">update</button> 
                     </div>
@@ -111,17 +110,60 @@
             </div>
           </div>
         </div>
+      
+
+
+    
+          
+    <div class="modal fade bd-example-modal-xl" id="predict" tabindex="-1" role="dialog"
+    aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+      <div *ngIf="loading==false">
+
+      <div class="modal-content">
+        <div *ngIf="ActivateModal">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"><small>
+            This Predicted Question and Answer may help you !
+            </small></h5>
+          
+            <span aria-hidden="true">&times;</span>
+          
+        </div>
+        <div class="modal-body">
+          <div *ngIf="ActivateModal">
+
+            <table class="table table-borderless">
+              <tr >
+                <td>your Question: </td>  <td>{{predictList.Question}}</td> </tr>
+               <tr><td>Prediction: </td><td> {{predictList.Predicted}}</td></tr>
+                <tr><td>Answer: </td><td>{{predictList.Answer}}</td>
+
+              </tr>
+            </table>
+
+          
+
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" (click)="usefull()" >Usefull Answer !  </button> 
+          <button class="btn btn-primary" (click)="addPostDetails()">Not !!</button>
+        </div>
+        </div>
       </div>
-
     </div>
-
-
-
-
+    </div>
+  </div>
+  </div>
+  <ngx-loading
+  [show]="loading"
+  [config]="{ backdropBorderRadius: '30px' }"
+ 
+></ngx-loading>
    
-   
 
-  </body>
+  
 
   </html>
 
