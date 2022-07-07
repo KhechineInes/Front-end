@@ -14,8 +14,8 @@
           <li><a class="nav-link scrollto" href="post">Posts</a></li>
           <li><a class="nav-link scrollto" href="category">Categories</a></li>
           
-          <li><a class="nav-link scrollto" href="#faq">F.A.Q</a></li>
-          <li><a class="nav-link scrollto" href="profile">{{user.username}}</a></li>
+          
+          <li><a class="nav-link scrollto"   [routerLink]="['/profile', user.user_id]">{{user.username}}</a></li>
           <li></li>
           
           <li><a class="getstarted scrollto" href="home" (click)="logout()">Log Out</a></li>

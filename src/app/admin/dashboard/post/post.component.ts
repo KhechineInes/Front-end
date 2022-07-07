@@ -16,6 +16,7 @@ export class PostComponent implements OnInit {
   user: any;
   ImagePath: string="";
   Image: string="";
+  pubsubjectfilter: any;
   constructor(private service:SharedService) { }
   pos:string ="";
   post:any;
@@ -77,15 +78,11 @@ export class PostComponent implements OnInit {
     this.refreshPostList();
   }
   FilterFn(){
-    var PostIdFilter = this.PostIdFilter;
-    var PostNameFilter = this.PostNameFilter;
+    var pubsubjectfilter=this.pubsubjectfilter
 
     this.PostList = this.PostListWithoutFilter.filter(function (el : any){
-        return el.PostId.toString().toLowerCase().includes(
-          PostIdFilter.toString().trim().toLowerCase()
-        )&&
-        el.post.toString().toLowerCase().includes(
-          PostNameFilter.toString().trim().toLowerCase()
+        return el.pubsubject.toString().toLowerCase().includes(
+          pubsubjectfilter.toString().trim().toLowerCase()
         )
     });
   }

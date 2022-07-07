@@ -25,6 +25,7 @@ export class ShowPubComponent implements OnInit {
   voteduser:any=[];
   voteddisuser: any=[];
   ActivatedisModal: boolean=false;
+  pubsubjectfilter: any;
   constructor(private service:SharedService) { }
  
   ModalTitle: string ="";
@@ -32,8 +33,7 @@ export class ShowPubComponent implements OnInit {
   post:any;
   user:any;
   ImagePath:string = "";
-  PostIdFilter:string="";
-  PostNameFilter:string="";
+ 
   PostListWithoutFilter:any=[];
   filePath: string="";
   Image: string ="";
@@ -224,15 +224,11 @@ ansClick(item:any){
     });
   }
   FilterFn(){
-    var PostIdFilter = this.PostIdFilter;
-    var PostNameFilter = this.PostNameFilter;
+    var pubsubjectfilter=this.pubsubjectfilter
 
-    this.pubId = this.PostListWithoutFilter.filter(function (el : any){
-        return el.pubId.toString().toLowerCase().includes(
-          PostIdFilter.toString().trim().toLowerCase()
-        )&&
-        el.pub.toString().toLowerCase().includes(
-          PostNameFilter.toString().trim().toLowerCase()
+    this.PostList = this.PostListWithoutFilter.filter(function (el : any){
+        return el.pubsubject.toString().toLowerCase().includes(
+          pubsubjectfilter.toString().trim().toLowerCase()
         )
     });
   }

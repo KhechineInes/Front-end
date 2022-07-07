@@ -39,7 +39,8 @@ console.log(this.anslist,'answers')
     
   }
   
-  names:string[]=[]
+  names:string[]=[];
+  nameslist:string[]=[];
   salesData:ChartData[]=[];
   async refreshUserList() {
      this.anslist=await this.service.getAnsList().toPromise();
@@ -49,6 +50,11 @@ console.log(this.anslist,'answers')
     this.service.getUserList().subscribe((data =>{
       this.userlist = data,
       this.names= this.userlist.map((data:any)=>data.username)
+      for(let i =0 ; i<this.names.length ; i++){
+        if(this.names[i]!="admin"){
+          this.nameslist.push(this.names[i])
+        }
+      }
       this.service.getPostList().subscribe((data:any)=>this.postList=data)
       console.log(this.postList,'posts!!!!!!!!!!!!!!!!!')
       for(let i=0;i<data.length;i++){
@@ -66,7 +72,7 @@ console.log(this.validatedAns,'validé')
       this.chart =new Chart('canvas1' ,{
         type:'bar',
         data:{
-        labels: this.names,
+        labels: this.nameslist,
             datasets: [
           { label: 'Questions', data:this.userposts  , backgroundColor:["#F71E8A"] , borderColor:["#7293DB"]},
           

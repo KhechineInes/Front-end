@@ -16,7 +16,7 @@
                   <div class="text-left ">
                      <nav id="navbar" class="navbar">
                         <ul>
-                           <li><a class="btn" href="edit">abouts</a></li>
+                           <li><a class="btn"   [routerLink]="['/edit', user.user_id]">abouts</a></li>
                             <li><a class="btn " (change)="uploadPhoto($event)" >
                             Edit Coverage Photo</a></li>
                         </ul>

@@ -20,14 +20,14 @@ const routes: Routes = [
 {path:'post',component:ShowPubComponent},
 {path:'',component:HomeComponent},
 {path:'category',component:CategoryComponent},
-{path:'profile' , component:ProfileComponent},
+{path:'profile/:id' , component:ProfileComponent},
 {path:'welcome', component:HomedevComponent},
 {path:'userlogin', component:UserloginComponent},
 {path :'addpost', component:AddEditPubComponent},
 {path :'admin', component:AdminComponent},
 {path:'admin/dashboard', component:DashboardComponent},
 {path:'changepassword', component:ChangepassComponent},
-{path:'edit', component:EditProfileComponent},
+{path:'edit/:id', component:EditProfileComponent},
 
 
 ];

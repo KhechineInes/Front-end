@@ -20,6 +20,8 @@ export class PublicationComponent implements OnInit {
   ImagePath: string="";
   Image: string="";
   
+  valid: boolean=false;
+  
 
   constructor(private service:SharedService) { }
   @Input()post :any;
@@ -153,8 +155,9 @@ closeClick(){
     Ans: "",
     
   }
+  if(this.ActivateAddEditAnsComp==false){ this.ActivateAddEditAnsComp=true;}
+  else{this.ActivateAddEditAnsComp=false;}
   
-  this.ActivateAddEditAnsComp=true;
  }
     
  deleteAnsClick(item : any){
@@ -175,9 +178,11 @@ validateAns(item:any){
   this.service.validateAns(val).subscribe(data=>{
     alert(data.toString());
     this.refreshAnsList();
-  })
-}
     
- 
+  });
+  this.valid==true
+}
+
+
 
 }

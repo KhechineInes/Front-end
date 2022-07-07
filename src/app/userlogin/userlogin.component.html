@@ -3,21 +3,21 @@
     
     
 
-    <title>Login #7</title>
+    <title>Login </title>
   </head>
-  <body>
+  <body style="margin-left: 50px">
   <div class="container"  style="height:650px ; ">
   
       <div class="row" >
         <div class="col-md-6">
-          <img src="assets/img/new-details-4.png" alt="Image" class="img-fluid" style="height:650px ; width:850px" >
+          <img src="assets/img/details-4.png" alt="Image" class="img-fluid" style="height:650px ; width:850px" >
         </div>
         <div class="col-md-6 contents">
           <div class="row justify-content-center">
             <div class="col-md-8">
-              <div class="mb-4">
-              <h3>Sign In</h3>
-              <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
+              <div class="mb-4" style="padding-top : 20px">
+              <h3 style="padding : 50px">Sign In</h3>
+              <p class="mb-4">Welcome User!, Please Sign In to get Access to enhance your Knowledge.</p>
             </div>
             <form  [formGroup]="myform" >
               <div class="form-group first">
@@ -31,17 +31,17 @@
                 
               </div>
               
-              <div class="d-flex mb-5 align-items-center">
+             <!--   <div class="d-flex mb-5 align-items-center">
                 <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
                   <input type="checkbox" checked="checked"/>
                   <div class="control__indicator"></div>
                 </label>
-                <span class="ml-auto"><a href="changepassword" class="forgot-pass">Forgot Password</a></span> 
-              </div>
+              <span class="ml-auto"><a href="changepassword" class="forgot-pass">Forgot Password</a></span> 
+              </div>-->
               <button class="btn"  (click) = "loginclick()">Sign in</button>
-              
+              <a class="btn"  href="#">Cancel</a>
 
-              <span class="d-block text-left my-4 text-muted">&mdash; or login with &mdash;</span>
+             <!-- <span class="d-block text-left my-4 text-muted">&mdash; or login with &mdash;</span>
               
               <div class="social-login">
                 <a href="#" class="facebook">
@@ -53,7 +53,7 @@
                 <a href="#" class="google">
                   <span class="icon-google mr-3"></span> 
                 </a>
-              </div>
+              </div>-->
             </form>
             </div>
           </div>

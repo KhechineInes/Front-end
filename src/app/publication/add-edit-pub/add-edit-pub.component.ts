@@ -206,7 +206,7 @@ addPostDetails() {
 usefull(){
   alert('Happy to Serve you !!!! :)');
  
-  this.router.navigate(['/post']);
+  
 }
 predict(){
   
@@ -230,14 +230,13 @@ predict(){
     
     if((res.toString()== 'Failed')){
       alert(res.toString());
+      this.loading = false;
       this.ActivateModal=false;
       this.router.navigate(['/addpost']);
     }
     else if(res.toString()== 'Not Found') {
       console.log(this.predictList);
-  alert(res.toString());
-  this.ActivateModal=false;
-  this.router.navigate(['/addpost']);
+  this.addPostDetails();
 
 }
   else {
