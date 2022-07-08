@@ -33,6 +33,7 @@ export class ProfileComponent implements OnInit {
   voteduser: any=[];
   ActivatedisModal: boolean=false;
   voteddisuser: any=[];
+  valid=0;
   constructor(private service:SharedService) { }
 
   ngOnInit(): void {
@@ -150,7 +151,9 @@ validateAns(item:any){
   this.service.validateAns(val).subscribe(data=>{
     alert(data.toString());
     this.refreshAnsList();
-  })
+    
+  });
+  
 }
 getansList(id:any){
 this.ActivateModal= true;

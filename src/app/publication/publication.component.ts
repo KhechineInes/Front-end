@@ -20,7 +20,7 @@ export class PublicationComponent implements OnInit {
   ImagePath: string="";
   Image: string="";
   
-  valid: boolean=false;
+  valid=0;
   
 
   constructor(private service:SharedService) { }
@@ -173,14 +173,14 @@ validateAns(item:any){
   var val={
     AnsId:item,
     validated:true
-
+    
   }
   this.service.validateAns(val).subscribe(data=>{
     alert(data.toString());
     this.refreshAnsList();
-    
+    this.valid=1
   });
-  this.valid==true
+  
 }
 
 

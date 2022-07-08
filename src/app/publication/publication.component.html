@@ -216,7 +216,7 @@
         </div>
                 </div>
                 
-                <div class="col"*ngIf="user.user_id==post.user.id && ans.validated==false ">  
+                <div class="col"*ngIf="user.user_id==post.user.id && ans.validated==false && valid==0">  
                  
                   <button class="btn"  (click)="validateAns(ans.AnsId)">  <i class="fa-solid fa-check"  ></i></button></div>
 

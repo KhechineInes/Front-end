@@ -272,7 +272,7 @@ updatePost() {
     alert(res.toString());
     this.refreshPostList();
   });
-  this.router.navigate(['/post']);
+ this.router.navigate(['/post']);
   console.log(val)
 }
 refreshCatList() {
