@@ -33,6 +33,9 @@ api_url = 'http://127.0.0.1:8000';
   changePassword(username: string, password: string){
     return this.http.post<any>(this.api_url+ '/api/change-password/' , {username, password}, httpOptions).pipe()
   }
+  setpass(val:any){
+    return this.http.put(this.api_url+ '/changepass/' , val)
+  }
 }
 
 

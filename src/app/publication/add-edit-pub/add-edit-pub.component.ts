@@ -235,6 +235,7 @@ predict(){
       this.router.navigate(['/addpost']);
     }
     else if(res.toString()== 'Not Found') {
+      alert(res.toString());
       console.log(this.predictList);
   this.addPostDetails();
 

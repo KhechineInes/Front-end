@@ -384,7 +384,7 @@ table .table-hover tbody tr:hover {
   content: "";
   position: absolute;
   right: -100%;
-  top: 15%;
+  top: 5%;
   width: 250%;
   height: 200%;
   z-index: -1;

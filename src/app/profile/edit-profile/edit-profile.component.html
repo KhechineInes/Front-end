@@ -145,14 +145,16 @@
 
                                 <div class="col"*ngIf="editpass==1">
                                     <div class="row mt-2">
-                                        <div class="col-md-6"><label class="labels">First Name</label><input type="text"
-                                                class="form-control" [(ngModel)]="first_name" placeholder="first name"
+                                        <div class="col-md-6"><label class="labels">username</label><input type="text"
+                                                class="form-control" [(ngModel)]="username" placeholder="first name"
                                                 value=""></div>
-                                        <div class="col-md-6"><label class="labels">Last Name</label><input type="text"
-                                                class="form-control" [(ngModel)]="last_name" placeholder="last name"></div>
+                                        <div class="col-md-6"><label class="labels">Password</label><input type="text"
+                                                class="form-control" [(ngModel)]="old_password" placeholder="last name"></div>
+                                                <div class="col-md-6"><label class="labels">New Password</label><input type="text"
+                                                    class="form-control" [(ngModel)]="new_password" placeholder="last name"></div>
                                     </div>
                                     <div class="mt-5 text-center"><button class="btn btn-primary profile-button"
-                                        type="button" >Edit password</button>
+                                        type="button" (click)="setPass()" >Edit password</button>
                                     
                                 </div>
                                     <div class="btn">

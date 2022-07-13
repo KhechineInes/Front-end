@@ -115,10 +115,10 @@
 
     
           
-    <div class="modal fade bd-example-modal-xl" id="predict" tabindex="-1" role="dialog"
+    <div class="modal fade bd-example-modal-xxl" id="predict" tabindex="-1" role="dialog"
     aria-labelledby="mySmallModalLabel" aria-hidden="true">
     
-    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-xxl" role="document">
       <div *ngIf="loading==false">
 
       <div class="modal-content">
@@ -138,7 +138,7 @@
               <tr >
                 <td>your Question: </td>  <td>{{predictList.Question}}</td> </tr>
                <tr><td>Prediction: </td><td> {{predictList.Predicted}}</td></tr>
-                <tr><td>Answer: </td><td>{{predictList.Answer}}</td>
+                <tr><td>Answer: </td><td> <div [innerHTML]="predictList.Answer"></div> </td>
 
               </tr>
             </table>

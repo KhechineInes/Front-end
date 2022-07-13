@@ -178,11 +178,15 @@ validateAns(item:any){
   this.service.validateAns(val).subscribe(data=>{
     alert(data.toString());
     this.refreshAnsList();
-    this.valid=1
+    this.valid=1;
+    
+    
+    
   });
-  
-}
+  this.service.updateDataSet(val).subscribe(data=>
+    console.log(data.toString()
+));
 
 
-
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/model';
+
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
@@ -30,7 +31,9 @@ export class EditProfileComponent implements OnInit {
   id:any;
   editpass:any;
   editphoto:any;
-  constructor(private service: SharedService) { }
+  old_password:any;
+  new_password:any;
+  constructor(private service: SharedService , private auth:  AuthServiceService) { }
 
   ngOnInit(): void {
     this.user=JSON.parse(localStorage.getItem('currentUser')!);
@@ -82,8 +85,21 @@ export class EditProfileComponent implements OnInit {
     console.log(JSON.parse(localStorage.getItem('User')!)   )
    });
   }
+  setPass(){
+    var val={
+      user:this.user=JSON.parse(localStorage.getItem('currentUser')!),
+      username:this.username,
+    old_password:this.old_password,
+  new_password:this.new_password
+    }
+    this.auth.setpass(val).subscribe(res=>{
+      alert(res.toString());
+    })
+  }
 Editpassword(){
-  if(this.editpass==undefined){this.editpass=1;}
+  if(this.editpass==undefined){this.editpass=1;
+  
+  }
   else {this.editpass=undefined}
   
 }

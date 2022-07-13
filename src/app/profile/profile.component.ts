@@ -153,7 +153,9 @@ validateAns(item:any){
     this.refreshAnsList();
     
   });
-  
+  this.service.updateDataSet(val).subscribe(data=>
+    console.log(data.toString())
+);
 }
 getansList(id:any){
 this.ActivateModal= true;

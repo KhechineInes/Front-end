@@ -19,13 +19,16 @@ export class ShowPubComponent implements OnInit {
   ans: any;
   pub: any;
   pk=0;
-  VoteId:any;
+  VoteId:any=[];
   ActivateModal: boolean=false;
   voteduserList:any=[];
   voteduser:any=[];
   voteddisuser: any=[];
   ActivatedisModal: boolean=false;
   pubsubjectfilter: any;
+  uservoted: any=[];
+  postvoted: any=[];
+  voteId : any=[];
   constructor(private service:SharedService) { }
  
   ModalTitle: string ="";
@@ -33,7 +36,7 @@ export class ShowPubComponent implements OnInit {
   post:any;
   user:any;
   ImagePath:string = "";
- 
+ Vote:any=[];
   PostListWithoutFilter:any=[];
   filePath: string="";
   Image: string ="";
@@ -48,7 +51,7 @@ export class ShowPubComponent implements OnInit {
     this.filePath=this.service.PhotoUrl+this.pub;
     this.getVote();
     this.ImagePath=this.service.PhotoUrl+this.Image;
-    
+    this.getVoteList();
 
     
   }
@@ -60,7 +63,11 @@ export class ShowPubComponent implements OnInit {
         )
         this.ImagePath=this.service.PhotoUrl+this.Image;
   }
- 
+ getVoteList(){
+this.service.getVoteList().subscribe((data)=>{
+  this.Vote=data
+})
+ }
 
   getPositiveLike(id:any){
       this.VotePosList=this.VotePosListData.filter((res:any)=>{ return res.Positive==1&&res.post_id==id});
@@ -184,7 +191,9 @@ ansClick(item:any){
     })
   }
   addVotePositivePoste(id:any){
+    this.getVoteList();
     
+    var index = 0
     var val = {
      
       user_id:this.user.user_id,
@@ -194,14 +203,40 @@ ansClick(item:any){
 
     };
     
-    this.service.addVote(val).subscribe(res => {
+    this.uservoted=this.Vote.map((data:any)=>data.user_id);
+    console.log(this.Vote,'toutela liste');
+    console.log(this.uservoted , 'userlist');
+    this.postvoted=this.Vote.map((data:any)=>data.post_id);
+    console.log(this.postvoted , "postlist ");
+    this.voteId=this.Vote.map((data:any)=>data.VoteId);
+    console.log(this.voteId);
+    console.log(this.Vote[0] , 'test');
+    for( let i=0; i<this.VotePosListData.length; i++){
+      
+      if((val.user_id==this.uservoted[i]) && (val.post_id==this.postvoted[i])){
+        index =1
+        this.service.deleteVote(this.Vote[i].VoteId).subscribe(res=>{
+          console.log(res.toString());
+          this.getVote();
+          
+        });
+       
+      }else index = 0;
+       
+    }
+    if (index ==0){ this.service.addVote(val).subscribe(res => {
       alert(res.toString());
       this.getVote();
-      this.liked=1;
-    });
-  
+      
+      index=1;
+    });}
+   
+    }
+   
+
+    
      
-  }
+  
   addVoteNegativePoste(id:any){
     var val = {
      
