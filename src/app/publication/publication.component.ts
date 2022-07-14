@@ -21,6 +21,9 @@ export class PublicationComponent implements OnInit {
   Image: string="";
   
   valid=0;
+  Vote: any[]=[];
+  uservoted: any[]=[];
+  postvoted: any[]=[];
   
 
   constructor(private service:SharedService) { }
@@ -45,6 +48,7 @@ export class PublicationComponent implements OnInit {
     this.UserLastName=this.UserLastName;
     this.ImagePath=this.service.PhotoUrl+this.Image;
     this.getVote();
+    this.getVoteList();
 console.log(this.pbId);
    this.refreshAnsList();
     
@@ -98,7 +102,11 @@ console.log(this.pbId);
     
     }
 
-
+    getVoteList(){
+      this.service.getVoteList().subscribe((data)=>{
+        this.Vote=data
+      })
+       }
 
     addVotePositive(id:any){
       var val = {
@@ -111,12 +119,44 @@ console.log(this.pbId);
        
   
       };
-      console.log(val);
-      this.service.addVote(val).subscribe(res => {
-        alert(res.toString());
-        this.getVote();
+      var index =0;
+      var id ;
+      this.uservoted=this.Vote.map((data:any)=>data.user_id);
+      console.log(this.Vote,'toutela liste');
+      console.log(this.uservoted , 'userlist');
+      this.postvoted=this.Vote.map((data:any)=>data.ans_id);
+      console.log(this.postvoted , "postlist ");
+      
+      
+      
+      var id ;
+      for( let i=0; i<this.Vote.length; i++){
+       
+        if((val.user_id==this.uservoted[i]) && (val.ans_id==this.postvoted[i])){
+          id=this.Vote[i].VoteId
+  
+         index=1
+         
+      }
+    }
+      if(index == 1){
+        this.service.deleteVote(id).subscribe(res=>{
+          console.log(res.toString());
+          this.getVote();
+          index =1 ;
+          this.getVoteList();
+        });
+       
+      
+      }
+      if (index ==0){
         
-      });
+         this.service.addVote(val).subscribe(res => {
+        console.log(res.toString());
+        this.getVote();
+        this.getVoteList();
+        index=1;
+      });}
     
        
     }
@@ -131,11 +171,43 @@ console.log(this.pbId);
        
   
       };
-      console.log(val);
-      this.service.addVote(val).subscribe(res => {
-        alert(res.toString());
-        this.getVote()
+      var index =0;
+    var id ;
+    this.uservoted=this.Vote.map((data:any)=>data.user_id);
+    console.log(this.Vote,'toutela liste');
+    console.log(this.uservoted , 'userlist');
+    this.postvoted=this.Vote.map((data:any)=>data.ans_id);
+    console.log(this.postvoted , "postlist ");
+    
+    console.log(this.Vote[0] , 'test');
+    var id ;
+    for( let i=0; i<this.Vote.length; i++){
+     
+      if((val.user_id==this.uservoted[i]) && (val.ans_id==this.postvoted[i])){
+        id=this.Vote[i].VoteId
+
+       index=1
+       
+    }
+  }
+    if(index == 1){
+      this.service.deleteVote(id).subscribe(res=>{
+        console.log(res.toString());
+        this.getVote();
+        index =1 ;
+        this.getVoteList();
       });
+     
+    
+    }
+    if (index ==0){
+      
+       this.service.addVote(val).subscribe(res => {
+      console.log(res.toString());
+      this.getVote();
+      this.getVoteList();
+      index=1;
+    });}
     }
 
 

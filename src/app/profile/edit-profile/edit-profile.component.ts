@@ -11,6 +11,7 @@ import { SharedService } from 'src/app/services/shared.service';
 export class EditProfileComponent implements OnInit {
   user: any;
   
+  
   username: string = "";
   Address:string = "";
   Function:string = "";
@@ -55,34 +56,27 @@ export class EditProfileComponent implements OnInit {
     this.getUser();
   }
 
-
   updateUser(){
     var val = {
-    id:this.user.user_id,
-    username:this.user.username,
-    email:this.email,
-    first_name:this.first_name,
-    last_name:this.last_name,
+  
     
-    account:{
-    id:this.id,
-    Image:this.Image,
+    user: this.user=JSON.parse(localStorage.getItem('currentUser')!),
+   
     Education:this.Education,
     Function:this.Function,
     Address:this.Address,
     MobileNumber:this.MobileNumber,
-    account_id:this.user.user_id}
+   }
     
    
 
 
       
-    };
+    
     console.log(val);
     this.service.updateProfile(val).subscribe(res=>{
     alert(res.toString());
-    localStorage.setItem("User", JSON.stringify(val));
-    console.log(JSON.parse(localStorage.getItem('User')!)   )
+      
    });
   }
   setPass(){

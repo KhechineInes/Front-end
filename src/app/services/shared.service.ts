@@ -12,7 +12,9 @@ readonly PhotoUrl = 'http://127.0.0.1:8000/media/';
 httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
   constructor(private http:HttpClient) { }
   
-  
+  updateProfile(val:any){
+    return this.http.put(this.APIUrl + '/profile/',val);
+  }
   getPostList():Observable<any[]>{
     return this.http.get<Post[]>(this.APIUrl + '/post/',
     {headers: this.httpHeaders});
@@ -106,9 +108,7 @@ addNbVisit(val:any){
   updateUser(val:any){
     return this.http.put(this.APIUrl + '/user/',val);
   }
-  updateProfile(val:any){
-    return this.http.put(this.APIUrl + '/user/',val);
-  }
+  
   deleteUser(val:any){
     return this.http.delete(this.APIUrl + '/user/'+val);
   }

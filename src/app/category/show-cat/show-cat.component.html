@@ -141,13 +141,14 @@
               <div class = "card-header" >
                 
                 <div class="row">
-                  <div class="col">
+                  <div class="col-9">
                     <img class="mr-3" width="40" height="40" [src]="ans.user.account.Image ? ImagePath+ans.user.account.Image : '/assets/img/blank_img.png'"
                 class="avatar avatar-sm rounded-circle me-2" alt="Generic placeholder image">
+                
                 {{ans.user.username}} 
                 
                </div>
-               <div class="col-6">        </div>
+               
                <div class="col">{{ans.date | date: 'HH:mm , le dd/MM/yyyy' }}</div>
                <div class="col"*ngIf="ans.validated==true">  
                     

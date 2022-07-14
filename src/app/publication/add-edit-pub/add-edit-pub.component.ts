@@ -34,31 +34,49 @@ export class AddEditPubComponent implements OnInit  {
   config: AngularEditorConfig = {
     editable: true,
     spellcheck: true,
-    height: '15rem',
-    minHeight: '5rem',
+    height: 'auto',
+    minHeight: '0',
+    maxHeight: 'auto',
+    width: 'auto',
+    minWidth: '0',
+    translate: 'yes',
+    enableToolbar: true,
+    showToolbar: true,
     placeholder: 'Enter text here...',
-    translate: 'no',
-    defaultParagraphSeparator: 'p',
-    defaultFontName: 'Arial',
-    toolbarHiddenButtons: [
-      ['bold']
-      ],
+    defaultParagraphSeparator: '',
+    defaultFontName: '',
+    defaultFontSize: '',
+    fonts: [
+      {class: 'arial', name: 'Arial'},
+      {class: 'times-new-roman', name: 'Times New Roman'},
+      {class: 'calibri', name: 'Calibri'},
+      {class: 'comic-sans-ms', name: 'Comic Sans MS'}
+    ],
     customClasses: [
-      {
-        name: "quote",
-        class: "quote",
-      },
-      {
-        name: 'redText',
-        class: 'redText'
-      },
-      {
-        name: "titleText",
-        class: "titleText",
-        tag: "h1",
-      },
-    ]
-  };
+    {
+      name: 'quote',
+      class: 'quote',
+    },
+    {
+      name: 'redText',
+      class: 'redText'
+    },
+    {
+      name: 'titleText',
+      class: 'titleText',
+      tag: 'h1',
+    },
+  ],
+  uploadUrl: 'http://127.0.0.1:8000/media/',
+ 
+  sanitize: true,
+  toolbarPosition: 'top',
+
+  toolbarHiddenButtons: [
+    ['bold', 'italic'],
+    ['fontSize']
+  ]
+  }
 
 
 
@@ -88,6 +106,7 @@ posts:any= [];
   predictList:any=[];
   ActivateModal: boolean=false;
   loader= true;
+  http: any;
 
   constructor(private service: SharedService ,  private router: Router) { }
   public loading = false;
@@ -115,44 +134,7 @@ posts:any= [];
   answer: any;
   date!: Date;
   
-  editorConfig: AngularEditorConfig = {
-    editable: true,
-    spellcheck: true,
-    height: 'auto',
-    minHeight: '0',
-    maxHeight: 'auto',
-    width: 'auto',
-    minWidth: '0',
-    translate: 'yes',
-    enableToolbar: true,
-    showToolbar: true,
-    placeholder: 'Enter text here...',
-    defaultParagraphSeparator: '',
-    defaultFontName: '',
-    defaultFontSize: '',
-    fonts: [
-      { class: 'arial', name: 'Arial' },
-      { class: 'times-new-roman', name: 'Times New Roman' },
-      { class: 'calibri', name: 'Calibri' },
-      { class: 'comic-sans-ms', name: 'Comic Sans MS' }
-    ],
-    customClasses: [
-      {
-        name: 'quote',
-        class: 'quote',
-      },
-      {
-        name: 'redText',
-        class: 'redText'
-      },
-      {
-        name: 'titleText',
-        class: 'titleText',
-        tag: 'h1',
-      },
-    ],
   
-};
 
 filePath: string = "";
 ngOnInit(): void {
@@ -162,7 +144,7 @@ ngOnInit(): void {
   
   this.refreshCatList();
   this.filePath = this.service.PhotoUrl + this.pub;
-  this.editorConfig=this.editorConfig;
+  this.config=this.config;
   setTimeout(()=>{                           
     this.loader = true;
 }, 10) ; this.loader = false;
@@ -203,6 +185,13 @@ addPostDetails() {
   
   this.router.navigate(['/post']);
 }
+closeClick(){
+  
+  this.ActivateModal=false;
+ 
+  this.refreshPostList();
+  this.router.navigate(['/post']);
+}
 usefull(){
   alert('Happy to Serve you !!!! :)');
  
@@ -210,8 +199,7 @@ usefull(){
 }
 predict(){
   
-  this.cat_id = this.Cat;
-  console.log(this.cat_id);
+  
   this.user = JSON.parse(localStorage.getItem('currentUser')!);
   var val = {
     pubId: this.PubId,

@@ -168,11 +168,13 @@
                          
                                                      <table class="table table-borderless">
                                                        <tr *ngFor="let item of voteduser">
-                                                         <td><span class="userimage"><img class="mr-3" width="50" height="50"
+                                                         <div class="row">
+                                                            <div class="col-3">
+                                                            <span class="userimage"><img class="mr-3" width="50" height="50"
                                                             [src]="item.user_id.account.Image ? ImagePath+item.user_id.account.Image : '/assets/img/blank_img.png'"  class="avatar avatar-sm rounded-circle me-2"
-                                                               alt="Generic placeholder image"></span>{{item.user_id.username}}
-                                                           </td>
-                         
+                                                               alt="Generic placeholder image"></span></div><div class="col">{{item.user_id.username}}</div>
+                                                           
+                                                            </div>
                                                        </tr>
                                                      </table>
                          
@@ -210,11 +212,15 @@
                       
                                                   <table class="table table-borderless">
                                                     <tr *ngFor="let item of voteddisuser">
-                                                      <td><span class="userimage"><img class="mr-3" width="50" height="50"
+                                                      <div class="row">
+                                                         <div class="col-3">
+                                                      <span class="userimage"><img class="mr-3" width="50" height="50"
                                                          [src]="item.user_id.account.Image ? ImagePath+item.user_id.account.Image : '/assets/img/blank_img.png'"  class="avatar avatar-sm rounded-circle me-2"
-                                                            alt="Generic placeholder image"></span>{{item.user_id.username}}
-                                                        </td>
-                      
+                                                            alt="Generic placeholder image"></span>
+                                                            </div>
+                                                            <div class="col">{{item.user_id.username}}</div>
+                                                        
+                      </div>
                                                     </tr>
                                                   </table>
                       
@@ -235,7 +241,7 @@
                                                 class="fa fa-comments fa-fw fa-lg m-r-3"></i> Answers </a>
 
                                        </div>
-
+                                      
                                        <div class="timeline-comment-box" style="border-radius:30px" *ngIf="val == pub.pubId">
                                           <div class="card shadow border-0 mb-2" style="border-radius:30px">
                                              <div class="user"><img src="assets/img/blank_profile.png"></div>
@@ -258,7 +264,7 @@
 
                                                          <div class="row">
                                                             <div class="col-1">
-                                                               <img class="mr-3" width="60" height="50"
+                                                               <img class="mr-3" 
                                                                [src]="ans.user.account.Image ? ImagePath+ans.user.account.Image : '/assets/img/blank_img.png'" 
                                                                   class="avatar avatar-sm rounded-circle me-2"
                                                                   alt="Generic placeholder image">
@@ -341,11 +347,14 @@
                                                  
                                                                              <table class="table table-borderless">
                                                                                <tr *ngFor="let item of voteduser">
-                                                                                 <td><span class="userimage"><img class="mr-3" width="50" height="50"
+                                                                                 <div class="row">
+                                                                                    <div class="col-3">
+                                                                                <span class="userimage"><img class="mr-3" width="50" height="50"
                                                                                     [src]="item.user_id.account.Image ? ImagePath+item.user_id.account.Image : '/assets/img/blank_img.png'"  class="avatar avatar-sm rounded-circle me-2"
-                                                                                       alt="Generic placeholder image"></span>{{item.user_id.username}}
-                                                                                   </td>
-                                                 
+                                                                                       alt="Generic placeholder image"></span></div>
+                                                                                       <div class="col">{{item.user_id.username}}</div>
+                                                                                   
+                                                 </div>
                                                                                </tr>
                                                                              </table>
                                                  
@@ -385,11 +394,15 @@
                                                  
                                                                              <table class="table table-borderless">
                                                                                <tr *ngFor="let item of voteddisuser">
-                                                                                 <td><span class="userimage"><img class="mr-3" width="50" height="50"
+                                                                                 <div class="row">
+                                                                                    <div class="col-3">
+                                                                                 <span class="userimage"><img class="mr-3" width="50" height="50"
                                                                                     [src]="item.user_id.account.Image ? ImagePath+item.user_id.account.Image : '/assets/img/blank_img.png'"  class="avatar avatar-sm rounded-circle me-2"
-                                                                                       alt="Generic placeholder image"></span>{{item.user_id.username}}
-                                                                                   </td>
-                                                 
+                                                                                       alt="Generic placeholder image"></span>
+                                                                                       </div>
+                                                                                       <div class="col">{{item.user_id.username}}</div>
+                                                                                   
+                                                 </div>
                                                                                </tr>
                                                                              </table>
                                                  

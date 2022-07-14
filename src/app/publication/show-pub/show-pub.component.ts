@@ -43,6 +43,7 @@ export class ShowPubComponent implements OnInit {
   VotePosList:any=[]
   VotePosListData:any=[]
   liked : number =0;
+  
   ngOnInit(): void {
     
     this.user=JSON.parse(localStorage.getItem('currentUser')!);
@@ -190,10 +191,11 @@ ansClick(item:any){
       this.filePath=this.service.PhotoUrl+this.pub;
     })
   }
+ 
   addVotePositivePoste(id:any){
-    this.getVoteList();
+  
     
-    var index = 0
+    
     var val = {
      
       user_id:this.user.user_id,
@@ -202,7 +204,7 @@ ansClick(item:any){
      
 
     };
-    
+   var index=0;
     this.uservoted=this.Vote.map((data:any)=>data.user_id);
     console.log(this.Vote,'toutela liste');
     console.log(this.uservoted , 'userlist');
@@ -211,23 +213,32 @@ ansClick(item:any){
     this.voteId=this.Vote.map((data:any)=>data.VoteId);
     console.log(this.voteId);
     console.log(this.Vote[0] , 'test');
-    for( let i=0; i<this.VotePosListData.length; i++){
-      
+    var id ;
+    for( let i=0; i<this.Vote.length; i++){
+     
       if((val.user_id==this.uservoted[i]) && (val.post_id==this.postvoted[i])){
-        index =1
-        this.service.deleteVote(this.Vote[i].VoteId).subscribe(res=>{
-          console.log(res.toString());
-          this.getVote();
-          
-        });
-       
-      }else index = 0;
+        id=this.Vote[i].VoteId
+
+       index=1
        
     }
-    if (index ==0){ this.service.addVote(val).subscribe(res => {
-      alert(res.toString());
-      this.getVote();
+  }
+    if(index == 1){
+      this.service.deleteVote(id).subscribe(res=>{
+        console.log(res.toString());
+        this.getVote();
+        index =1 ;
+        this.getVoteList();
+      });
+     
+    
+    }
+    if (index ==0){
       
+       this.service.addVote(val).subscribe(res => {
+      console.log(res.toString());
+      this.getVote();
+      this.getVoteList();
       index=1;
     });}
    
@@ -247,11 +258,45 @@ ansClick(item:any){
      
 
     };
+    var index =0;
+    var id ;
+    this.uservoted=this.Vote.map((data:any)=>data.user_id);
+    console.log(this.Vote,'toutela liste');
+    console.log(this.uservoted , 'userlist');
+    this.postvoted=this.Vote.map((data:any)=>data.post_id);
+    console.log(this.postvoted , "postlist ");
+    this.voteId=this.Vote.map((data:any)=>data.VoteId);
+    console.log(this.voteId);
+    console.log(this.Vote[0] , 'test');
+    var id ;
+    for( let i=0; i<this.Vote.length; i++){
+     
+      if((val.user_id==this.uservoted[i]) && (val.post_id==this.postvoted[i])){
+        id=this.Vote[i].VoteId
+
+       index=1
+       
+    }
+  }
+    if(index == 1){
+      this.service.deleteVote(id).subscribe(res=>{
+        console.log(res.toString());
+        this.getVote();
+        index =1 ;
+        this.getVoteList();
+      });
+     
     
-    this.service.addVote(val).subscribe(res => {
-      alert(res.toString());
-      this.getVote()
-    });
+    }
+    if (index ==0){
+      
+       this.service.addVote(val).subscribe(res => {
+      console.log(res.toString());
+      this.getVote();
+      this.getVoteList();
+      index=1;
+    });}
+    
   }
   get sortData() {
     return this.PostList.sort((a:any, b:any) => {
