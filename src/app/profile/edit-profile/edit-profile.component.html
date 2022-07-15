@@ -64,7 +64,11 @@
                                     <div class="col-md-12"><label class="labels">Education</label><input type="text"
                                             class="form-control" [(ngModel)]="Education" placeholder="education"
                                             value=""></div>
-                                    
+                                            <div class="col-md-12"><img class="rounded-circle mt-5" width="150px" [src]=ImagePath height="80"
+                                            width="80">
+                                        <input type="file" value="Edit your Photo" (change)="uploadPhoto($event)"
+                                            class="mt-2" />
+                                    </div>
                                 </div>
 
                                 <div class="mt-5 text-center"><button class="btn btn-primary profile-button"
@@ -128,19 +132,7 @@
                             
                             <div class="row align-items-end ">
                                 <div class="col"*ngIf="editpass==undefined">
-                                    <div class="btn">
-                                        <button class="btn btn-primary" style="width:300px" (click)="EditPhoto()"> Edit your Photo </button>
-                                        <div class="col"*ngIf="editphoto==1">
-                                            <img class="rounded-circle mt-5" width="150px" [src]=ImagePath height="80"
-                                        width="80;">
-                                    <input type="file" value="Edit your Photo" (change)="uploadPhoto($event)"
-                                        class="mt-2" />
-                                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button"
-                                            type="button" >Edit Photo</button>
-                                        
-                                    </div>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
 
                                 <div class="col"*ngIf="editpass==1">
@@ -157,20 +149,7 @@
                                         type="button" (click)="setPass()" >Edit password</button>
                                     
                                 </div>
-                                    <div class="btn">
-                                        <button class="btn btn-primary" style="width:300px"(click)="EditPhoto()"> Edit your Photo </button>
-                                        <div class="col"*ngIf="editphoto==1">
-                                            <img class="rounded-circle mt-5" width="150px" [src]=ImagePath height="80"
-                                        width="80">
-                                    <input type="file" value="Edit your Photo" (change)="uploadPhoto($event)"
-                                        class="mt-2" />
-                                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button"
-                                            type="button" >Edit Photo</button>
-                                        
-                                    </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                   
 
                             </div>
                         </div>
@@ -179,5 +158,6 @@
 
 
             </div>
+        </div>
         </div>
     </section>

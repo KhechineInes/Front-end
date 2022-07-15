@@ -57,13 +57,14 @@ console.log(this.anslist,'answers')
       }
       this.service.getPostList().subscribe((data:any)=>this.postList=data)
       console.log(this.postList,'posts!!!!!!!!!!!!!!!!!')
-      for(let i=0;i<data.length;i++){
+      for(let i=0;i<this.names.length;i++){
       this.ansUserList=this.anslist.filter((res:any)=>{ return res.user.username==this.names[i]})
       this.userAns.push(this.ansUserList.length)
       this.validatedAns.push((this.ansUserList.filter((res:any)=>{return res.validated==true})).length)
       this.userposts.push((this.postList.filter((res:any)=>{return res.user.username==this.names[i]})).length)
     
 console.log(this.validatedAns,'validé')
+console.log(this.userposts,"post de chaque user")
        }
 
       
@@ -72,7 +73,7 @@ console.log(this.validatedAns,'validé')
       this.chart =new Chart('canvas1' ,{
         type:'bar',
         data:{
-        labels: this.nameslist,
+        labels: this.names,
             datasets: [
           { label: 'Questions', data:this.userposts  , backgroundColor:["#F71E8A"] , borderColor:["#7293DB"]},
           
@@ -85,7 +86,7 @@ console.log(this.validatedAns,'validé')
       
     }));
   
-console.log(this.userlist);}
+}
 
 
 

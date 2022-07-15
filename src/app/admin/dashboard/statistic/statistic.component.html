@@ -12,7 +12,7 @@
           <div class="card border mb-2"
             style="background: linear-gradient(to bottom right,rgb(236, 81, 200) ,  #FF0080);width:300px">
             <h5 align="center" style="color : white;"> Number of back-end developpers</h5>
-            <p align="center" style="color : white;">{{back.length}}</p>
+            <p align="center" style="color : white;">{{nback.length}}</p>
             <div class="card-footer">
               <td><button class="nav-link" style="color :white; border:0px; background-color:transparent"
                   (click)="nbBack()">View details</button></td>
@@ -25,7 +25,7 @@
           <div class="card border mb-2"
             style="background: linear-gradient(to bottom right,#5777ba, #B5A6F5); width:300px ">
             <h5 align="center" style="color : white;"> Number of Front developpers</h5>
-            <p align="center" style="color : white;">{{Front.length}}</p>
+            <p align="center" style="color : white;">{{nFront.length}}</p>
             <div class="card-footer">
               <td><button class="nav-link" style="color : white; border:0px; background-color:transparent"
                   (click)="nbFront()">View details</button></td>
@@ -37,7 +37,7 @@
           <div class="card border mb-2"
             style="background: linear-gradient(to bottom right,#5777ba, rgb(255, 31, 203) );width:300px">
             <h5 align="center" style="color : white;"> Number of Designers </h5>
-            <p align="center" style="color : white;">{{Designer.length}} </p>
+            <p align="center" style="color : white;">{{nDesigner.length}} </p>
             <div class="card-footer">
               <td><button class="nav-link" style="color : white; border:0px; background-color:transparent"
                   (click)="nbDesign()">View details</button>
@@ -390,6 +390,7 @@
 
           <tbody>
             <tr *ngFor="let user of Front ">
+              
               <td>
                 <li class="media">
                   {{user.username}}
@@ -409,6 +410,7 @@
               <td>
                 {{user.date_joined | date: ' dd/MM/yyyy'}}
               </td>
+           
             </tr>
           </tbody>
 

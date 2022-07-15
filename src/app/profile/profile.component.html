@@ -1,4 +1,5 @@
 <app-header></app-header>
+<div *ngFor="let item of userlist">
 <section id="viewprofile">
 
 
@@ -16,16 +17,15 @@
                   <div class="text-left ">
                      <nav id="navbar" class="navbar">
                         <ul>
-                           <li><a class="btn"   [routerLink]="['/edit', user.user_id]">abouts</a></li>
-                            <li><a class="btn " (change)="uploadPhoto($event)" >
-                            Edit Coverage Photo</a></li>
+                           <li><a class="btn"   [routerLink]="['/edit', user.user_id]" >abouts</a></li>
+                           
                         </ul>
                      </nav>
                   </div>
                </div>
 
                <div class="user text-center">
-                  <div class="text-center "> <img [src]="user.Image ? ImagePath+user.Image : '/assets/img/blank_img.png'" width="200" class="rounded-circle">
+                  <div class="text-center "> <img  [src]="item.account.Image ? ImagePath+item.account.Image : '/assets/img/blank_img.png'" width="200" class="rounded-circle">
                   </div>
 
 

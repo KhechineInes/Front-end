@@ -28,7 +28,10 @@ export class StatisticComponent implements OnInit {
   Designer: any=[];
   ImagePath: string="";
   Image: string="";
-  
+  info:any=[];
+  nback: any=[];
+  nFront: any=[];
+  nDesigner: any=[];
   constructor(private service: SharedService ) {
     
    }
@@ -39,6 +42,8 @@ export class StatisticComponent implements OnInit {
    this.refreshCatList();
    this.refreshAnsList();
    this.refreshUserList();
+   this.getInfo();
+   
    this.ImagePath=this.service.PhotoUrl+this.Image;
    var d = new Date();
    var date = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
@@ -66,12 +71,15 @@ export class StatisticComponent implements OnInit {
   }
   nbBack(){
     this.link='back';
+    this.refreshUserList();
   }
   nbFront(){
     this.link="Front";
+    this.refreshUserList();
   }
   nbDesign(){
     this.link="des";
+    this.refreshUserList();
   }
   anal(){
     this.link='';
@@ -79,6 +87,7 @@ export class StatisticComponent implements OnInit {
     this.refreshCatList();
     this.refreshAnsList();
     this.refreshUserList();
+  
 
   }
   refreshCatList() {
@@ -166,5 +175,12 @@ return diffday;
     
 
   }
-
+ getInfo(){
+   this.service.getInfo().subscribe((data=>{
+     this.info=data;
+     this.nback=this.info.filter((res:any)=>{ return res.Function=="Back-end"});
+     this.nFront=this.info.filter((res:any)=>{ return res.Function=="Front-end"});
+     this.nDesigner=this.info.filter((res:any)=>{ return res.Function=="Designer"});
+   }))
+ }
 }

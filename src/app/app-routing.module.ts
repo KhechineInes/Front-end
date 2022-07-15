@@ -14,7 +14,7 @@ import { CatComponent } from './admin/dashboard/cat/cat.component';
 import { ShowPubComponent } from './publication/show-pub/show-pub.component';
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 
-import { ChangepassComponent } from './changepass/changepass.component';
+
 
 const routes: Routes = [
 {path:'post',component:ShowPubComponent},
@@ -26,7 +26,7 @@ const routes: Routes = [
 {path :'addpost', component:AddEditPubComponent},
 {path :'admin', component:AdminComponent},
 {path:'admin/dashboard', component:DashboardComponent},
-{path:'changepassword', component:ChangepassComponent},
+
 {path:'edit/:id', component:EditProfileComponent},
 
 

@@ -26,7 +26,7 @@ import { AnsComponent } from './publication/ans/ans.component';
 
 import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 
-import { ChangepassComponent } from './changepass/changepass.component';
+
 import { StatisticComponent } from './admin/dashboard/statistic/statistic.component';
 import { PostComponent } from './admin/dashboard/post/post.component';
 import { NgModule } from '@angular/core';
@@ -81,7 +81,7 @@ const appRoutes: Routes = [
     
     EditProfileComponent,
        
-         ChangepassComponent,
+        
          StatisticComponent,
          PostComponent,
          FirstchartComponent,

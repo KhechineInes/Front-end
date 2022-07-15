@@ -13,7 +13,13 @@ httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
   constructor(private http:HttpClient) { }
   
   updateProfile(val:any){
-    return this.http.put(this.APIUrl + '/profile/',val);
+    return this.http.put(this.APIUrl + '/account/',val);
+  }
+  AddProfile(val:any){
+    return this.http.post(this.APIUrl+ '/account/', val)
+  }
+  getInfo():Observable<any[]>{
+    return this.http.get<any[]>(this.APIUrl + '/account/');
   }
   getPostList():Observable<any[]>{
     return this.http.get<Post[]>(this.APIUrl + '/post/',

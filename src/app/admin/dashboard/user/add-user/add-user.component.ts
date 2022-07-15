@@ -10,8 +10,14 @@ import { SharedService } from 'src/app/services/shared.service';
 })
 export class AddUserComponent implements OnInit {
   last_login: any;
-
-
+  Education: any;
+  Function: any;
+  Address: any;
+  MobileNumber: any;
+  Image: any;
+userlist:any=[];
+  ImagePath: string="";
+ActivateModal: boolean=false;
   constructor(private service: SharedService) { }
 
   
@@ -29,20 +35,39 @@ export class AddUserComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.addUser();
+    this.ImagePath=this.service.PhotoUrl+this.Image;
   }
 
   addUser() {
     var val = {
+      id:this.id,
       username:this.username,
       password:this.password,
       email : this.email,
+      
+      
     };
     this.service.addUser(val).subscribe(res => {
-      alert(res.toString());
+      alert("Added Successfully!!!");
+      this.userlist=res 
     });
-    console.log(val);
+    
+  }
+  closeClick(){
+    this.ActivateModal=false;
+  
+  }
+  
+    uploadPhoto(event: any){
+      var file=event.target.files[0];
+      const formData:FormData=new FormData();
+      formData.append('uploadedFile',file,file.name);
+  
+      this.service.UploadPhoto(formData).subscribe((data:any)=>{
+        this.Image=data.toString();
+        this.ImagePath=this.service.PhotoUrl+this.Image;
+      })
+    }
     
   }
 
-}

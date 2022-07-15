@@ -23,7 +23,7 @@ export class ProfileComponent implements OnInit {
   ans: any;
   post:any;
   ImagePath:any;
-  Image:any;
+  Image:string="";
   User:any;
   userlist:any=[];
   VoteList: any=[];
@@ -41,23 +41,17 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.user=JSON.parse(localStorage.getItem('currentUser')!);
-    this.getVoteList();
     console.log(this.user);
-    this.getPostList();
-    this.ImagePath=this.service.PhotoUrl+this.Image;
     this.getUser();
+    
+    this.getVoteList();
+   
+    this.getPostList();
+    
     this.getVote();
+    this.ImagePath=this.service.PhotoUrl+this.Image;
   }
-  uploadPhoto(event: any){
-    var file=event.target.files[0];
-    const formData:FormData=new FormData();
-    formData.append('uploadedFile',file,file.name);
-
-    this.service.UploadPhoto(formData).subscribe((data:any)=>{
-      this.Image=data.toString();
-      this.ImagePath=this.service.PhotoUrl+this.Image;
-    })
-  }
+  
   getVoteList(){
     this.service.getVoteList().subscribe((data)=>{
       this.Vote=data
@@ -302,6 +296,7 @@ getdisansList(id:any){
       this.userlist=data.filter((res:any)=>res.id==this.user.user_id),
       console.log(this.userlist)}
     );
+   
     
   }
  
