@@ -43,9 +43,9 @@
 
           <tbody>
             
-            <tr *ngFor="let ans of sortData">
+            <tr *ngFor="let ans of ansList">
               
-              <div *ngIf="ans.pub_id.pubId == post.pubId" >
+              <div  *ngIf="ans.pub_id== post.pubId">
                 <div class="container card shadow border-0 mb-2 ">
 
                   
@@ -62,7 +62,9 @@
                       
                      </div>
                      
-                     <div class="col-4">{{ans.date | date: 'HH:mm , le dd/MM/yyyy' }}</div>
+                     <div class="col-4">{{ans.date | date: 'HH:mm , le dd/MM/yyyy' }} 
+                      
+                     </div>
 
                      
 
@@ -216,7 +218,7 @@
         </div>
                 </div>
                 
-                <div class="col"*ngIf="user.user_id==post.user.id && ans.validated==false && valid==0">  
+                <div class="col"*ngIf="user.user_id==post.user.id && ans.validated==false">  
                  
                   <button class="btn"  (click)="validateAns(ans.AnsId)">  <i class="fa-solid fa-check"  ></i></button></div>
 
@@ -244,15 +246,7 @@
 </div>
 </div>
           </tbody>
-          <button type="button" class="btn btn-light mr-1" (click)="ansClick()" >
-          Answer
-        </button>
-
-        
-
-                <app-ans [post]="post" *ngIf="ActivateAddEditAnsComp">
-
-                </app-ans>
+         
              
        
         </table>

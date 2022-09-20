@@ -1,17 +1,19 @@
 import { HttpClient , HttpHeaders} from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
-
-const httpOptions ={
-  headers : new HttpHeaders({'Content-Type': 'application/json'})
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type':  'application/json'
+  })
 };
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthServiceService {
 api_url = 'http://127.0.0.1:8000';
   constructor(private http: HttpClient) { }
-
+  public token: string="";
 
   login(username: string, password: string){
 
@@ -30,13 +32,14 @@ api_url = 'http://127.0.0.1:8000';
     localStorage.removeItem('currentUser');
     
   }
-  changePassword(username: string, password: string){
-    return this.http.post<any>(this.api_url+ '/api/change-password/' , {username, password}, httpOptions).pipe()
+  changePassword(val:any){
+    return this.http.put<any>(this.api_url+ '/api/change-password/' , val. httpOptions).pipe()
   }
   setpass(val:any){
     return this.http.put(this.api_url+ '/changepass/' , val)
   }
 }
+
 
 
 

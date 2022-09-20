@@ -36,7 +36,7 @@ this.buildChart();
   refreshPubList() {
     this.service.getPostList().subscribe((data) => 
       this.postList=data,
-      
+    
       
 
 

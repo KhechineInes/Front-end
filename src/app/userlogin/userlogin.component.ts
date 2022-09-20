@@ -32,8 +32,12 @@ export class UserloginComponent implements OnInit {
  onSubmit(){
    console.log(this.myform)
    this.authService.login(this.f['username'].value, this.f['password'].value).pipe(first()).subscribe(data=>{
-    alert("Welcome "+this.f['username'].value);
+    if (data.toString()!="Invalid username or password !!!") {
+      alert("Welcome "+this.f['username'].value);
      this.user=data;
+    }
+    else alert(data.toString());
+    
     
      console.log(this.user,"user");
      if(this.user.Function=="Back-end"){
@@ -108,8 +112,8 @@ console.log(this.msg);
  
   
   loginclick() {
-    if ((this.f['username'].value == 0 )||(this.f['password'].value ==0)){
-      alert('Please enter your username and your password');
+    if ((this.f['username'].value == 0 )||(this.f['password'].value ==0) || (this.f['username'].value == "admin" )){
+      alert('Invalid username or  password !!!');
 
     
       

@@ -11,7 +11,7 @@ import {SharedService } from 'src/app/services/shared.service';
 
 export class ShowPubComponent implements OnInit {
   PostList: any=[]
-  AnsList: any;
+  AnsList: any=[];
   UserList: User[] =[];
   CatList: Cat[]=[];
   ActivateAddEditAnsComp: boolean=false;
@@ -53,6 +53,8 @@ export class ShowPubComponent implements OnInit {
     this.getVote();
     this.ImagePath=this.service.PhotoUrl+this.Image;
     this.getVoteList();
+    this.refreshAnsList();
+
 
     
   }
@@ -134,7 +136,8 @@ getdisList(id:any){
   refreshAnsList() {
     this.service.getAnsList().subscribe(data=>{
       this.AnsList=data;
-    
+    console.log(this.AnsList, "Answeeeeeeeeeeeeers")
+    console.log(this.AnsList[0].pub_id.pubId, "Answer 1 ")
     });
   }
   showClick(item:any,user:any) {

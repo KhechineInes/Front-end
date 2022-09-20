@@ -7,46 +7,49 @@ import { SharedService } from 'src/app/services/shared.service';
   templateUrl: './barchart.component.html',
   styleUrls: ['./barchart.component.css']
 })
-export class BarchartComponent {
+export class BarchartComponent  implements OnInit {
   userlist:any=[];
   anslist:any=[];
-  postList:any=[];
+  postList:any[]=[];
   validatedAns:any=[];
   user: any=[];
-  userposts:any=[];
+  userposts:any[]=[];
   chart: any=[];
   userAns: any=[];
   ansUserList: any=[];
-
+  names:string[]=[];
+  nameslist:string[]=[];
+  salesData:ChartData[]=[];
   constructor(private service:SharedService){
     Chart.register(...registerables);
   }
   ngOnInit() {
-this.refreshPubList();
+         this.refreshPubList();
+         
+         Chart.register(...registerables);
 
-this.refreshUserList();
-console.log(this.userlist,'kkkkkkkkkkkk');
-Chart.register(...registerables);
-
-console.log(this.anslist,'answers')
+         this.refreshUserList();
+        
 
   }
-  refreshPubList() {
-    this.service.getPostList().subscribe((data) => 
-      this.postList=data,
-      
-    );
-    
+
+refreshPubList() {
+    this.service.getPostList().subscribe(data=>{
+      this.postList=data;
+      console.log(this.postList)
+    });
+  
   }
   
-  names:string[]=[];
-  nameslist:string[]=[];
-  salesData:ChartData[]=[];
+  
   async refreshUserList() {
      this.anslist=await this.service.getAnsList().toPromise();
     console.log(this.anslist , 'answers');
     
-    
+    this.service.getPostList().subscribe(data=>{
+      this.postList=data;
+      console.log(this.postList)
+    });
     this.service.getUserList().subscribe((data =>{
       this.userlist = data,
       this.names= this.userlist.map((data:any)=>data.username)
@@ -55,25 +58,27 @@ console.log(this.anslist,'answers')
           this.nameslist.push(this.names[i])
         }
       }
-      this.service.getPostList().subscribe((data:any)=>this.postList=data)
+      
+      
       console.log(this.postList,'posts!!!!!!!!!!!!!!!!!')
-      for(let i=0;i<this.names.length;i++){
-      this.ansUserList=this.anslist.filter((res:any)=>{ return res.user.username==this.names[i]})
+      
+      for(let i=0;i<this.nameslist.length;i++){
+      this.ansUserList=this.anslist.filter((res:any)=>{ return res.user.username==this.nameslist[i]})
       this.userAns.push(this.ansUserList.length)
       this.validatedAns.push((this.ansUserList.filter((res:any)=>{return res.validated==true})).length)
-      this.userposts.push((this.postList.filter((res:any)=>{return res.user.username==this.names[i]})).length)
+      this.userposts.push((this.postList.filter((res:any)=>{return res.user.username==this.nameslist[i]})).length)
     
 console.log(this.validatedAns,'validé')
 console.log(this.userposts,"post de chaque user")
        }
 
       
-      console.log(this.userlist , "ffffffffff",this.names),
+      console.log(this.userlist , "ffffffffff") ; console.log(this.names , "namelist") ;console.log( this.nameslist , "liste des nom");
       
       this.chart =new Chart('canvas1' ,{
         type:'bar',
         data:{
-        labels: this.names,
+        labels: this.nameslist,
             datasets: [
           { label: 'Questions', data:this.userposts  , backgroundColor:["#F71E8A"] , borderColor:["#7293DB"]},
           

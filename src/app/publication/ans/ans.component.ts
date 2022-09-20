@@ -38,6 +38,7 @@ config: AngularEditorConfig = {
     },
   ]
 };
+  router: any;
 
 
   constructor(private service:SharedService) { }
@@ -64,9 +65,11 @@ config: AngularEditorConfig = {
                console.log(val , 'answer');
     this.service.addAns(val).subscribe(res=>{
       alert(res.toString());
-      
+     
       console.log(val);
+      this.refreshAnsList();
     });
+    this.router.navigate(['/post']);
   }
   refreshAnsList() {
     this.service.getAnsList().subscribe(data=>{

@@ -58,10 +58,10 @@
                 <td> <img   *ngIf="dataItem.account!=null" alt="..." height="50" width=" 50"[src]="dataItem.account.Image ? ImagePath+dataItem.account.Image : '/assets/img/blank_img.png'"
                         class="avatar avatar-sm rounded-circle me-2"> {{dataItem.username}}
                 </td>
-                <td>{{dataItem.email}}</td>
-                <td>{{dataItem.account.Function}}</td>
+                <td  *ngIf="dataItem.account!=null">{{dataItem.email}}</td>
+                <td  *ngIf="dataItem.account!=null"> {{dataItem.account.Function}}</td>
 
-                <td> {{dataItem.date_joined | date: 'dd/MM/yyyy' }}</td>
+                <td  *ngIf="dataItem.account!=null"> {{dataItem.date_joined | date: 'dd/MM/yyyy' }}</td>
 
                 <td></td>              
 <td ></td>

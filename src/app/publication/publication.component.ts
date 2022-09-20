@@ -24,6 +24,9 @@ export class PublicationComponent implements OnInit {
   Vote: any[]=[];
   uservoted: any[]=[];
   postvoted: any[]=[];
+  postans: any;
+  anspost: any=[];
+  pubId: any;
   
 
   constructor(private service:SharedService) { }
@@ -41,6 +44,7 @@ export class PublicationComponent implements OnInit {
   user:any;
   ngOnInit(): void {
     this.user=JSON.parse(localStorage.getItem('currentUser')!);
+    this.refreshAnsList();
     this.pbId=this.post.pubId;
     this.pub=this.post.pub;
     this.pubsubject=this.post.pubSubject;
@@ -49,8 +53,9 @@ export class PublicationComponent implements OnInit {
     this.ImagePath=this.service.PhotoUrl+this.Image;
     this.getVote();
     this.getVoteList();
-console.log(this.pbId);
-   this.refreshAnsList();
+console.log(this.pbId , "id pub");
+ 
+   
     
       }
  
@@ -58,7 +63,9 @@ console.log(this.pbId);
       refreshAnsList() {
         this.service.getAnsList().subscribe(data=>{
           this.ansList=data;
-        
+          this.pubId = this.ansList[0].pub_id.pubId
+          console.log(this.pubId,"teeeeest")
+        console.log(this.ansList[1].pub_id.pubId,"teeeeest")
         });
       }
       getVote(){
@@ -242,6 +249,24 @@ closeClick(){
   }
 }
 validateAns(item:any){
+  this.postans=this.ansList.filter((res:any)=>{return res.AnsId==item}).map((data:any)=>data.pub_id)
+  console.log(this.postans,"this answer is validated")
+  this.anspost=this.ansList.filter((res:any)=>{return res.pub_id==this.postans})
+  console.log(this.anspost , "liste des answers d'une poste")
+  console.log(this.anspost[0].validated ,"vérifieee!!!!!")
+  for(let i=0; i<this.anspost.length; i++){
+    if (this.anspost[i].validated==1){
+      var val ={
+        AnsId:this.anspost[i].AnsId,
+        validated:false
+      }
+      this.service.validateAns(val).subscribe()
+      
+        this.refreshAnsList();
+        
+      
+    }
+  }
   var val={
     AnsId:item,
     validated:true
@@ -250,7 +275,7 @@ validateAns(item:any){
   this.service.validateAns(val).subscribe(data=>{
     alert(data.toString());
     this.refreshAnsList();
-    this.valid=1;
+    
     
     
     

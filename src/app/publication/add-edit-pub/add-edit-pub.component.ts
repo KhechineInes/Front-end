@@ -143,6 +143,7 @@ ngOnInit(): void {
   
   
   this.refreshCatList();
+  
   this.filePath = this.service.PhotoUrl + this.pub;
   this.config=this.config;
   setTimeout(()=>{                           
@@ -251,7 +252,7 @@ updatePost() {
     pubId: this.posts.pubId,
     pub: this.pub,
     pubsubject: this.pubsubject,
-
+    cat_id:this.onSelect(this.cat_id)
 
 
 
@@ -260,8 +261,9 @@ updatePost() {
   this.service.updatePost(val).subscribe(res => {
     alert(res.toString());
     this.refreshPostList();
+    this.router.navigate(['/post']);
   });
- this.router.navigate(['/post']);
+ 
   console.log(val)
 }
 refreshCatList() {

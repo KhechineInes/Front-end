@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpClientModule, HttpHeaders} from '@angular/common/http';
 import { map, Observable } from 'rxjs';
 import { Post, User } from '../model';
+import { AuthServiceService } from './auth-service.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,8 +11,16 @@ export class SharedService {
 readonly APIUrl = 'http://127.0.0.1:8000';
 readonly PhotoUrl = 'http://127.0.0.1:8000/media/';
 httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-  constructor(private http:HttpClient) { }
-  
+
+  constructor(private http:HttpClient , private _userService :  AuthServiceService) { }
+  create() {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        
+      })
+    }
+  }
   updateProfile(val:any){
     return this.http.put(this.APIUrl + '/account/',val);
   }

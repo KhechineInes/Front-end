@@ -108,7 +108,9 @@
                                     <div class="col-md-12"><label class="labels">
                                             <h5>Education : </h5>
                                         </label> {{item.account.Education}}</div>
+                                       
                                 </div>
+                                
 
                             </div>
 
@@ -140,10 +142,10 @@
                                         <div class="col-md-6"><label class="labels">username</label><input type="text"
                                                 class="form-control" [(ngModel)]="username" placeholder="first name"
                                                 value=""></div>
-                                        <div class="col-md-6"><label class="labels">Password</label><input type="text"
-                                                class="form-control" [(ngModel)]="old_password" placeholder="last name"></div>
-                                                <div class="col-md-6"><label class="labels">New Password</label><input type="text"
-                                                    class="form-control" [(ngModel)]="new_password" placeholder="last name"></div>
+                                        <div class="col-md-6"><label class="labels">Password</label><input type="password" 
+                                                class="form-control" [(ngModel)]="old_password"></div>
+                                                <div class="col-md-6"><label class="labels">New Password</label><input type="password" 
+                                                    class="form-control" [(ngModel)]="new_password"></div>
                                     </div>
                                     <div class="mt-5 text-center"><button class="btn btn-primary profile-button"
                                         type="button" (click)="setPass()" >Edit password</button>

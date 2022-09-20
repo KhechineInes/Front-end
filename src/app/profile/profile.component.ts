@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { map } from 'rxjs';
 import { Post, Pub } from '../model';
 import { SharedService } from '../services/shared.service';
 
@@ -37,6 +38,8 @@ export class ProfileComponent implements OnInit {
   Vote: any[]=[];
   uservoted: any=[];
   postvoted: any=[];
+  anspost:any=[];
+  postans:any;
   constructor(private service:SharedService) { }
 
   ngOnInit(): void {
@@ -47,7 +50,7 @@ export class ProfileComponent implements OnInit {
     this.getVoteList();
    
     this.getPostList();
-    
+    this.refreshAnsList();
     this.getVote();
     this.ImagePath=this.service.PhotoUrl+this.Image;
   }
@@ -72,6 +75,7 @@ export class ProfileComponent implements OnInit {
   refreshAnsList() {
     this.service.getAnsList().subscribe(data=>{
       this.ansList=data;
+      
     
     });
   }
@@ -144,16 +148,36 @@ getList(id:any){
 
 }
 validateAns(item:any){
+  this.postans=this.ansList.filter((res:any)=>{return res.AnsId==item}).map((data:any)=>data.pub_id)
+  console.log(this.postans,"this answer is validated")
+  this.anspost=this.ansList.filter((res:any)=>{return res.pub_id==this.postans})
+  console.log(this.anspost , "liste des answers d'une poste")
+  console.log(this.anspost[0].validated ,"vérifieee!!!!!")
+  for(let i=0; i<this.anspost.length; i++){
+    if (this.anspost[i].validated==1){
+      var val ={
+        AnsId:this.anspost[i].AnsId,
+        validated:false
+      }
+      this.service.validateAns(val).subscribe()
+      
+        this.refreshAnsList();
+        
+      
+    }
+  }
   var val={
     AnsId:item,
     validated:true
 
   }
+  
   this.service.validateAns(val).subscribe(data=>{
     alert(data.toString());
     this.refreshAnsList();
-    
+    console.log(data.toString());
   });
+  
   this.service.updateDataSet(val).subscribe(data=>
     console.log(data.toString())
 );

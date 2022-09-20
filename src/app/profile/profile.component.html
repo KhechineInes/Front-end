@@ -251,7 +251,7 @@
                                              <div *ngFor="let ans of ansList">
 
 
-                                                <div *ngIf="ans.pub_id.pubId == pub.pubId">
+                                                <div *ngIf="ans.pub_id == pub.pubId">
 
 
 
@@ -270,7 +270,7 @@
                                                                   alt="Generic placeholder image">
                                                             </div>
                                                             <div class="col">
-                                                               <span class="text-bold"> {{ans.user.username}} </span>
+                                                               <span class="text-bold">{{ans.user.username}} </span>
 
                                                             </div>
                                                             

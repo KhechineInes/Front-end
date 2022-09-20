@@ -131,7 +131,7 @@ export class EditProfileComponent implements OnInit {
     old_password:this.old_password,
   new_password:this.new_password
     }
-    this.auth.setpass(val).subscribe(res=>{
+    this.auth.changePassword(val).subscribe(res=>{
       alert(res.toString());
     })
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Answer, Cat, Post, User } from 'src/app/model';
 import { ShowPubComponent } from 'src/app/publication/show-pub/show-pub.component';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { SharedService } from 'src/app/services/shared.service';
 @Component({
   selector: 'app-dashboard',
@@ -11,7 +12,7 @@ export class DashboardComponent implements OnInit {
   PostList:Post[] = [];
   nb: any;
 
-  constructor(private service: SharedService) { }
+  constructor(private service: SharedService, private auth: AuthServiceService) { }
 
   pos: string = "";
 
@@ -40,7 +41,10 @@ export class DashboardComponent implements OnInit {
 
 
 
-
+  logout(){
+    this.auth.logout();
+  
+  }
 
 
 

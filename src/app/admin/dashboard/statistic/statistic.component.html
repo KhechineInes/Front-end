@@ -279,8 +279,9 @@
 
               </td>
 
-              <td>
-                <div [innerHTML]="dataItem.pub_id.pub"></div>
+              <td ><div *ngFor="let pub of PostList">
+              
+                <div *ngIf="pub.pubId==dataItem.pub_id"> {{pub.pubsubject}}</div></div>
               </td>
 
               <td>{{dataItem.date | date: ' HH:mm , le dd/MM/yyyy'}}</td>

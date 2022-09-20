@@ -70,12 +70,12 @@
 
   <label for="message" class="col-form-label">Category *</label>
 
-  <select  *ngIf ="Cat != undefined" class="form-select form-select-sm" aria-label=".form-select-sm example" >
+  <select  *ngIf ="Cat != undefined" class="form-select form-select-sm" aria-label=".form-select-sm example"  >
   
-    <option >{{CatName}}</option> 
+    <option  >{{CatName}}</option> 
   </select>
 
-    <select  *ngIf ="Cat == undefined"class="form-select form-select-sm" aria-label=".form-select-sm example" >
+    <select  *ngIf ="Cat == undefined"class="form-select form-select-sm" aria-label=".form-select-sm example" [(ngModel)]="cat_id">
     
     
     <option  *ngFor="let dataItem of CatList"   (click)="onSelect(dataItem.CatId)"  > {{dataItem.CatName}}</option>
